@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:VIL/Bot/bot_file.dart';
 import 'package:VIL/Game/Ghome.dart';
 import 'package:VIL/pages/wallet.dart';
+import 'package:VIL/WalletPage/src/pages/overview_page.dart';
+
+
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -122,7 +126,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       setState(() {
                         currentScreen =
-                            Wallet(); // if user taps on this dashboard tab will be active
+                            OverviewPage(); // if user taps on this dashboard tab will be active
                         currentTab = 2;
                       });
                     },

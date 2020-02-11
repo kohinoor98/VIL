@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   fab_circular_menu: ^0.1.4
   flutter_dialogflow: ^0.1.2
+  photo_view: ^0.5.0
+  charts_flutter:
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +51,36 @@ flutter:
   assets:
     - images/
     - assets/BotDialog.json
+    - assets/images/img_not_available.jpeg
+    - assets/images/mimi1.gif
+    - assets/images/mimi2.gif
+    - assets/images/mimi3.gif
+    - assets/images/mimi4.gif
+    - assets/images/mimi5.gif
+    - assets/images/mimi6.gif
+    - assets/images/mimi7.gif
+    - assets/images/mimi8.gif
+    - assets/images/mimi9.gif
+    - assets/LoginImages/image_01.png
+    - assets/LoginImages/image_02.png
+    - assets/LoginImages/logo.png
+    - assets/smps.png
+    - assets/seagate_hard_disk.png
+    - assets/breadboard.png
+    - assets/sata_cabels.png
+    - assets/bottom_nav_bar/bag_icon.png
+    - assets/bottom_nav_bar/home_icon.png
+    - assets/bottom_nav_bar/search_icon.png
+    - assets/kc_temp.jpg
+    - assets/xchanger_logo.png
+    - assets/LoginImages/image_01.png
+    - assets/LoginImages/image_02.png
+    - assets/LoginImages/logo.png
+    - assets/WalletImages/bg.jpg
+    - assets/WalletImages/bg1.jpg
+    - assets/WalletImages/users/anna.jpeg
+    - assets/WalletImages/users/gillian.jpeg
+    - assets/WalletImages/users/judith.jpeg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
