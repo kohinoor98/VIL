@@ -8,7 +8,6 @@ class Ghomepage extends StatefulWidget {
 }
 
 class _GhomepageState extends State<Ghomepage> {
-
   List<String> images = [
     "images/py.png",
     "images/java.png",
@@ -25,17 +24,17 @@ class _GhomepageState extends State<Ghomepage> {
     "Linux is a OPEN SOURCE Operating System which powers many Servers and Workstation.\nIt is also a top Priority in Developement Work !",
   ];
 
-  Widget customcard(String langname, String image, String des){
+  Widget customcard(String langname, String image, String des) {
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: 20.0,
         horizontal: 30.0,
       ),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             // in changelog 1 we will pass the langname name to ther other widget class
-            // this name will be used to open a particular JSON file 
+            // this name will be used to open a particular JSON file
             // for a particular language
             builder: (context) => getjson(langname),
           ));
@@ -85,14 +84,12 @@ class _GhomepageState extends State<Ghomepage> {
                   child: Text(
                     des,
                     style: TextStyle(
-                      fontSize: 18.0,
-                      color: Colors.white,
-                      fontFamily: "Alike"
-                    ),
+                        fontSize: 18.0,
+                        color: Colors.white,
+                        fontFamily: "Alike"),
                     maxLines: 5,
                     textAlign: TextAlign.justify,
                   ),
-                  
                 ),
               ],
             ),
@@ -104,9 +101,8 @@ class _GhomepageState extends State<Ghomepage> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitDown, DeviceOrientation.portraitUp
-    ]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -114,6 +110,19 @@ class _GhomepageState extends State<Ghomepage> {
           style: TextStyle(
             fontFamily: "Quando",
           ),
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                const Color(0xFFFFFF45),
+                const Color(0xFFFF5858),
+
+                // const Color(0xFF00c3ff),
+                // const Color(0xFFffff1c),
+              ])),
         ),
       ),
       body: ListView(

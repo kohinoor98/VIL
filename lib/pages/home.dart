@@ -1,8 +1,8 @@
+import 'package:VIL/Game/games.dart';
 import 'package:VIL/pages/dashboard.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:VIL/Bot/bot_file.dart';
-import 'package:VIL/Game/Ghome.dart';
 import 'package:VIL/WalletPage/src/pages/overview_page.dart';
 
 class Home extends StatefulWidget {
@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
       case 0:
         return Dashboard();
       case 1:
-        return Ghomepage();
+        return Games();
       case 2:
         return OverviewPage();
 
