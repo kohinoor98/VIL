@@ -18,6 +18,7 @@ class _HomeState extends State<Home> {
     // Chat(),
     // Profile(),
     Games(),
+    Wallet(),
   ]; // to store nested tabs
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen = Dashboard(); // Our first view in viewport
@@ -81,7 +82,6 @@ class _HomeState extends State<Home> {
 
 
               // Right Tab bar icons
-
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -99,12 +99,12 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(
                           Icons.games,
-                          color: currentTab == 3 ? Colors.yellow : Colors.grey,
+                          color: currentTab == 1 ? Colors.blue : Colors.grey,
                         ),
                         Text(
                           'Games',
                           style: TextStyle(
-                            color: currentTab == 3 ? Colors.yellow : Colors.grey,
+                            color: currentTab == 1 ? Colors.blue : Colors.grey,
                           ),
                         ),
                       ],
@@ -112,7 +112,6 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-
 
 
               Row(
@@ -124,7 +123,7 @@ class _HomeState extends State<Home> {
                       setState(() {
                         currentScreen =
                             Wallet(); // if user taps on this dashboard tab will be active
-                        currentTab = 0;
+                        currentTab = 2;
                       });
                     },
                     child: Column(
@@ -132,12 +131,12 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(
                           Icons.account_balance_wallet,
-                          color: currentTab == 0 ? Colors.blue : Colors.grey,
+                          color: currentTab == 2 ? Colors.blue : Colors.grey,
                         ),
                         Text(
                           'Wallet',
                           style: TextStyle(
-                            color: currentTab == 0 ? Colors.blue : Colors.grey,
+                            color: currentTab == 2 ? Colors.blue : Colors.grey,
                           ),
                         ),
                       ],
@@ -145,7 +144,6 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-
 
 
             ],
