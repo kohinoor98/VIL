@@ -4,10 +4,10 @@ import 'package:VIL/Game/Ghome.dart';
 
 class GameSplashscreen extends StatefulWidget {
   @override
-  _splashscreenState createState() => _splashscreenState();
+  _GsplashscreenState createState() => _GsplashscreenState();
 }
 
-class _splashscreenState extends State<GameSplashscreen> {
+class _GsplashscreenState extends State<GameSplashscreen> {
 
   @override
   void initState(){

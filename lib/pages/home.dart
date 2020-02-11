@@ -3,7 +3,7 @@ import 'package:VIL/pages/games.dart';
 import 'package:flutter/material.dart';
 import 'package:VIL/Bot/bot_file.dart';
 import 'package:VIL/Game/Ghome.dart';
-
+import 'package:VIL/pages/wallet.dart';
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -31,6 +31,7 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.live_help),
+        elevation: 20.0,
         onPressed: () {
           Navigator.push(
             context,
@@ -78,6 +79,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
 
+
               // Right Tab bar icons
 
               Row(
@@ -109,7 +111,43 @@ class _HomeState extends State<Home> {
                     ),
                   )
                 ],
-              )
+              ),
+
+
+
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  MaterialButton(
+                    minWidth: 40,
+                    onPressed: () {
+                      setState(() {
+                        currentScreen =
+                            Wallet(); // if user taps on this dashboard tab will be active
+                        currentTab = 0;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          Icons.account_balance_wallet,
+                          color: currentTab == 0 ? Colors.blue : Colors.grey,
+                        ),
+                        Text(
+                          'Wallet',
+                          style: TextStyle(
+                            color: currentTab == 0 ? Colors.blue : Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+
+
+
             ],
           ),
         ),

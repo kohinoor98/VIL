@@ -4,10 +4,10 @@ import 'package:VIL/Game/quizpage.dart';
 
 class Ghomepage extends StatefulWidget {
   @override
-  _homepageState createState() => _homepageState();
+  _GhomepageState createState() => _GhomepageState();
 }
 
-class _homepageState extends State<Ghomepage> {
+class _GhomepageState extends State<Ghomepage> {
 
   List<String> images = [
     "images/py.png",

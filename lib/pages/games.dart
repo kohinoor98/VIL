@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:VIL/Game/splash.dart';
 
 class Games extends StatefulWidget {
   @override
