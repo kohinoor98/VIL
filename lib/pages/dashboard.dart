@@ -9,7 +9,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: SliverAppBar(
         title: Text('Idea Limited'),
       ),
     );
