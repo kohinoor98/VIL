@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:VIL/Game/home.dart';
+import 'package:VIL/Game/Ghome.dart';
 
 
 
@@ -96,7 +96,7 @@ class _resultpageState extends State<resultpage> {
                 OutlineButton(
                   onPressed: (){
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => homepage(),
+                      builder: (context) => Ghomepage(),
                     ));
                   },
                   child: Text(

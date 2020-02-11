@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:VIL/Game/home.dart';
+import 'package:VIL/Game/Ghome.dart';
 
 class GameSplashscreen extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _splashscreenState extends State<GameSplashscreen> {
     super.initState();
     Timer(Duration(seconds: 3), (){
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => homepage(),
+        builder: (context) => Ghomepage(),
       ));
     });
   }

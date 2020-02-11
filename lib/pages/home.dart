@@ -2,7 +2,7 @@ import 'package:VIL/pages/dashboard.dart';
 import 'package:VIL/pages/games.dart';
 import 'package:flutter/material.dart';
 import 'package:VIL/Bot/bot_file.dart';
-import 'package:VIL/Game/splash.dart';
+import 'package:VIL/Game/Ghome.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                           color: currentTab == 0 ? Colors.blue : Colors.grey,
                         ),
                         Text(
-                          'Dashboard',
+                          'Home',
                           style: TextStyle(
                             color: currentTab == 0 ? Colors.blue : Colors.grey,
                           ),
@@ -88,7 +88,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       setState(() {
                         currentScreen =
-                            GameSplashscreen(); // if user taps on this dashboard tab will be active
+                            Ghomepage(); // if user taps on this dashboard tab will be active
                         currentTab = 1;
                       });
                     },
