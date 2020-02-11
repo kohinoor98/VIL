@@ -62,7 +62,7 @@ class OverviewPage extends StatelessWidget {
           Row(
             children: <Widget>[
               colorCard("Cash", 35.170, 1, context, Color(0xFF1b5bff)),
-              colorCard("Rewards Earned", 4320, -1, context, Color(0xFFff3f5e)),
+              colorCard("Rewards Earned", 4320, 1, context, Color(0xFFff3f5e)),
             ],
           ),
           SizedBox(
@@ -72,7 +72,7 @@ class OverviewPage extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "Spending",
+                  text: "Spendings",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -130,10 +130,10 @@ class OverviewPage extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      donutCard(Colors.indigo, "Home"),
-                      donutCard(Colors.yellow, "Food & Drink"),
-                      donutCard(Colors.greenAccent, "Hotel & Restaurant"),
-                      donutCard(Colors.pinkAccent, "Travelling"),
+                      donutCard(Colors.indigo, "Recharged"),
+                      donutCard(Colors.yellow, "Cash Availaible"),
+                      donutCard(Colors.greenAccent, "Rewards Earn"),
+                      donutCard(Colors.pinkAccent, "In Buffer"),
                     ],
                   ),
                 )
@@ -147,7 +147,7 @@ class OverviewPage extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "Budgets",
+                  text: "Availaible Data Balance",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -208,7 +208,7 @@ class OverviewPage extends StatelessWidget {
             height: 30,
           ),
           Text(
-            "Cash flow",
+            "History",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -218,7 +218,7 @@ class OverviewPage extends StatelessWidget {
           ),
           vaweCard(
             context,
-            "Earned",
+            "Cash Earned",
             200,
             1,
             Colors.grey.shade100,
@@ -226,7 +226,7 @@ class OverviewPage extends StatelessWidget {
           ),
           vaweCard(
             context,
-            "Spent",
+            "Recharged",
             3210,
             -1,
             Colors.grey.shade100,
