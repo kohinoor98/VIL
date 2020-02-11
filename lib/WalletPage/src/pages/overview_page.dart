@@ -147,7 +147,7 @@ class OverviewPage extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "Availaible Data Balance",
+                  text: "Data Balance Used",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
