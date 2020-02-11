@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ideacustomercare-ordbnp",
+  "private_key_id": "4c1689afd56d886fee00760f3e77c2f85f5a3fd6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDC3nY2v/LJky0L\nO7sWX09/UMqwTS9vpUf7YjhOqLfAJlPdIYpBSQmUBO1CcpVmjR3ctz/tA3MGeu2p\n9sqUU/yKUxLacso01I2rFz8LVQFLeDWmO44dbCNSWwvdDbsTxFqszJPNYpN5AD9q\nrOEmmklsLtiAVhxdJIrBhkIWgp5v7ySNEpzsnez5iAWRwfME4GBys11P9OCJnsK0\nMJnKtlzK0PzSqvwREFiEWZUZxhAAtCE1N24xFtRew+vPFW2iCojHR3Co6jtewNJm\nAT2MLysLI6rwcD/bKfgVCe7e2v0vdVZDZXJUNjGnk6rIqVHiB0UWy7tMbLwgAzeG\n3VkjP7BBAgMBAAECggEACrtL/vQDVbXr66/je83+C5q2Pd8zUQKFAD9qjszoeS3X\nLaD5q2KfgxoCG7giGYylF80U+XtYleNWVDdT1Nc6+75rVfHPSFlqD6F7Kqdo18hY\nCoaCOyUz3QbH9Imbe1FDhduKmnuOt/HDPE+G4vyJVXqPOGKdo2TGOjYHzNPu0CbO\nllWcAThb6IElLPdEPsiM3DQ++vZNLJiUv9AP2oQrzHrdrH/GzTpOLZDFrexNkHi/\nvtwSGlRrNAH6Tr2rChGF7+jNAF8rxAndFUQmqQLhDH0BLkszoF8gjt2zl+wFRFl/\ntY44+N+gjOCnU/dBV5510hlISn/s+Z3fossmeIzSEQKBgQDg60tTsB4bz7vP5ltB\noTCZeQymirqtEdsNZpoLPy08EJKivhrgwR61Ol2ibVojbK4bw3VzA02M/sxsd7fL\n3YBiac//b5rIzS57+1Pp/x/uc1EAr3uaAaJLVmogGpdzW7f3V4oYfN7GBz2szO8y\nTwHL0GEGNewkRoHBkxY54DNn0QKBgQDdzB5ff5CB7kUvlXYUIkOBbY1lhL7F5H23\nMvnjFXCSkqlo8gBWLxdbb+Zb5LFLbqJqY04zBo90hKoqawK7nAHtoDVNRtP5n1YQ\noUkV0AYK5M4MCm14OSJ2aIFtBmy1ce0O6Icozc7Bv5e+N7FJ1dxDYJdyCxtq6HFa\n4W0wy0VNcQKBgA5//MYzZ22BkekQP7fWbWyneiJOdURtD0Mo5ytscj0aEGn/eXod\n2R3z2k97X0FDY2IU0sCMaPZ7ArDHcwjoibtOeQNNrZveZm3FwR4nvWZA9urlZUGD\nc3QJ6SOSs0rTkeOXOCbl/fKkStyWBaGnqET8dRTSaxvXk8vn8Jngk0/RAoGAQLwq\nwUTCMKoSl2jQJeA6Q7Rt6ItuAuRFrQq71IOVb7JOr8qyPnVQI+ftHDULajDIRrTl\nRg9MH335DJhfG9LU3T49UGizxc+zlvb8Fdm5acSOPwVsHgLPBDBMVj3hzLOLtSY5\nDLfE+NequmIW5K3+s8ulaCvFvNZK/3N8IxmxCIECgYAS4Zm1FINxZ8YKu550xb9n\nQ+VIsDmcIGIldPdUXy5olAESjtIGXea5VNojQrbPrHmJlNhUtsdCYP66x1JxNAe/\nqj8oFekmEjWjZaY/2+yGHgJSGMgy50bnXtMKZIkT4USg0CLruEbLT/umIcIfTdPd\nPH7fjIel1vXkhW2bScKeFA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-oddhai@ideacustomercare-ordbnp.iam.gserviceaccount.com",
+  "client_id": "117827256934974556820",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-oddhai%40ideacustomercare-ordbnp.iam.gserviceaccount.com"
+}

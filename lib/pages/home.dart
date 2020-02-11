@@ -1,7 +1,8 @@
 import 'package:VIL/pages/dashboard.dart';
 import 'package:VIL/pages/games.dart';
 import 'package:flutter/material.dart';
-
+import 'package:VIL/Bot/bot_file.dart';
+import 'package:VIL/Game/splash.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -30,7 +31,12 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.live_help),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => IdeaChatBot()),
+          );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -82,7 +88,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       setState(() {
                         currentScreen =
-                            Games(); // if user taps on this dashboard tab will be active
+                            GameSplashscreen(); // if user taps on this dashboard tab will be active
                         currentTab = 1;
                       });
                     },
@@ -91,12 +97,12 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(
                           Icons.games,
-                          color: currentTab == 3 ? Colors.blue : Colors.grey,
+                          color: currentTab == 3 ? Colors.yellow : Colors.grey,
                         ),
                         Text(
                           'Games',
                           style: TextStyle(
-                            color: currentTab == 3 ? Colors.blue : Colors.grey,
+                            color: currentTab == 3 ? Colors.yellow : Colors.grey,
                           ),
                         ),
                       ],
