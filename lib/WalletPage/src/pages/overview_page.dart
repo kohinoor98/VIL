@@ -130,10 +130,10 @@ class OverviewPage extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      donutCard(Colors.indigo, "Recharged"),
+                      donutCard(Colors.indigo, "Availiable"),
                       donutCard(Colors.yellow, "Cash Availaible"),
                       donutCard(Colors.greenAccent, "Rewards Earn"),
-                      donutCard(Colors.pinkAccent, "In Buffer"),
+                      donutCard(Colors.pinkAccent, "Recharged"),
                     ],
                   ),
                 )
@@ -156,7 +156,7 @@ class OverviewPage extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: "    July",
+                  text: "    February",
                   style: TextStyle(
                     color: Colors.grey.shade400,
                     fontWeight: FontWeight.w700,
