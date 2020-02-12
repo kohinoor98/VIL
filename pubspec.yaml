@@ -110,6 +110,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: Noto
+      fonts:
+        - asset: fonts/NotoSansHK-Regular.otf
+
+    - family: OpenSans
+      fonts:
+        - asset: fonts/OpenSans-SemiBold.ttf
+
     - family: Quando
       fonts:
         - asset: fonts/Quando.ttf

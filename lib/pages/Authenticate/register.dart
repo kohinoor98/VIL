@@ -14,103 +14,180 @@ class _RegisterState extends State<Register> {
   String PhoneNumber = '';
   String Passowrd = '';
   String  error = '';
-  final formkey = GlobalKey<FormState>();
-
+  final _formkey = GlobalKey<FormState>();
+  var assetsImage = new AssetImage('assets/VILL.png');
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.brown[100],
-      appBar: AppBar(
-          backgroundColor: Colors.yellow,
-          elevation: 0.0,
-          title: Text("Register To VIL"),
-          actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text("SignIN"),
-              onPressed: ()
-              {
-                    widget.toggleView();
-              },
-            )
-          ],
-      ),
-      body: Container(
-          padding: EdgeInsets.symmetric(vertical: 20,horizontal: 50),
-          child: Form(
-            key: formkey,
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 155.0,
-                  child: Image.asset(
-                    "assets/logo.png",
-                    fit: BoxFit.contain,
+    return new Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: // MessagingWidget(),
+      Form(
+        key: _formkey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
+                    child: Text("VIL",
+                        style: TextStyle(
+                            fontSize: 40.0, fontWeight: FontWeight.bold)),
                   ),
-                ),
-                TextFormField(
-                  validator: (val) => val.isEmpty ? 'Enter The Email':null,
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                      hintText: "Email",
-                      border:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-                  onChanged: (val)
-                  {
+                  Container(
+                    padding: EdgeInsets.fromLTRB(16.0, 175.0, 0.0, 0.0),
+                    child: Text('Telecommunication',
+                        style: TextStyle(
+                            fontSize: 40.0, fontWeight: FontWeight.bold)),
+                  ),
+                  Positioned(
+                    right: 10.0,
+                    bottom: 25.0,
+                    child: Container(
+                      // decoration: new BoxDecoration(
+                      //   color: Colors.white70,
+                      // ),
+                      child: Image(
 
-                    setState(() {
-                      PhoneNumber = val;
-                    });
-                  },
-                ),
-                SizedBox(height: 20.0),
-                TextFormField(
-                  validator: (val) => val.length < 6 ? 'Enter The long Password':null,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                      hintText: "Password",
-                      border:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-                  onChanged: (val)
-                  {
-                    setState(() {
-                      Passowrd = val;
-                    });
-                  },
-                ),
-                SizedBox(height: 20.0),
-                RaisedButton(
-                  elevation: 5.0,
+                        image: assetsImage,
+                        width: 150.0,
+                        height: 150.0,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+                padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
 
-                  child: Text("Login",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold)),
-                  color: Colors.yellow,
+                      validator: (val) => val.isEmpty ? 'Enter The Email':null,
 
-                  onPressed: () async
-                  {
-                    if(formkey.currentState.validate())
+                      onChanged: (val)
                       {
+                        setState(() {
+                          PhoneNumber = val;
+                        });
+                      },
+
+                      decoration: InputDecoration(
+                          labelText: 'EMAIL',
+                          labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                              BorderSide(color: Color(0Xff357DED)))),
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      obscureText: true,
+                      validator: (val) => val.length < 6 ? 'Enter The long Password':null,
+                      onChanged: (val)
+                      {
+                        setState(() {
+                          Passowrd = val;
+                        });
+                      },
+                      decoration: InputDecoration(
+                          labelText: 'PASSWORD',
+                          labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                              BorderSide(color: Color(0XFF357DED)))),
+                    ),
+                    SizedBox(height: 5.0),
+                    Container(
+                      alignment: Alignment(1.0, 0.0),
+                      padding: EdgeInsets.only(top: 15.0, left: 20.0),
+                      child: InkWell(
+                        //onTap: sendResetEmail,
+                        child: Text(
+                          'Forgot Password',
+                          style: TextStyle(
+                              fontSize: 15.0,
+                              color: Color(0XFF1DC5A3),
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Montserrat',
+                              decoration: TextDecoration.underline),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 40.0),
+                    Container(
+                      height: 50.0,
+                      child: GestureDetector(
+                        onTap:  () async
+                        {
+                          if(_formkey.currentState.validate())
+                          {
                             dynamic result =   await _auth.RegisterPhone(PhoneNumber, Passowrd);
                             if(result == null)
-                              {
-                                setState(() {
-                                  error = 'Plz Supply correct details ';
-                                });
-                              }
+                            {
+                              setState(() {
+                                error = 'Plz Supply correct details ';
+                              });
+                            }
 
-                      }
-                  },
-                ),
-                SizedBox(height: 20.0),
+                          }
+
+                        },
+                        child: Material(
+                          borderRadius: BorderRadius.circular(30.0),
+                          shadowColor: Color(0Xff357DED),
+                          color: Color(0xFF357DED),
+                          elevation: 7.0,
+                          child: Center(
+                            child: Text(
+                              'Register',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat'),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+            SizedBox(height: 30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
                 Text(
-                  error,
+                  'Already have the Account?',
+                  style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0),
+                ),
+                SizedBox(width: 5.0),
+                InkWell(
+                  onTap: () {
+                    widget.toggleView();
+                  },
+                  child: Text(
+                    'SignIn',
+                    style: TextStyle(
+                        color: Color(0XFF1DC5A3),
+                        fontSize: 20.0,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline),
+                  ),
                 )
               ],
-            ),
-          )
+            )
+          ],
+        ),
       ),
     );
   }
