@@ -1,4 +1,5 @@
 import 'package:VIL/Services/auth.dart';
+import 'package:VIL/pages/Dashboard/CardPage/Views/MyCardsPage.dart';
 import 'package:VIL/pages/Dashboard/RechargeButtonAnimation.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  TextEditingController rechargeController = new TextEditingController();
+
   static final List<String> imgList = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
     'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
@@ -131,7 +134,13 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyCardsPage()),
+                              );
+                            },
                             color: Colors.grey,
                             icon: Icon(Icons.add),
                           ),
@@ -310,22 +319,31 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ]),
             ),
-            SizedBox(height: 15.0,),
+            SizedBox(
+              height: 15.0,
+            ),
+
             //recharge button flutter
-                        ButtonAnimation(
-                Color.fromRGBO(57, 92, 249, 1), Color.fromRGBO(44, 78, 233, 1)),
-            SizedBox(
-              height: 20,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 100.0,
+                  child: TextFormField(
+                    //get the input from rechargeController.text
+                    controller: rechargeController,
+                    textAlign: TextAlign.left,
+                    decoration: InputDecoration(
+                      // border: InputBorder.none,
+                      hintText: 'Amount(₹)',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15.0),
+                ButtonAnimation(Color(0xFFFF5858), Colors.red),
+              ],
             ),
-            ButtonAnimation(Colors.yellow[700], Colors.yellow[800]),
-            SizedBox(
-              height: 20,
-            ),
-            ButtonAnimation(Colors.green[400], Colors.green[600]),
-            SizedBox(
-              height: 20,
-            ),
-            ButtonAnimation(Colors.red[700], Colors.red[800]),
 
             Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0),

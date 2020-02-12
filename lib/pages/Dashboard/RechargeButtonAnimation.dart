@@ -87,7 +87,7 @@ class _ButtonAnimationState extends State<ButtonAnimation>
                             child: Align(
                                 child: animationComplete == false
                                     ? Text(
-                                        "Recharge",
+                                        "Recharge Now",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 16),
                                       )
