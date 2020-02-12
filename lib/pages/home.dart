@@ -1,5 +1,5 @@
 import 'package:VIL/Game/games.dart';
-import 'package:VIL/pages/dashboard.dart';
+import 'package:VIL/pages/Dashboard/dashboard.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:VIL/Bot/bot_file.dart';
