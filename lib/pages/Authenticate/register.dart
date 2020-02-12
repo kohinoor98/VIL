@@ -41,9 +41,20 @@ class _RegisterState extends State<Register> {
             key: formkey,
             child: Column(
               children: <Widget>[
-                SizedBox(height: 20.0),
+                SizedBox(
+                  height: 155.0,
+                  child: Image.asset(
+                    "assets/logo.png",
+                    fit: BoxFit.contain,
+                  ),
+                ),
                 TextFormField(
                   validator: (val) => val.isEmpty ? 'Enter The Email':null,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      hintText: "Email",
+                      border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
                   onChanged: (val)
                   {
 
@@ -56,6 +67,11 @@ class _RegisterState extends State<Register> {
                 TextFormField(
                   validator: (val) => val.length < 6 ? 'Enter The long Password':null,
                   obscureText: true,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      hintText: "Password",
+                      border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
                   onChanged: (val)
                   {
                     setState(() {
@@ -65,8 +81,14 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 20.0),
                 RaisedButton(
+                  elevation: 5.0,
+
+                  child: Text("Login",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold)),
                   color: Colors.yellow,
-                  child: Text("Register"),
+
                   onPressed: () async
                   {
                     if(formkey.currentState.validate())
