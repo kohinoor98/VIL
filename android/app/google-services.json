@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "126596518789",
-    "firebase_url": "https://vodafoneidealimited-c0649.firebaseio.com",
-    "project_id": "vodafoneidealimited-c0649",
-    "storage_bucket": "vodafoneidealimited-c0649.appspot.com"
+    "project_number": "307024107803",
+    "firebase_url": "https://villimited-ea7b7.firebaseio.com",
+    "project_id": "villimited-ea7b7",
+    "storage_bucket": "villimited-ea7b7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:126596518789:android:ced6db0d1257b10829aaec",
+        "mobilesdk_app_id": "1:307024107803:android:04d205fc3a05e2436a9bbe",
         "android_client_info": {
           "package_name": "com.example.VIL"
         }
       },
       "oauth_client": [
         {
-          "client_id": "126596518789-70p7i1mbvtnearl38spu1lip011l4ia2.apps.googleusercontent.com",
+          "client_id": "307024107803-dridh7jmg86is380s73i37e4j2f5njmu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAv4meIamMSspz_HVlsEWNmT9OteXCUIfI"
+          "current_key": "AIzaSyB-eEgOLWo7iJKVH1x4lymtPAaYtfmyCRo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "126596518789-70p7i1mbvtnearl38spu1lip011l4ia2.apps.googleusercontent.com",
+              "client_id": "307024107803-dridh7jmg86is380s73i37e4j2f5njmu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
