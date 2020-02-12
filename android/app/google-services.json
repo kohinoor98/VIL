@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "126596518789",
+    "firebase_url": "https://vodafoneidealimited-c0649.firebaseio.com",
+    "project_id": "vodafoneidealimited-c0649",
+    "storage_bucket": "vodafoneidealimited-c0649.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126596518789:android:ced6db0d1257b10829aaec",
+        "android_client_info": {
+          "package_name": "com.example.VIL"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126596518789-70p7i1mbvtnearl38spu1lip011l4ia2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv4meIamMSspz_HVlsEWNmT9OteXCUIfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126596518789-70p7i1mbvtnearl38spu1lip011l4ia2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

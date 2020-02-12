@@ -1,3 +1,4 @@
+import 'package:VIL/Services/auth.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -7,7 +8,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   void init() {}
-
+final AuthServices _auth = AuthServices();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +27,9 @@ class _DashboardState extends State<Dashboard> {
                 // const Color(0xFFffff1c),
               ])),
         ),
+        actions: <Widget>[
+          FlatButton.icon(onPressed: ()async {await _auth.signout();}, icon: Icon(Icons.person), label: Text("LogOut"))
+        ],
       ),
       // debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Quicksand'),
