@@ -111,43 +111,43 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Noto
-      fonts:
-        - asset: fonts/NotoSansHK-Regular.otf
+  # fonts:
+  #   - family: Noto
+  #     fonts:
+  #       - asset: fonts/NotoSansHK-Regular.otf
 
-    - family: OpenSans
-      fonts:
-        - asset: fonts/OpenSans-SemiBold.ttf
+  #   - family: OpenSans
+  #     fonts:
+  #       - asset: fonts/OpenSans-SemiBold.ttf
 
-    - family: Quando
-      fonts:
-        - asset: fonts/Quando.ttf
-    - family: Satisfy
-      fonts:
-        - asset: fonts/Satisfy.ttf
-    - family: Alike
-      fonts:
-        - asset: fonts/Alike-Regular.ttf
-    - family: Quicksand
-      fonts:
-        - asset: fonts/Quicksand-Bold.ttf
-        - asset: fonts/Quicksand-Light.ttf
-        - asset: fonts/Quicksand-Medium.ttf
-        - asset: fonts/Quicksand-Regular.ttf
-        - asset: fonts/Quicksand-SemiBold.ttf
-    - family: Avenir
-      fonts:
-        - asset: assets/Fonts/Avenir-Book.ttf
-        - asset: assets/Fonts/Avenir-Heavy.ttf
-          weight: 700
-        - asset: assets/Fonts/Avenir-Light.ttf
-          weight: 300
-        - asset: assets/Fonts/Avenir-Medium.ttf
-          weight: 500
-    - family: Roboto
-      fonts:
-        - asset: assets/Fonts/RobotoMono-Regular.ttf
+  #   - family: Quando
+  #     fonts:
+  #       - asset: fonts/Quando.ttf
+  #   - family: Satisfy
+  #     fonts:
+  #       - asset: fonts/Satisfy.ttf
+  #   - family: Alike
+  #     fonts:
+  #       - asset: fonts/Alike-Regular.ttf
+  #   - family: Quicksand
+  #     fonts:
+  #       - asset: fonts/Quicksand-Bold.ttf
+  #       - asset: fonts/Quicksand-Light.ttf
+  #       - asset: fonts/Quicksand-Medium.ttf
+  #       - asset: fonts/Quicksand-Regular.ttf
+  #       - asset: fonts/Quicksand-SemiBold.ttf
+  #   - family: Avenir
+  #     fonts:
+  #       - asset: assets/Fonts/Avenir-Book.ttf
+  #       - asset: assets/Fonts/Avenir-Heavy.ttf
+  #         weight: 700
+  #       - asset: assets/Fonts/Avenir-Light.ttf
+  #         weight: 300
+  #       - asset: assets/Fonts/Avenir-Medium.ttf
+  #         weight: 500
+  #   - family: Roboto
+  #     fonts:
+  #       - asset: assets/Fonts/RobotoMono-Regular.ttf
         
         
   # fonts:
