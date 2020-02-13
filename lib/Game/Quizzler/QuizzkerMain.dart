@@ -39,28 +39,7 @@ class _QuizPageState extends State<QuizPage> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return WillPopScope(
-      onWillPop: () {
-        return showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                  title: Text(
-                    "Quizstar",
-                  ),
-                  content: Text("You Can't Go Back At This Stage."),
-                  actions: <Widget>[
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        'Ok',
-                      ),
-                    )
-                  ],
-                ));
-      },
-      child: MaterialApp(
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           backgroundColor: Colors.grey[800],
@@ -196,8 +175,7 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
 

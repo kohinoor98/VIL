@@ -6,6 +6,13 @@ import 'package:VIL/Bot/bot_file.dart';
 import 'package:VIL/WalletPage/src/pages/overview_page.dart';
 
 class Home extends StatefulWidget {
+  String userid;
+  Home(String u)
+  {
+    this.userid = u;
+
+
+  }
   @override
   _HomeState createState() => _HomeState();
 }
@@ -80,14 +87,14 @@ class _HomeState extends State<Home> {
   _getPage(int page) {
     switch (page) {
       case 0:
-        return Dashboard();
+        return Dashboard(widget.userid);
       case 1:
         return Games();
       case 2:
         return OverviewPage();
 
       default:
-        return Dashboard();
+        return Dashboard(widget.userid);
     }
   }
 }
