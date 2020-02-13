@@ -10,10 +10,10 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final AuthServices _auth  = AuthServices();
+  final AuthServices _auth = AuthServices();
   String PhoneNumber = '';
   String Passowrd = '';
-  String  error = '';
+  String error = '';
   final _formkey = GlobalKey<FormState>();
   var assetsImage = new AssetImage('assets/VILL.png');
   @override
@@ -21,7 +21,7 @@ class _SignInState extends State<SignIn> {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: // MessagingWidget(),
-      Form(
+          Form(
         key: _formkey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,29 +31,34 @@ class _SignInState extends State<SignIn> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
-                    child: Text("VIL",
+                    padding: EdgeInsets.fromLTRB(15.0, 125.0, 0.0, 0.0),
+                    child: Text("Vodafone",
                         style: TextStyle(
-                            fontSize: 40.0, fontWeight: FontWeight.bold)),
+                            fontSize: 35.0, fontWeight: FontWeight.bold)),
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(16.0, 175.0, 0.0, 0.0),
-                    child: Text('Telecommunication',
+                    child: Text('Idea',
                         style: TextStyle(
-                            fontSize: 40.0, fontWeight: FontWeight.bold)),
+                            fontSize: 35.0, fontWeight: FontWeight.bold)),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(16.0, 225.0, 0.0, 0.0),
+                    child: Text('Limited',
+                        style: TextStyle(
+                            fontSize: 35.0, fontWeight: FontWeight.bold)),
                   ),
                   Positioned(
                     right: 10.0,
-                    bottom: 25,
+                    bottom: -20.0,
                     child: Container(
                       // decoration: new BoxDecoration(
                       //   color: Colors.white70,
                       // ),
                       child: Image(
-
                         image: assetsImage,
-                        width: 150.0,
-                        height: 150.0,
+                        width: 175.0,
+                        height: 175.0,
                       ),
                     ),
                   ),
@@ -66,16 +71,13 @@ class _SignInState extends State<SignIn> {
                   children: <Widget>[
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
-
-                      validator: (val) => val.isEmpty ? 'Enter The Email':null,
-
-                      onChanged: (val)
-                      {
+                      validator: (val) =>
+                          val.isEmpty ? 'Enter The Email' : null,
+                      onChanged: (val) {
                         setState(() {
                           PhoneNumber = val;
                         });
                       },
-
                       decoration: InputDecoration(
                           labelText: 'EMAIL',
                           labelStyle: TextStyle(
@@ -84,14 +86,14 @@ class _SignInState extends State<SignIn> {
                               color: Colors.grey),
                           focusedBorder: UnderlineInputBorder(
                               borderSide:
-                              BorderSide(color: Color(0Xff357DED)))),
+                                  BorderSide(color: Color(0Xff357DED)))),
                     ),
                     SizedBox(height: 20.0),
                     TextFormField(
                       obscureText: true,
-                      validator: (val) => val.length < 6 ? 'Enter The long Password':null,
-                      onChanged: (val)
-                      {
+                      validator: (val) =>
+                          val.length < 6 ? 'Enter The long Password' : null,
+                      onChanged: (val) {
                         setState(() {
                           Passowrd = val;
                         });
@@ -104,7 +106,7 @@ class _SignInState extends State<SignIn> {
                               color: Colors.grey),
                           focusedBorder: UnderlineInputBorder(
                               borderSide:
-                              BorderSide(color: Color(0XFF357DED)))),
+                                  BorderSide(color: Color(0XFF357DED)))),
                     ),
                     SizedBox(height: 5.0),
                     Container(
@@ -127,18 +129,15 @@ class _SignInState extends State<SignIn> {
                     Container(
                       height: 50.0,
                       child: GestureDetector(
-                        onTap:  () async
-                        {
-                          if(_formkey.currentState.validate())
-                          {
-                            dynamic result =   await _auth.SignInphone(PhoneNumber, Passowrd);
-                            if(result == null)
-                            {
+                        onTap: () async {
+                          if (_formkey.currentState.validate()) {
+                            dynamic result =
+                                await _auth.SignInphone(PhoneNumber, Passowrd);
+                            if (result == null) {
                               setState(() {
                                 error = 'Not Registered';
                               });
                             }
-
                           }
                         },
                         child: Material(
@@ -190,6 +189,4 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
-
-
 }

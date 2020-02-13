@@ -23,30 +23,47 @@ var series = [
 ];
 
 class OverviewPage extends StatelessWidget {
+  var data_used_percent = 68.0;
   @override
   Widget build(BuildContext context) {
     final _media = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Wallet'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                const Color(0xFFFFE459),
+                const Color(0xFFFFE459),
+
+                // const Color(0xFF00c3ff),
+                // const Color(0xFFffff1c),
+              ])),
+        ),
+      ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        // physics: BouncingScrollPhysics(),
         padding: EdgeInsets.only(
           left: 20,
-          top: 70,
+          top: 0,
         ),
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Wallet",
-                style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: <Widget>[
+          //     Text(
+          //       "Wallet",
+          //       style: TextStyle(
+          //         fontSize: 35,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ),
+          //   ],
+          // ),
           SizedBox(
             height: 25,
           ),
@@ -61,85 +78,85 @@ class OverviewPage extends StatelessWidget {
           ),
           Row(
             children: <Widget>[
-              colorCard("Cash", 35.170, 1, context, Color(0xFF1b5bff)),
-              colorCard("Rewards Earned", 4320, 1, context, Color(0xFFff3f5e)),
+              colorCard("Cash", 35.170, 1, context, Color(0xFFFF4B28)),
+              colorCard("Rewards Earned", 4320, 1, context, Colors.amber),
             ],
           ),
           SizedBox(
             height: 30,
           ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: "Spendings",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Varela",
-                  ),
-                ),
-                TextSpan(
-                  text: "    July 2018",
-                  style: TextStyle(
-                    color: Colors.grey.shade400,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    fontFamily: "Varela",
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              top: 15,
-              right: 20,
-            ),
-            height:
-                screenAwareSize(_media.longestSide <= 775 ? 180 : 130, context),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(6),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.shade100,
-                  blurRadius: 6,
-                  spreadRadius: 10,
-                )
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 180,
-                  width: 160,
-                  child: DonutPieChart(
-                    series,
-                    animate: true,
-                  ),
-                ),
-                Container(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(
-                        height: 15,
-                      ),
-                      donutCard(Colors.indigo, "Availiable"),
-                      donutCard(Colors.yellow, "Cash Availaible"),
-                      donutCard(Colors.greenAccent, "Rewards Earn"),
-                      donutCard(Colors.pinkAccent, "Recharged"),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+          // RichText(
+          //   text: TextSpan(
+          //     children: [
+          //       TextSpan(
+          //         text: "Spendings",
+          //         style: TextStyle(
+          //           color: Colors.black,
+          //           fontSize: 24,
+          //           fontWeight: FontWeight.bold,
+          //           fontFamily: "Varela",
+          //         ),
+          //       ),
+          //       TextSpan(
+          //         text: "    July 2018",
+          //         style: TextStyle(
+          //           color: Colors.grey.shade400,
+          //           fontWeight: FontWeight.w700,
+          //           fontSize: 16,
+          //           fontFamily: "Varela",
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // Container(
+          //   margin: EdgeInsets.only(
+          //     top: 15,
+          //     right: 20,
+          //   ),
+          //   height:
+          //       screenAwareSize(_media.longestSide <= 775 ? 180 : 130, context),
+          //   decoration: BoxDecoration(
+          //     color: Colors.white,
+          //     borderRadius: BorderRadius.circular(6),
+          //     boxShadow: [
+          //       BoxShadow(
+          //         color: Colors.grey.shade100,
+          //         blurRadius: 6,
+          //         spreadRadius: 10,
+          //       )
+          //     ],
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.start,
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: <Widget>[
+          //       Container(
+          //         height: 180,
+          //         width: 160,
+          //         child: DonutPieChart(
+          //           series,
+          //           animate: true,
+          //         ),
+          //       ),
+          //       Container(
+          //         child: Column(
+          //           mainAxisSize: MainAxisSize.min,
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: <Widget>[
+          //             SizedBox(
+          //               height: 15,
+          //             ),
+          //             donutCard(Colors.indigo, "Availiable"),
+          //             donutCard(Colors.yellow, "Cash Availaible"),
+          //             donutCard(Colors.greenAccent, "Rewards Earn"),
+          //             donutCard(Colors.pinkAccent, "Recharged"),
+          //           ],
+          //         ),
+          //       )
+          //     ],
+          //   ),
+          // ),
           SizedBox(
             height: 30,
           ),
@@ -190,16 +207,16 @@ class OverviewPage extends StatelessWidget {
                   _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: 0.68,
+              percent: data_used_percent / 100,
               backgroundColor: Colors.grey.shade300,
-              progressColor: Color(0xFF1b52ff),
+              progressColor: Color(0xFFFF4B2B),
               animation: true,
               animateFromLastPercent: true,
               alignment: MainAxisAlignment.spaceEvenly,
               animationDuration: 1000,
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
-                "68.0%",
+                "$data_used_percent %",
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -222,7 +239,7 @@ class OverviewPage extends StatelessWidget {
             200,
             1,
             Colors.grey.shade100,
-            Color(0xFF716cff),
+            Colors.indigo,
           ),
           vaweCard(
             context,
@@ -230,7 +247,7 @@ class OverviewPage extends StatelessWidget {
             3210,
             -1,
             Colors.grey.shade100,
-            Color(0xFFff596b),
+            Colors.pinkAccent,
           ),
         ],
       ),

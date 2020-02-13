@@ -57,8 +57,8 @@ class _DashboardState extends State<Dashboard> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                const Color(0xFFFFFF45),
-                const Color(0xFFFF5858),
+                const Color(0xFFFFE459),
+                const Color(0xFFFFE459),
 
                 // const Color(0xFF00c3ff),
                 // const Color(0xFFffff1c),
@@ -106,7 +106,7 @@ class _DashboardState extends State<Dashboard> {
                     Container(
                       width: MediaQuery.of(context).size.width * 0.8,
                       decoration: BoxDecoration(
-                        color: Colors.yellowAccent,
+                        color: Color(0xFFFFE459),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                       child: Row(
@@ -341,7 +341,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 SizedBox(width: 15.0),
-                ButtonAnimation(Color(0xFFFF5858), Colors.red),
+                ButtonAnimation(Color(0xFFFF4B2B), Colors.red),
               ],
             ),
 
@@ -367,8 +367,8 @@ class CustomMadeClipper extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-          const Color(0xFFFFDD00),
-          const Color(0xFFFBB034),
+          const Color(0xFFFF4B2B),
+          const Color(0xFFFF4B2B),
         ])),
       ),
       clipper: CustomBlueClipper(),

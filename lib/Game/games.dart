@@ -18,8 +18,8 @@ class _GamesState extends State<Games> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                const Color(0xFFFFFF45),
-                const Color(0xFFFF5858),
+                const Color(0xFFFFE459),
+                const Color(0xFFFFE459),
 
                 // const Color(0xFF00c3ff),
                 // const Color(0xFFffff1c),
