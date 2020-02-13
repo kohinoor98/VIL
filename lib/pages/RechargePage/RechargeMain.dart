@@ -10,9 +10,6 @@ const gradient = LinearGradient(
   tileMode: TileMode.repeated, // repeats the gradient over the canvas
 );
 
-const double topBarHeight = 150;
-const double overlayHeight = 120;
-
 class RechargePage extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -57,11 +54,7 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
     return DefaultTabController(
       length: _tabLengthController,
       child: Scaffold(
-        body: Stack(children: [
-          // _Header(),
-          // _CardEntry(),
-          _TabView(),
-        ]),
+        body: _TabView(),
       ),
     );
   }
@@ -89,7 +82,7 @@ class _TabView extends StatelessWidget {
               isScrollable: true,
               unselectedLabelColor: Colors.white,
               indicatorColor: Colors.black,
-              indicatorWeight: 2,
+              indicatorWeight: 1,
               tabs: <Widget>[
                 _tab('Special Recharge'),
                 _tab('Talktime'),
@@ -121,14 +114,12 @@ class _TabView extends StatelessWidget {
                       "100", "28", "days"),
                   BottomCards("Special Recharge", "INF", "50", "GB per day",
                       "100", "28", "days"),
-
-                  // BottomCards("cardTitle: ", "Hii"),
-                  // BottomCards("cardTitle: ", "Hii"),
-                  // BottomCards("cardTitle: ", "Hii"),
-                  // BottomCards("cardTitle: ", "Hii"),
-                  // BottomCards("cardTitle: ", "Hii"),
-                  // BottomCards("cardTitle: ", "Hii"),
-                  // BottomCards("cardTitle: ", "Hii"),
+                  BottomCards("Special Recharge", "INF", "50", "GB per day",
+                      "100", "28", "days"),
+                  BottomCards("Special Recharge", "INF", "50", "GB per day",
+                      "100", "28", "days"),
+                  BottomCards("Special Recharge", "INF", "50", "GB per day",
+                      "100", "28", "days"),
                 ],
               ),
             ),
@@ -150,90 +141,6 @@ class _TabView extends StatelessWidget {
               fontSize: 14,
               // fontWeight: FontWeight.w100,
               letterSpacing: 2)),
-    );
-  }
-}
-
-class _Header extends StatelessWidget {
-  const _Header({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(
-        height: 15.0,
-      ),
-      Container(
-        padding: EdgeInsets.only(top: 40),
-        alignment: AlignmentDirectional(0.0, -1.0),
-        child: Text(
-          'RECHARGE',
-          style: TextStyle(
-              fontWeight: FontWeight.w100,
-              color: Colors.white,
-              letterSpacing: 1,
-              fontSize: 18),
-        ),
-        constraints: BoxConstraints(maxHeight: topBarHeight),
-        decoration: BoxDecoration(
-          gradient: gradient,
-        ),
-      ),
-      Expanded(child: Text(''))
-    ]);
-  }
-}
-
-class _CardEntry extends StatelessWidget {
-  const _CardEntry({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-          10.0, topBarHeight - overlayHeight / 2, 10, 0),
-      child: Container(
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-              blurRadius: 5,
-              spreadRadius: 2,
-              offset: Offset(4, 4),
-              color: Color(0x33000000))
-        ]),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: Container(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Container(
-                  alignment: AlignmentDirectional(-1, 0.0),
-                  constraints: BoxConstraints(maxHeight: 50),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 30.0),
-                    child: Text(
-                      'Enter the card number...',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w100,
-                          letterSpacing: 1),
-                    ),
-                  ),
-                  color: Color(0x44FFFFFF)),
-            ),
-            constraints:
-                BoxConstraints(maxWidth: 400, maxHeight: overlayHeight),
-            decoration: BoxDecoration(
-              gradient: gradient,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

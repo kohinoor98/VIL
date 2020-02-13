@@ -43,7 +43,7 @@ class _BottomCardsState extends State<BottomCards> {
                                 decoration: new BoxDecoration(
                                     border: new Border(
                                         right: new BorderSide(
-                                            width: 2.0, color: Colors.black))),
+                                            width: 1.0, color: Colors.black))),
                                 child: Column(
                                   children: <Widget>[
                                     Text(
@@ -73,7 +73,7 @@ class _BottomCardsState extends State<BottomCards> {
                                 decoration: new BoxDecoration(
                                     border: new Border(
                                         right: new BorderSide(
-                                            width: 2.0, color: Colors.black))),
+                                            width: 1.0, color: Colors.black))),
                                 child: Column(
                                   children: <Widget>[
                                     Text(
@@ -104,7 +104,7 @@ class _BottomCardsState extends State<BottomCards> {
                                 decoration: new BoxDecoration(
                                     border: new Border(
                                         right: new BorderSide(
-                                            width: 2.0, color: Colors.black))),
+                                            width: 1.0, color: Colors.black))),
                                 child: Column(
                                   children: <Widget>[
                                     Text(
