@@ -349,7 +349,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 SizedBox(width: 15.0),
-                ButtonAnimation(Color(0xFFEF0201), Colors.red),
+                ButtonAnimation(Color(0xFFF50201), Colors.red),
               ],
             ),
 
@@ -375,8 +375,8 @@ class CustomMadeClipper extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-          const Color(0xFFEF0201),
-          const Color(0xFFEF0201),
+          const Color(0xFFF50201),
+          const Color(0xFFF50201),
         ])),
       ),
       clipper: CustomBlueClipper(),

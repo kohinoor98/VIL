@@ -1,4 +1,5 @@
 import 'package:VIL/Game/Ghome.dart';
+import 'package:VIL/Game/Quizzler/QuizzkerMain.dart';
 import 'package:flutter/material.dart';
 
 class Games extends StatefulWidget {
@@ -35,7 +36,7 @@ class _GamesState extends State<Games> {
             onClick: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Ghomepage(),
+                  builder: (context) => QuizPage(),
                 ),
               );
             },
