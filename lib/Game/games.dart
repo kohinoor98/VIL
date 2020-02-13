@@ -3,6 +3,12 @@ import 'package:VIL/Game/Quizzler/QuizzkerMain.dart';
 import 'package:flutter/material.dart';
 
 class Games extends StatefulWidget {
+  String userid;
+  Games(String us)
+  {
+    this.userid = us;
+  }
+
   @override
   _GamesState createState() => _GamesState();
 }
@@ -10,6 +16,7 @@ class Games extends StatefulWidget {
 class _GamesState extends State<Games> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Games'),
@@ -36,7 +43,7 @@ class _GamesState extends State<Games> {
             onClick: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => QuizPage(),
+                  builder: (context) => QuizPage(widget.userid),
                 ),
               );
             },

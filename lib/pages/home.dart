@@ -90,9 +90,9 @@ class _HomeState extends State<Home> {
       case 0:
         return Dashboard(widget.userid);
       case 1:
-        return Games();
+        return Games(widget.userid);
       case 2:
-        return RechargePage();
+        return RechargePage(widget.userid);
 
       default:
         return Dashboard(widget.userid);

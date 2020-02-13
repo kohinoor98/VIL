@@ -2,6 +2,7 @@ import 'package:VIL/Game/games.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'quiz_brain.dart';
+import 'package:VIL/Services/auth.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
@@ -30,11 +31,17 @@ int maxLengthofQuiz = 10;
 // }
 
 class QuizPage extends StatefulWidget {
+  String userid;
+  QuizPage(String us)
+  {
+    this.userid = us;
+  }
   @override
   _QuizPageState createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
+  final AuthServices _authen = new AuthServices();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
@@ -108,10 +115,11 @@ class _QuizPageState extends State<QuizPage> {
                               }
                               quizBrain.nextQuestion();
                             } else {
+                              _authen.updateReward(widget.userid, points);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => QuizRewardPage()),
+                                    builder: (context) => QuizRewardPage(widget.userid)),
                               );
                             }
                           });
@@ -150,10 +158,11 @@ class _QuizPageState extends State<QuizPage> {
                               }
                               quizBrain.nextQuestion();
                             } else {
+                             _authen.updateReward(widget.userid, points);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => QuizRewardPage()),
+                                    builder: (context) => QuizRewardPage(widget.userid)),
                               );
                             }
                           });
@@ -180,21 +189,35 @@ class _QuizPageState extends State<QuizPage> {
 }
 
 class QuizRewardPage extends StatelessWidget {
+  String userid;
+  QuizRewardPage(String us)
+  {
+    this.userid = us;
+  }
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Center(child: Text('Points = $points')),
-        FlatButton(
-            //TODO: Clear the navigator to fresh start
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Games()),
-              );
-            },
-            child: null)
-      ],
+    return Scaffold(
+      appBar:AppBar(title: Text("Result"),),
+      body: Column(
+        children: <Widget>[
+          Center(child: Text(
+              'Points = $points',
+              style: new TextStyle(
+                fontSize: 30,
+              ),
+          )
+          ),
+          FlatButton(
+              //TODO: Clear the navigator to fresh start
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Games(this.userid)),
+                );
+              },
+              child: null)
+        ],
+      ),
     );
   }
 }

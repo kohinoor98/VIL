@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../Services/auth.dart';
+import '../../Services/auth.dart';
+
 class ButtonAnimation extends StatefulWidget {
   final Color primaryColor;
   final Color darkPrimaryColor;
-  ButtonAnimation(this.primaryColor, this.darkPrimaryColor);
+  String userid;
+  ButtonAnimation(this.primaryColor, this.darkPrimaryColor,this.userid);
   @override
   _ButtonAnimationState createState() => _ButtonAnimationState();
 }
 
 class _ButtonAnimationState extends State<ButtonAnimation>
     with TickerProviderStateMixin {
+  final AuthServices _auth = new AuthServices();
   AnimationController _animationController;
   AnimationController _scaleAnimationController;
   AnimationController _fadeAnimationController;
@@ -74,6 +79,8 @@ class _ButtonAnimationState extends State<ButtonAnimation>
               scale: _scaleAnimation.value,
               child: InkWell(
                   onTap: () {
+                    print(widget.userid);
+                    _auth.updateReward(widget.userid, 22);
                     _scaleAnimationController.forward();
                   },
                   child: Container(

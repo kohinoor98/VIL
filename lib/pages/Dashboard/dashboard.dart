@@ -1,11 +1,16 @@
 import 'package:VIL/Services/auth.dart';
+import 'package:VIL/Services/model/UserData.dart';
 import 'package:VIL/pages/Dashboard/CardPage/Views/MyCardsPage.dart';
 import 'package:VIL/pages/Dashboard/RechargeButtonAnimation.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../Services/model/user.dart';
+import 'package:provider/provider.dart';
+
 class Dashboard extends StatefulWidget {
+
   String userid;
   Dashboard(String u)
   {
@@ -19,52 +24,37 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   TextEditingController rechargeController = new TextEditingController();
+  final AuthServices _authen = new AuthServices();
   String myText = "";
 
+  String userId;
+  String firstName;
+  String lastName;
+  String email;
+  int Reward;
+  int data;
+  int cash;
+  int talk;
 
 
-  void _add() {
-    print("Hollallalllalla");
-    print(widget.userid);
-    DocumentReference documentReference = Firestore.instance.document("myData/"+widget.userid);
-    Map<String, String> data = <String, String>{
-      "name": "Pawan Kumar",
-      "desc": "Flutter Developer"
-    };
-    documentReference.setData(data).whenComplete(() {
-      print("Document Added");
-    }).catchError((e) => print(e));
+  void start() {
 
-  }
+      DocumentReference documentReference = Firestore.instance.document("myData/"+widget.userid);
+      documentReference.get().then((datasnapshot) {
+        if (datasnapshot.exists) {
+          setState(() {
+            this.userId = datasnapshot.data['UserID'];
+            this.firstName = datasnapshot.data['FirstName'];
+            this.lastName = datasnapshot.data['LastName'];
+            this.email = datasnapshot.data['Email'];
+            this.Reward = datasnapshot.data['Reward'];
+            this.data = datasnapshot.data['DataBalance'];
+            this.cash = datasnapshot.data['Cash'];
+            this.talk = datasnapshot.data['Talktime'];
 
-  void _delete() {
-    DocumentReference documentReference = Firestore.instance.document("myData/"+widget.userid);
-    documentReference.delete().whenComplete(() {
-      print("Deleted Successfully");
-      setState(() {});
-    }).catchError((e) => print(e));
-  }
-
-  void _fetch() {
-    DocumentReference documentReference = Firestore.instance.document("myData/"+widget.userid);
-    documentReference.get().then((datasnapshot) {
-      if (datasnapshot.exists) {
-        setState(() {
-          myText = datasnapshot.data['desc'];
-        });
-      }
-    });
-  }
-
-  void _update() {
-    DocumentReference documentReference = Firestore.instance.document("myData/"+widget.userid);
-    Map<String, String> data = <String, String>{
-      "name": "Pawan Kumar Updated",
-      "desc": "Flutter Developer Updated"
-    };
-    documentReference.updateData(data).whenComplete(() {
-      print("Document Updated");
-    }).catchError((e) => print(e));
+          });
+        }
+      });
   }
 
 
@@ -109,6 +99,7 @@ class _DashboardState extends State<Dashboard> {
   );
 
 
+
   void init() {
 
   }
@@ -116,7 +107,9 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-
+    final user = Provider.of<User>(context);
+    print(user.uid);
+  start();
     return Scaffold(
       appBar: AppBar(
         title: Text('Vodafone Idea Limited'),
@@ -194,7 +187,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           Text(
-                            'INR 100',
+                            'INR ${cash}',
                             style: TextStyle(
                               fontFamily: 'Quicksand',
                               fontSize: 25.0,
@@ -205,13 +198,12 @@ class _DashboardState extends State<Dashboard> {
                           IconButton(
                             onPressed: () {
                               print(AuthServices().user);
-                              print("Heloo");
-                              _add();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => MyCardsPage()),
                               );
+
                             },
                             color: Colors.black,
                             icon: Icon(Icons.add),
@@ -248,7 +240,7 @@ class _DashboardState extends State<Dashboard> {
                               width: 30.0,
                             ),
                             Text(
-                              '2100',
+                              '${Reward}',
                               style: TextStyle(
                                   fontFamily: 'Quicksand',
                                   fontWeight: FontWeight.bold,
@@ -298,7 +290,7 @@ class _DashboardState extends State<Dashboard> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    '16 GB',
+                                    '${data}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontFamily: 'Quicksand',
@@ -330,7 +322,7 @@ class _DashboardState extends State<Dashboard> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    '∞',
+                                    '${talk}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontFamily: 'Quicksand',
@@ -413,7 +405,11 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 SizedBox(width: 15.0),
-                ButtonAnimation(Color(0xFFF50201), Colors.red),
+
+
+                  ButtonAnimation(Color(0xFFF50201), Colors.red,widget.userid),
+
+
               ],
             ),
 

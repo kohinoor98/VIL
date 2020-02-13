@@ -11,6 +11,11 @@ const gradient = LinearGradient(
 );
 
 class RechargePage extends StatelessWidget {
+  String userid;
+  RechargePage(String us)
+  {
+    this.userid = us;
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
