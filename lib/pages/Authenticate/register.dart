@@ -11,11 +11,11 @@ String lName = '';
 // String error = '';
 final _formkey = GlobalKey<FormState>();
 final TextEditingController _controller =
-    new TextEditingController(); //controller for re enter password
+new TextEditingController(); //controller for re enter password
 final TextEditingController _passcontroller =
-    new TextEditingController(); //controller to get password
+new TextEditingController(); //controller to get password
 final TextEditingController phoneNumberController =
-    new TextEditingController(); //controller for phone number
+new TextEditingController(); //controller for phone number
 
 var assetsImage = new AssetImage('assets/VILL.png');
 
@@ -45,16 +45,10 @@ class _RegisterState extends State<Register> {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: // MessagingWidget(),
-          SingleChildScrollView(
-<<<<<<< HEAD
-            child: Form(
-        key: _formkey,
-        child: Column(
-=======
+      SingleChildScrollView(
         child: Form(
           key: _formkey,
           child: Column(
->>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
@@ -119,23 +113,14 @@ class _RegisterState extends State<Register> {
                                 color: Colors.grey),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Color(0Xff357DED)))),
+                                BorderSide(color: Color(0Xff357DED)))),
                       ),
                       SizedBox(height: 10.0),
                       TextFormField(
-<<<<<<< HEAD
                         // keyboardType: TextInputType.emailAddress,
                         // validator: (val) =>
                         //     val.isEmpty ? 'Enter The Email' : null,
                         keyboardType: TextInputType.emailAddress,
-=======
-                        textCapitalization: TextCapitalization.words,
-
-                        // keyboardType: TextInputType.emailAddress,
-                        // validator: (val) =>
-                        //     val.isEmpty ? 'Enter The Email' : null,
-                        // keyboardType: TextInputType.emailAddress,
->>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
 
                         onChanged: (val) {
                           setState(() {
@@ -150,13 +135,10 @@ class _RegisterState extends State<Register> {
                                 color: Colors.grey),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Color(0Xff357DED)))),
+                                BorderSide(color: Color(0Xff357DED)))),
                       ),
                       TextFormField(
-<<<<<<< HEAD
 
-=======
->>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
                         // keyboardType: TextInputType.emailAddress,
                         // validator: (val) =>
                         //     val.isEmpty ? 'Enter The Email' : null,
@@ -175,7 +157,7 @@ class _RegisterState extends State<Register> {
                                 color: Colors.grey),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Color(0Xff357DED)))),
+                                BorderSide(color: Color(0Xff357DED)))),
                       ),
                       SizedBox(height: 10.0),
                       TextFormField(
@@ -188,7 +170,6 @@ class _RegisterState extends State<Register> {
                           setState(() {
                             email = val;
                           });
-<<<<<<< HEAD
                         },
                         decoration: InputDecoration(
                             labelText: 'EMAIL',
@@ -198,7 +179,7 @@ class _RegisterState extends State<Register> {
                                 color: Colors.grey),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Color(0Xff357DED)))),
+                                BorderSide(color: Color(0Xff357DED)))),
                       ),
                       SizedBox(height: 10.0),
                       TextFormField(
@@ -207,40 +188,13 @@ class _RegisterState extends State<Register> {
                         // validator: (val) =>
                         //     val.length < 6 ? 'Enter The long Password' : null,
                         validator: (value) => //Password validation
-                            value.isEmpty ? 'Password cannot be empty' : null,
+                        value.isEmpty ? 'Password cannot be empty' : null,
                         onChanged: (val) {
                           setState(() {
                             passoword1 = val;
                           });
                         },
                         decoration: InputDecoration(
-=======
-                        },
-                        decoration: InputDecoration(
-                            labelText: 'EMAIL',
-                            labelStyle: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0Xff357DED)))),
-                      ),
-                      SizedBox(height: 10.0),
-                      TextFormField(
-                        controller: _passcontroller,
-                        obscureText: true,
-                        // validator: (val) =>
-                        //     val.length < 6 ? 'Enter The long Password' : null,
-                        validator: (value) => //Password validation
-                            value.isEmpty ? 'Password cannot be empty' : null,
-                        onChanged: (val) {
-                          setState(() {
-                            passoword1 = val;
-                          });
-                        },
-                        decoration: InputDecoration(
->>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
                             labelText: 'PASSWORD',
                             labelStyle: TextStyle(
                                 fontFamily: 'Montserrat',
@@ -248,13 +202,13 @@ class _RegisterState extends State<Register> {
                                 color: Colors.grey),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Color(0XFF357DED)))),
+                                BorderSide(color: Color(0XFF357DED)))),
                       ),
                       SizedBox(height: 10.0),
                       TextFormField(
                         controller: _controller,
                         validator:
-                            _validatePassword, //Re enter password validation
+                        _validatePassword, //Re enter password validation
                         decoration: InputDecoration(
                             labelText: 'RE-ENTER PASSWORD ',
                             labelStyle: TextStyle(
@@ -263,7 +217,7 @@ class _RegisterState extends State<Register> {
                                 color: Colors.grey),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Color(0xff357DED)))),
+                                BorderSide(color: Color(0xff357DED)))),
                         obscureText: true,
                       ),
                       Container(
@@ -289,7 +243,7 @@ class _RegisterState extends State<Register> {
                           onTap: () async {
                             if (_formkey.currentState.validate()) {
                               dynamic result = await _auth.registerPhone(
-                                  //register phone function
+                                //register phone function
                                   email,
                                   passoword1,
                                   phoneNumber);
@@ -297,10 +251,7 @@ class _RegisterState extends State<Register> {
                                 showDialog(context: context, child: alert);
                               }
                             }
-<<<<<<< HEAD
 
-=======
->>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
                           },
                           child: Material(
                             borderRadius: BorderRadius.circular(30.0),
@@ -347,13 +298,9 @@ class _RegisterState extends State<Register> {
                 ],
               )
             ],
-<<<<<<< HEAD
-=======
           ),
->>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
         ),
       ),
-          ),
     );
   }
 
