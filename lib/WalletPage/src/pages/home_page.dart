@@ -7,17 +7,17 @@ import '../widgets/credit_card.dart';
 import '../widgets/payment_card.dart';
 import '../widgets/user_card.dart';
 
-class WalletHomePage extends StatefulWidget {
+class LeaderBoard extends StatefulWidget {
   String userid;
-  WalletHomePage(String u) {
+  LeaderBoard(String u) {
     this.userid = u;
   }
-  // const WalletHomePage({Key key}) : super(key: key);
+  // const LeaderBoard({Key key}) : super(key: key);
   @override
-  _WalletHomePage createState() => _WalletHomePage();
+  _LeaderBoard createState() => _LeaderBoard();
 }
 
-class _WalletHomePage extends State<WalletHomePage> {
+class _LeaderBoard extends State<LeaderBoard> {
   @override
   Widget build(BuildContext context) {
     final _media = MediaQuery.of(context).size;
