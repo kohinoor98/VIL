@@ -1,6 +1,10 @@
 import 'package:VIL/Services/auth.dart';
-import 'package:VIL/pages/Authenticate/register.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+int resetFlag = 0;
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -11,13 +15,26 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final AuthServices _auth = AuthServices();
-  String PhoneNumber = '';
-  String Passowrd = '';
-  String error = '';
+  String email = '';
+  String passowrd = '';
+  // String error = '';
   final _formkey = GlobalKey<FormState>();
   var assetsImage = new AssetImage('assets/VILL.png');
+
   @override
   Widget build(BuildContext context) {
+    var alert = new CupertinoAlertDialog(
+      title: new Text("Alert"),
+      content: new Text("Invalid Email-Id or Password"),
+      actions: <Widget>[
+        new CupertinoDialogAction(
+            child: const Text('OK'),
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.pop(context, 'OK');
+            }),
+      ],
+    );
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: // MessagingWidget(),
@@ -71,11 +88,10 @@ class _SignInState extends State<SignIn> {
                   children: <Widget>[
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
-                      validator: (val) =>
-                          val.isEmpty ? 'Enter The Email' : null,
+                      validator: validateEmail,
                       onChanged: (val) {
                         setState(() {
-                          PhoneNumber = val;
+                          email = val;
                         });
                       },
                       decoration: InputDecoration(
@@ -91,11 +107,17 @@ class _SignInState extends State<SignIn> {
                     SizedBox(height: 20.0),
                     TextFormField(
                       obscureText: true,
-                      validator: (val) =>
-                          val.length < 6 ? 'Enter The long Password' : null,
+                      validator: (input) {
+                        //Password validation
+                        if (resetFlag != 1) {
+                          if (input.length < 6) {
+                            return 'Password must be minimum 6 characters!';
+                          }
+                        }
+                      },
                       onChanged: (val) {
                         setState(() {
-                          Passowrd = val;
+                          passowrd = val;
                         });
                       },
                       decoration: InputDecoration(
@@ -113,7 +135,7 @@ class _SignInState extends State<SignIn> {
                       alignment: Alignment(1.0, 0.0),
                       padding: EdgeInsets.only(top: 15.0, left: 20.0),
                       child: InkWell(
-                        //onTap: sendResetEmail,
+                        onTap: sendResetEmail,
                         child: Text(
                           'Forgot Password',
                           style: TextStyle(
@@ -132,10 +154,10 @@ class _SignInState extends State<SignIn> {
                         onTap: () async {
                           if (_formkey.currentState.validate()) {
                             dynamic result =
-                                await _auth.SignInphone(PhoneNumber, Passowrd);
+                                await _auth.signInPhone(email, passowrd);
                             if (result == null) {
                               setState(() {
-                                error = 'Not Registered';
+                                showDialog(context: context, child: alert);
                               });
                             }
                           }
@@ -188,5 +210,57 @@ class _SignInState extends State<SignIn> {
         ),
       ),
     );
+  }
+
+  String validateEmail(String value) {
+    // Pattern pattern =
+    //     r'^[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?;
+    Pattern pattern = "[a-zA-Z0-9\+\.\_\%\-\+]{1,256}" +
+        "\\@" +
+        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+        "(" +
+        "\\." +
+        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+        ")+";
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Enter Valid Email';
+    else
+      return null;
+  }
+
+  Future<void> sendResetEmail() async {
+    resetFlag = 1;
+    //toast
+
+    print('inside sendResetEmail');
+    final formState = _formkey.currentState;
+    //validate
+    print('insidesignin');
+    if (formState.validate()) {
+      formState.save();
+      if (email == null) {
+        Fluttertoast.showToast(
+            msg: "Please Enter Email",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIos: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0);
+        resetFlag = 0;
+      } else {
+        FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+        Fluttertoast.showToast(
+            msg: "Reset Password Mail SENT!",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIos: 1,
+            backgroundColor: Colors.blue,
+            textColor: Colors.white,
+            fontSize: 16.0);
+        resetFlag = 0;
+      }
+    }
   }
 }

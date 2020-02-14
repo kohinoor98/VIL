@@ -1,78 +1,71 @@
 import 'package:VIL/Services/model/user.dart';
+import 'package:VIL/pages/Authenticate/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:VIL/Services/model/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthServices {
-
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-
   //Creating the user object
-  User _userFromFirebaseUser(FirebaseUser user)
-  {
+  User _userFromFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
-
   }
 
   //auth change user stream
-  Stream<User> get user
-  {
-    return _auth.onAuthStateChanged
-            .map(_userFromFirebaseUser);
+  Stream<User> get user {
+    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
-    // sign in ano
-    Future SignInAnon() async{
-      try{
-           AuthResult result =  await _auth.signInAnonymously();
-           FirebaseUser user = result.user;
-           return _userFromFirebaseUser(user);
-      } catch(e) {
+  // sign in ano
+  // Future signInAnon() async {
+  //   try {
+  //     AuthResult result = await _auth.signInAnonymously();
+  //     FirebaseUser user = result.user;
+  //     return _userFromFirebaseUser(user);
+  //   } catch (e) {
+  //     print(e.toString());
+  //     return null;
+  //   }
+  // }
 
-          print(e.toString());
-          return null;
-      }
-    }
-
-    //sign in with phone number
-  Future SignInphone(String phone,String password) async{
-    try{
-      AuthResult result =  await _auth.signInWithEmailAndPassword(email: phone, password: password);
+  //sign in with phone number
+  Future signInPhone(String phone, String password) async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: phone, password: password);
       FirebaseUser user = result.user;
       return _userFromFirebaseUser(user);
-    } catch(e) {
-
+    } catch (e) {
       print(e.toString());
       return null;
     }
   }
-
 
   //register with phone number
-  Future RegisterPhone (String phone,String password) async
-  {
-    try{
-      AuthResult result =  await _auth.createUserWithEmailAndPassword(email: phone, password: password);
+  Future registerPhone(
+      String phone, String password, String phoneNumber) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: phone, password: password);
       FirebaseUser user = result.user;
-      databaseinit(user.uid);
+      databaseinit(user.uid, user.phoneNumber, fName, lName);
       return _userFromFirebaseUser(user);
-    }
-    catch(e)
-    {
+    } catch (e) {
       print(e.toString());
       return null;
     }
   }
 
-  void databaseinit(String userid) {
-
-    DocumentReference documentReference = Firestore.instance.document("myData/"+userid);
+  void databaseinit(
+      String userid, String phoneNumber, String fName, String lName) {
+    DocumentReference documentReference =
+        Firestore.instance.document("myData/" + userid);
     var data = {
       "UserID": userid,
-      "FirstName": "FName",
-      "LastName": "LName",
+      "PhoneNumber": phoneNumber,
+      "FirstName": fName,
+      "LastName": lName,
       "Email": userid,
       "Reward": 0,
       "DataBalance": 0,
@@ -88,26 +81,25 @@ class AuthServices {
   String firstName;
   String lastName;
   String email;
-  int Reward;
+  int reward;
   int data;
   int cash;
   int talk;
 
-  void updateReward(String userid,int reward) {
-  print(userid);
-    DocumentReference documentReference = Firestore.instance.document("myData/"+userid);
+  void updateReward(String userid, int reward) {
+    print(userid);
+    DocumentReference documentReference =
+        Firestore.instance.document("myData/" + userid);
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
-
-          this.userId = datasnapshot.data['UserID'];
-          this.firstName = datasnapshot.data['FirstName'];
-          this.lastName = datasnapshot.data['LastName'];
-          this.email = datasnapshot.data['Email'];
-          this.Reward = datasnapshot.data['Reward'];
-          this.data = datasnapshot.data['DataBalance'];
-          this.cash = datasnapshot.data['Cash'];
-          this.talk = datasnapshot.data['Talktime'];
-
+        this.userId = datasnapshot.data['UserID'];
+        this.firstName = datasnapshot.data['FirstName'];
+        this.lastName = datasnapshot.data['LastName'];
+        this.email = datasnapshot.data['Email'];
+        this.reward = datasnapshot.data['Reward'];
+        this.data = datasnapshot.data['DataBalance'];
+        this.cash = datasnapshot.data['Cash'];
+        this.talk = datasnapshot.data['Talktime'];
       }
     });
 
@@ -117,7 +109,7 @@ class AuthServices {
       "FirstName": this.firstName,
       "LastName": this.lastName,
       "Email": this.email,
-      "Reward": this.Reward + reward,
+      "Reward": this.reward + reward,
       "DataBalance": this.data,
       "Cash": this.cash,
       "Talktime": this.talk,
@@ -125,22 +117,15 @@ class AuthServices {
     documentReference.setData(data).whenComplete(() {
       print("Document Added");
     }).catchError((e) => print(e));
-
   }
-
 
   //sign out
-  Future signout() async
-  {
-    try{
-      return await  _auth.signOut();
+  Future signout() async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      print(e.toString());
+      return null;
     }
-    catch(e)
-      {
-          print(e.toString());
-          return null;
-      }
   }
-
-
 }
