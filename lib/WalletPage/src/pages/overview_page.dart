@@ -23,6 +23,10 @@ var series = [
 ];
 
 class OverviewPage extends StatelessWidget {
+  String userid;
+  OverviewPage(String u) {
+    this.userid = u;
+  }
   var data_used_percent = 68.0;
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'package:VIL/Services/auth.dart';
 import 'package:VIL/Services/model/UserData.dart';
 import 'package:VIL/pages/Dashboard/CardPage/Views/MyCardsPage.dart';
 import 'package:VIL/pages/Dashboard/RechargeButtonAnimation.dart';
+import 'package:VIL/pages/RechargePage/RechargeMain.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -10,19 +11,15 @@ import '../../Services/model/user.dart';
 import 'package:provider/provider.dart';
 
 class Dashboard extends StatefulWidget {
-
   String userid;
-  Dashboard(String u)
-  {
+  Dashboard(String u) {
     this.userid = u;
-
   }
   @override
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-
   TextEditingController rechargeController = new TextEditingController();
   final AuthServices _authen = new AuthServices();
   String myText = "";
@@ -36,27 +33,24 @@ class _DashboardState extends State<Dashboard> {
   int cash;
   int talk;
 
-
   void start() {
-
-      DocumentReference documentReference = Firestore.instance.document("myData/"+widget.userid);
-      documentReference.get().then((datasnapshot) {
-        if (datasnapshot.exists) {
-          setState(() {
-            this.userId = datasnapshot.data['UserID'];
-            this.firstName = datasnapshot.data['FirstName'];
-            this.lastName = datasnapshot.data['LastName'];
-            this.email = datasnapshot.data['Email'];
-            this.Reward = datasnapshot.data['Reward'];
-            this.data = datasnapshot.data['DataBalance'];
-            this.cash = datasnapshot.data['Cash'];
-            this.talk = datasnapshot.data['Talktime'];
-
-          });
-        }
-      });
+    DocumentReference documentReference =
+        Firestore.instance.document("myData/" + widget.userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        setState(() {
+          this.userId = datasnapshot.data['UserID'];
+          this.firstName = datasnapshot.data['FirstName'];
+          this.lastName = datasnapshot.data['LastName'];
+          this.email = datasnapshot.data['Email'];
+          this.Reward = datasnapshot.data['Reward'];
+          this.data = datasnapshot.data['DataBalance'];
+          this.cash = datasnapshot.data['Cash'];
+          this.talk = datasnapshot.data['Talktime'];
+        });
+      }
+    });
   }
-
 
   static final List<String> imgList = [
     // 'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -98,18 +92,14 @@ class _DashboardState extends State<Dashboard> {
     ).toList(),
   );
 
-
-
-  void init() {
-
-  }
+  void init() {}
   final AuthServices _auth = AuthServices();
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
     print(user.uid);
-  start();
+    start();
     return Scaffold(
       appBar: AppBar(
         title: Text('Vodafone Idea Limited'),
@@ -203,7 +193,6 @@ class _DashboardState extends State<Dashboard> {
                                 MaterialPageRoute(
                                     builder: (context) => MyCardsPage()),
                               );
-
                             },
                             color: Colors.black,
                             icon: Icon(Icons.add),
@@ -392,24 +381,25 @@ class _DashboardState extends State<Dashboard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  width: 100.0,
-                  child: TextFormField(
-                    //get the input from rechargeController.text
-                    controller: rechargeController,
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      // border: InputBorder.none,
-                      hintText: 'Amount(₹)',
-                      hintStyle: TextStyle(color: Colors.grey),
-                    ),
-                  ),
-                ),
+                    // width: 200.0,
+                    height: 50.0,
+                    child: FlatButton(
+                        color: Colors.pink,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    RechargePage(this.userId)),
+                          );
+                        },
+                        child: Text(
+                          "View Plans",
+                          // style: TextStyle(
+                          //     backgroundColor: Colors.greenAccent),
+                        ))),
                 SizedBox(width: 15.0),
-
-
-                  ButtonAnimation(Color(0xFFF50201), Colors.red,widget.userid),
-
-
+                ButtonAnimation(Color(0xFFF50201), Colors.red, widget.userid),
               ],
             ),
 
