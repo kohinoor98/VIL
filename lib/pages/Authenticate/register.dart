@@ -45,7 +45,6 @@ class _RegisterState extends State<Register> {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: // MessagingWidget(),
-<<<<<<< HEAD
           SingleChildScrollView(
         child: Form(
           key: _formkey,
@@ -86,52 +85,11 @@ class _RegisterState extends State<Register> {
                           width: 175.0,
                           height: 175.0,
                         ),
-=======
-          Form(
-        key: _formkey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.fromLTRB(15.0, 125.0, 0.0, 0.0),
-                    child: Text("Vodafone",
-                        style: TextStyle(
-                            fontSize: 35.0, fontWeight: FontWeight.bold)),
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(16.0, 175.0, 0.0, 0.0),
-                    child: Text('Idea',
-                        style: TextStyle(
-                            fontSize: 35.0, fontWeight: FontWeight.bold)),
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(16.0, 225.0, 0.0, 0.0),
-                    child: Text('Limited',
-                        style: TextStyle(
-                            fontSize: 35.0, fontWeight: FontWeight.bold)),
-                  ),
-                  Positioned(
-                    right: 10.0,
-                    bottom: -20.0,
-                    child: Container(
-                      // decoration: new BoxDecoration(
-                      //   color: Colors.white70,
-                      // ),
-                      child: Image(
-                        image: assetsImage,
-                        width: 175.0,
-                        height: 175.0,
->>>>>>> a95ff1fffbb29ea04c638c9b16016d272f4b911f
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-<<<<<<< HEAD
               Container(
                   padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
                   child: Column(
@@ -141,7 +99,7 @@ class _RegisterState extends State<Register> {
                         // validator: (val) =>
                         //     val.isEmpty ? 'Enter The Email' : null,
                         textCapitalization: TextCapitalization.words,
-                        validator: validateEmail, //Email validation
+
                         onChanged: (val) {
                           setState(() {
                             fName = val;
@@ -156,161 +114,16 @@ class _RegisterState extends State<Register> {
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Color(0Xff357DED)))),
-=======
-            ),
-            Container(
-                padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      // keyboardType: TextInputType.emailAddress,
-                      // validator: (val) =>
-                      //     val.isEmpty ? 'Enter The Email' : null,
-                      textCapitalization: TextCapitalization.words,
-
-                      onChanged: (val) {
-                        setState(() {
-                          fName = val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          labelText: 'FIRST NAME',
-                          labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Color(0Xff357DED)))),
-                    ),
-                    SizedBox(height: 10.0),
-                    TextFormField(
-                      // keyboardType: TextInputType.emailAddress,
-                      // validator: (val) =>
-                      //     val.isEmpty ? 'Enter The Email' : null,
-                      keyboardType: TextInputType.emailAddress,
-
-                      onChanged: (val) {
-                        setState(() {
-                          lName = val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          labelText: 'LAST NAME',
-                          labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Color(0Xff357DED)))),
-                    ),
-                    TextFormField(
-                      controller: phoneNumberController,
-                      // keyboardType: TextInputType.emailAddress,
-                      // validator: (val) =>
-                      //     val.isEmpty ? 'Enter The Email' : null,
-                      keyboardType: TextInputType.phone,
-                      validator: validatePhoneNumber, //Email validation
-                      onChanged: (val) {
-                        setState(() {
-                          phoneNumber = val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          labelText: 'PHONE NUMBER',
-                          labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Color(0Xff357DED)))),
-                    ),
-                    SizedBox(height: 10.0),
-                    TextFormField(
-                      // keyboardType: TextInputType.emailAddress,
-                      // validator: (val) =>
-                      //     val.isEmpty ? 'Enter The Email' : null,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: validateEmail, //Email validation
-                      onChanged: (val) {
-                        setState(() {
-                          email = val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          labelText: 'EMAIL',
-                          labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Color(0Xff357DED)))),
-                    ),
-                    SizedBox(height: 10.0),
-                    TextFormField(
-                      controller: _passcontroller,
-                      obscureText: true,
-                      // validator: (val) =>
-                      //     val.length < 6 ? 'Enter The long Password' : null,
-                      validator: (value) => //Password validation
-                          value.isEmpty ? 'Password cannot be empty' : null,
-                      onChanged: (val) {
-                        setState(() {
-                          passoword1 = val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          labelText: 'PASSWORD',
-                          labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Color(0XFF357DED)))),
-                    ),
-                    SizedBox(height: 10.0),
-                    TextFormField(
-                      controller: _controller,
-                      validator:
-                          _validatePassword, //Re enter password validation
-                      decoration: InputDecoration(
-                          labelText: 'RE-ENTER PASSWORD ',
-                          labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Color(0xff357DED)))),
-                      obscureText: true,
-                    ),
-                    Container(
-                      alignment: Alignment(1.0, 0.0),
-                      padding: EdgeInsets.only(top: 15.0, left: 20.0),
-                      child: InkWell(
-                        //onTap: sendResetEmail,
-                        child: Text(
-                          'Forgot Password',
-                          style: TextStyle(
-                              fontSize: 15.0,
-                              color: Color(0XFF1DC5A3),
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat',
-                              decoration: TextDecoration.underline),
-                        ),
->>>>>>> a95ff1fffbb29ea04c638c9b16016d272f4b911f
                       ),
                       SizedBox(height: 10.0),
                       TextFormField(
+                        textCapitalization: TextCapitalization.words,
+
                         // keyboardType: TextInputType.emailAddress,
                         // validator: (val) =>
                         //     val.isEmpty ? 'Enter The Email' : null,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: validateEmail, //Email validation
+                        // keyboardType: TextInputType.emailAddress,
+
                         onChanged: (val) {
                           setState(() {
                             lName = val;
@@ -327,7 +140,6 @@ class _RegisterState extends State<Register> {
                                     BorderSide(color: Color(0Xff357DED)))),
                       ),
                       TextFormField(
-                        controller: phoneNumberController,
                         // keyboardType: TextInputType.emailAddress,
                         // validator: (val) =>
                         //     val.isEmpty ? 'Enter The Email' : null,
@@ -409,6 +221,22 @@ class _RegisterState extends State<Register> {
                                     BorderSide(color: Color(0xff357DED)))),
                         obscureText: true,
                       ),
+                      Container(
+                        alignment: Alignment(1.0, 0.0),
+                        padding: EdgeInsets.only(top: 15.0, left: 20.0),
+                        child: InkWell(
+                          //onTap: sendResetEmail,
+                          child: Text(
+                            'Forgot Password',
+                            style: TextStyle(
+                                fontSize: 15.0,
+                                color: Color(0XFF1DC5A3),
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Montserrat',
+                                decoration: TextDecoration.underline),
+                          ),
+                        ),
+                      ),
                       SizedBox(height: 40.0),
                       Container(
                         height: 50.0,
@@ -420,7 +248,6 @@ class _RegisterState extends State<Register> {
                                   email,
                                   passoword1,
                                   phoneNumber);
-                                  // print(phoneNumber);
                               if (result == null) {
                                 showDialog(context: context, child: alert);
                               }
