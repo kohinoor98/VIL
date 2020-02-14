@@ -49,7 +49,7 @@ class AuthServices {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: phone, password: password);
       FirebaseUser user = result.user;
-      databaseinit(user.uid, user.phoneNumber, fName, lName);
+      databaseinit(user.uid, phoneNumber, fName, lName);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -80,6 +80,7 @@ class AuthServices {
   String userId;
   String firstName;
   String lastName;
+  String PhoneNumber;
   String email;
   int reward;
   int data;
@@ -93,13 +94,14 @@ class AuthServices {
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
         this.userId = datasnapshot.data['UserID'];
-        this.firstName = datasnapshot.data['FirstName'];
+        this.firstName = datasnapshot.data['FirtstName'];
         this.lastName = datasnapshot.data['LastName'];
         this.email = datasnapshot.data['Email'];
         this.reward = datasnapshot.data['Reward'];
         this.data = datasnapshot.data['DataBalance'];
         this.cash = datasnapshot.data['Cash'];
         this.talk = datasnapshot.data['Talktime'];
+        this.PhoneNumber = datasnapshot.data['PhoneNumber'];
       }
     });
 
@@ -113,6 +115,43 @@ class AuthServices {
       "DataBalance": this.data,
       "Cash": this.cash,
       "Talktime": this.talk,
+      "PhoneNumber": this.PhoneNumber,
+    };
+    documentReference.setData(data).whenComplete(() {
+      print("Document Added");
+    }).catchError((e) => print(e));
+  }
+
+
+  void updateCash(String userid, int cash) {
+    print(userid);
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        this.userId = datasnapshot.data['UserID'];
+        this.firstName = datasnapshot.data['FirstName'];
+        this.lastName = datasnapshot.data['LastName'];
+        this.email = datasnapshot.data['Email'];
+        this.reward = datasnapshot.data['Reward'];
+        this.data = datasnapshot.data['DataBalance'];
+        this.cash = datasnapshot.data['Cash'];
+        this.talk = datasnapshot.data['Talktime'];
+        this.PhoneNumber = datasnapshot.data['PhoneNumber'];
+      }
+    });
+
+    print(reward);
+    var data = {
+      "UserID": this.userId,
+      "FirstName": this.firstName,
+      "LastName": this.lastName,
+      "Email": this.email,
+      "Reward": this.reward,
+      "DataBalance": this.data,
+      "Cash": this.cash + cash,
+      "Talktime": this.talk,
+      "PhoneNumber": this.PhoneNumber,
     };
     documentReference.setData(data).whenComplete(() {
       print("Document Added");
