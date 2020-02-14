@@ -4,11 +4,10 @@ class PaymentModel {
   IconData _icon;
   String _name, _date, _hour;
   Color _color;
-  double _amount;
-  int _paymentType;
+  int _points;
 
   PaymentModel(this._icon, this._color, this._name, this._date, this._hour,
-      this._amount, this._paymentType);
+      this._points);
 
   String get name => _name;
 
@@ -16,9 +15,7 @@ class PaymentModel {
 
   String get hour => _hour;
 
-  double get amount => _amount;
-
-  int get type => _paymentType;
+  int get points => _points;
 
   IconData get icon => _icon;
 

@@ -1,37 +1,10 @@
-class CreditCardModel{
-  final String _cardNo,_expiryDate,_cvv,_logo;
-  CreditCardModel(this._cardNo,
-      this._logo,
-      this._expiryDate,
-      this._cvv):
-      assert(_cardNo.length==16);
+class CreditCardModel {
+  final String _points, _date, _flag;
+  CreditCardModel(this._points, this._date, this._flag);
 
-  String get cardNo
-  {
-    var letters=[];
-    for(int i=0;i<_cardNo.length;)
-      {
-                 letters.add(_cardNo.substring(i,( ( i ~/4)+1)*4));
-         i+=4;
-      }
-    var fakeCardNo="";
-    for(int i=0;i<letters.length;i++)
-      {
-        if(i==letters.length-1)
-          {
-            fakeCardNo+=letters[i];
-            break;
-          }
-     fakeCardNo+="****    ";
-      }
-    return fakeCardNo;
-  }
+  String get points => _points;
 
+  String get flag => _flag;
 
-  String get logo => _logo;
-
-  String get cvv => _cvv;
-
-  String get expiryDate => _expiryDate;
-
+  String get date => _date;
 }

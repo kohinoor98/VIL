@@ -1,4 +1,4 @@
-import 'package:VIL/Game/Quizzler/QuizRewardPage.dart';
+import 'package:VIL/WalletPage/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'quiz_brain.dart';
@@ -119,7 +119,9 @@ class _QuizPageState extends State<QuizPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      QuizRewardPage(widget.userid)),
+                                  LeaderBoard(widget.userid)
+                                      // QuizRewardPage(widget.userid)
+                                      ),
                             );
                           }
                         });
@@ -163,7 +165,9 @@ class _QuizPageState extends State<QuizPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      QuizRewardPage(widget.userid)),
+                                      LeaderBoard(widget.userid)
+                                  // QuizRewardPage(widget.userid)
+                                  ),
                             );
                           }
                         });

@@ -17,7 +17,8 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
       child: ListTile(
         dense: true,
         trailing: Text(
-          "${widget.payment.type > 0 ? "+" : "-"} \$ ${widget.payment.amount}",
+          // "${widget.payment.type > 0 ? "+" : "-"} \$ ${widget.payment.amount}",
+          "${widget.payment.points}",
           style: TextStyle(
               inherit: true, fontWeight: FontWeight.w700, fontSize: 16.0),
         ),

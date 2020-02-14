@@ -6,39 +6,53 @@ import '../models/user_model.dart';
 List<CreditCardModel> getCreditCards() {
   List<CreditCardModel> creditCards = [];
   creditCards.add(CreditCardModel(
-      "4616900007729988",
-      "https://resources.mynewsdesk.com/image/upload/ojf8ed4taaxccncp6pcp.png",
-      "06/23",
-      "192"));
-  creditCards.add(CreditCardModel(
-      "3015788947523652",
-      "https://resources.mynewsdesk.com/image/upload/ojf8ed4taaxccncp6pcp.png",
-      "04/25",
-      "217"));
+    "1950",
+    "06/23",
+    "https://img.favpng.com/16/3/0/indian-independence-movement-flag-of-india-png-favpng-PV6ifN75jaJiT9v9MGpwvL6js.jpg",
+  ));
   return creditCards;
 }
 
 List<UserModel> getUsersCard() {
   List<UserModel> userCards = [
-    UserModel("Anna", "assets/WalletImages/users/anna.jpeg"),
-    UserModel("Gillian", "assets/WalletImages/users/gillian.jpeg"),
-    UserModel("Judith", "assets/WalletImages/users/judith.jpeg"),
+    UserModel("Anna", "assets/WalletImages/users/anna.jpeg", 8452),
+    UserModel("Gillian", "assets/WalletImages/users/gillian.jpeg", 2000),
+    UserModel("Judith", "assets/WalletImages/users/judith.jpeg", 100),
+    UserModel("Kohi", "assets/kc_temp.jpg", 10100),
   ];
 
   return userCards;
 }
 
-List<PaymentModel> getPaymentsCard() {
-  List<PaymentModel> paymentCards = [
-    PaymentModel(Icons.receipt, Color(0xFFffd60f), "Florenti Restaurant",
-        "07-23", "20.04", 251.00, -1),
-    PaymentModel(Icons.monetization_on, Color(0xFFff415f), "Transfer To Anna",
-        "07-23", "14.01", 64.00, -1),
-    PaymentModel(Icons.location_city, Color(0xFF50f3e2), "Loan To Sanchez",
-        "07-23", "10.04", 1151.00, -1),
-    PaymentModel(Icons.train, Colors.green, "Train ticket to Turkey", "07-23",
-        "09.04", 37.00, -1),
+List<PaymentModel> getLeaderBoardCard() {
+  List<PaymentModel> leaderBoard = [
+    PaymentModel(
+      Icons.receipt,
+      Color(0xFFffd60f),
+      "Anirudh Polawar",
+      "07-23",
+      "20.04",
+      25,
+    ),
+    PaymentModel(Icons.monetization_on, Color(0xFFff415f),
+        "Kohinoor Chatterjee", "07-23", "14.01", 64),
+    PaymentModel(
+      Icons.location_city,
+      Color(0xFF50f3e2),
+      "Param Mirani",
+      "07-23",
+      "10.04",
+      1151,
+    ),
+    PaymentModel(
+      Icons.train,
+      Colors.green,
+      "Rahul Chughwani",
+      "07-23",
+      "09.04",
+      37,
+    ),
   ];
 
-  return paymentCards;
+  return leaderBoard;
 }

@@ -1,4 +1,5 @@
 import 'package:VIL/Game/games.dart';
+import 'package:VIL/WalletPage/src/pages/home_page.dart';
 import 'package:VIL/pages/Dashboard/dashboard.dart';
 import 'package:VIL/pages/RechargePage/RechargeMain.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
@@ -8,11 +9,8 @@ import 'package:VIL/WalletPage/src/pages/overview_page.dart';
 
 class Home extends StatefulWidget {
   String userid;
-  Home(String u)
-  {
+  Home(String u) {
     this.userid = u;
-
-
   }
   @override
   _HomeState createState() => _HomeState();

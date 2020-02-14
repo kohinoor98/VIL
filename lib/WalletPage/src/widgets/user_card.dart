@@ -14,7 +14,7 @@ class UserCardWidget extends StatelessWidget {
       padding: EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        // borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
             color: Colors.lightBlue.shade50,
@@ -33,11 +33,11 @@ class UserCardWidget extends StatelessWidget {
         children: <Widget>[
           CircleAvatar(
             backgroundImage: AssetImage(user.profilePic),
-            radius: 25,
+            radius: 22,
             backgroundColor: Color(0xfff1f3f5),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 15.0),
+            padding: const EdgeInsets.only(top: 5.0),
             child: Text(
               user.name,
               style: TextStyle(
@@ -48,7 +48,17 @@ class UserCardWidget extends StatelessWidget {
               overflow: TextOverflow.fade,
               textAlign: TextAlign.center,
             ),
-          )
+          ),
+          Text(
+            user.points.toString(),
+            style: TextStyle(
+                inherit: true,
+                fontWeight: FontWeight.bold,
+                fontSize: 14.0,
+                color: Colors.grey),
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );

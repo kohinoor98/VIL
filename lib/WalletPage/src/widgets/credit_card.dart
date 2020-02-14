@@ -25,10 +25,10 @@ class CreditCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Card no.",
+                  "Current Points Acheived",
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 15,
+                    color: Colors.black,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -36,9 +36,10 @@ class CreditCard extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  card.cardNo,
+                  card.points,
                   style: Theme.of(context).textTheme.headline.copyWith(
                         color: Colors.black,
+                        fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
@@ -47,7 +48,7 @@ class CreditCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "Expires",
+                      "Date",
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.grey.shade400,
@@ -57,7 +58,7 @@ class CreditCard extends StatelessWidget {
                     SizedBox(
                       width: 10,
                     ),
-                    Text(card.expiryDate,
+                    Text(card.date,
                         style: Theme.of(context).textTheme.headline.copyWith(
                               color: Colors.black.withOpacity(0.5),
                               fontWeight: FontWeight.bold,
@@ -67,21 +68,11 @@ class CreditCard extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            top: 15,
-            right: 15,
-            child: Container(
-              height: 25,
-              width: 50,
-              color: Colors.pink,
-              padding: EdgeInsets.all(7),
-              child: Image.network(
-                card.logo,
-                width: 50,
-                color: Colors.white,
-              ),
-            ),
-          ),
+          // Image.network(
+          //   card.flag,
+          //   width: 50,
+          //   color: Colors.black,
+          // ),
         ],
       ),
     );

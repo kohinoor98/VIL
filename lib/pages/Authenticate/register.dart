@@ -221,22 +221,22 @@ class _RegisterState extends State<Register> {
                                     BorderSide(color: Color(0xff357DED)))),
                         obscureText: true,
                       ),
-                      Container(
-                        alignment: Alignment(1.0, 0.0),
-                        padding: EdgeInsets.only(top: 15.0, left: 20.0),
-                        child: InkWell(
-                          //onTap: sendResetEmail,
-                          child: Text(
-                            'Forgot Password',
-                            style: TextStyle(
-                                fontSize: 15.0,
-                                color: Color(0XFF1DC5A3),
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Montserrat',
-                                decoration: TextDecoration.underline),
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   alignment: Alignment(1.0, 0.0),
+                      //   padding: EdgeInsets.only(top: 15.0, left: 20.0),
+                      //   child: InkWell(
+                      //     //onTap: sendResetEmail,
+                      //     child: Text(
+                      //       'Forgot Password',
+                      //       style: TextStyle(
+                      //           fontSize: 15.0,
+                      //           color: Color(0XFF1DC5A3),
+                      //           fontWeight: FontWeight.bold,
+                      //           fontFamily: 'Montserrat',
+                      //           decoration: TextDecoration.underline),
+                      //     ),
+                      //   ),
+                      // ),
                       SizedBox(height: 40.0),
                       Container(
                         height: 50.0,
