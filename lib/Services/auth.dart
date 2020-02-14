@@ -5,6 +5,39 @@ import 'package:VIL/Services/model/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthServices {
+
+  String userId;
+  String firstName;
+  String lastName;
+  String PhoneNumber;
+  String email;
+  int reward;
+  int data;
+  int cash;
+  int talk;
+
+  AuthServices()
+  {
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/");
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        this.userId = datasnapshot.data['UserID'];
+        this.firstName = datasnapshot.data['FirstName'];
+        this.lastName = datasnapshot.data['LastName'];
+        this.email = datasnapshot.data['Email'];
+        this.reward = datasnapshot.data['Reward'];
+        this.data = datasnapshot.data['DataBalance'];
+        this.cash = datasnapshot.data['Cash'];
+        this.talk = datasnapshot.data['Talktime'];
+        this.PhoneNumber = datasnapshot.data['PhoneNumber'];
+        //print(userid);
+      }
+    });
+
+  }
+
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //Creating the user object
@@ -41,6 +74,25 @@ class AuthServices {
       return null;
     }
   }
+  void start(String userid) {
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        {
+          this.userId = datasnapshot.data['UserID'];
+          this.firstName = datasnapshot.data['FirstName'];
+          this.lastName = datasnapshot.data['LastName'];
+          this.email = datasnapshot.data['Email'];
+          this.reward = datasnapshot.data['Reward'];
+          this.data = datasnapshot.data['DataBalance'];
+          this.cash = datasnapshot.data['Cash'];
+          this.talk = datasnapshot.data['Talktime'];
+        };
+      }
+    });
+  }
+
 
   //register with phone number
   Future registerPhone(
@@ -77,15 +129,7 @@ class AuthServices {
     }).catchError((e) => print(e));
   }
 
-  String userId;
-  String firstName;
-  String lastName;
-  String PhoneNumber;
-  String email;
-  int reward;
-  int data;
-  int cash;
-  int talk;
+
 
   void updateReward(String userid, int reward) {
     print(userid);
@@ -123,8 +167,8 @@ class AuthServices {
   }
 
 
-  void updateCash(String userid, int cash) {
-    print(userid);
+  void updateCash(String userid, int c) async {
+
     DocumentReference documentReference =
     Firestore.instance.document("myData/" + userid);
     documentReference.get().then((datasnapshot) {
@@ -138,10 +182,10 @@ class AuthServices {
         this.cash = datasnapshot.data['Cash'];
         this.talk = datasnapshot.data['Talktime'];
         this.PhoneNumber = datasnapshot.data['PhoneNumber'];
+        //print(userid);
       }
     });
 
-    print(reward);
     var data = {
       "UserID": this.userId,
       "FirstName": this.firstName,
@@ -149,7 +193,7 @@ class AuthServices {
       "Email": this.email,
       "Reward": this.reward,
       "DataBalance": this.data,
-      "Cash": this.cash + cash,
+      "Cash": this.cash + c,
       "Talktime": this.talk,
       "PhoneNumber": this.PhoneNumber,
     };

@@ -1,3 +1,5 @@
+import 'package:VIL/Services/auth.dart';
+import 'package:VIL/pages/Authenticate/autthentication.dart';
 import 'package:flutter/material.dart';
 import '../utils/screen_size.dart';
 import '../widgets/donut_charts.dart';
@@ -23,6 +25,7 @@ var series = [
 ];
 
 class OverviewPage extends StatelessWidget {
+  final AuthServices _auth = new AuthServices();
   String userid;
   OverviewPage(String u) {
     this.userid = u;
@@ -30,6 +33,7 @@ class OverviewPage extends StatelessWidget {
   var data_used_percent = 68.0;
   @override
   Widget build(BuildContext context) {
+    _auth.start(userid);
     final _media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -208,7 +212,8 @@ class OverviewPage extends StatelessWidget {
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                MediaQuery.of(context).size.width*0.7,
+                 // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
               percent: data_used_percent / 100,
@@ -225,6 +230,21 @@ class OverviewPage extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 30),
+          SizedBox(
+            child: FloatingActionButton.extended(
+
+              onPressed: () async {
+                // Add your onPressed code here!
+                   // print(userid);
+                _auth.updateCash(userid, 10);
+              },
+              label: Text('Add Money'),
+              icon: Icon(Icons.add),
+              backgroundColor: Colors.red,
+            ),
+          ),
+
           SizedBox(
             height: 30,
           ),
