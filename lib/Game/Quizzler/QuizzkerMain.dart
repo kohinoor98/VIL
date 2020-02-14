@@ -1,4 +1,4 @@
-import 'package:VIL/Game/games.dart';
+import 'package:VIL/Game/Quizzler/QuizRewardPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'quiz_brain.dart';
@@ -184,47 +184,6 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class QuizRewardPage extends StatelessWidget {
-  String userid;
-  QuizRewardPage(String us) {
-    this.userid = us;
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Result"),
-      ),
-      body: Column(
-        children: <Widget>[
-          Center(
-              child: Text(
-            'Points = $points',
-            style: new TextStyle(
-              fontSize: 30,
-            ),
-          )),
-          FlatButton(
-              color: Colors.blue,
-              onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Games(this.userid)),
-                // );
-
-                //clear all and navigate
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => Games(this.userid)),
-                    (Route<dynamic> route) => false);
-              },
-              child: Text("EXIT TO GamePage"))
-        ],
       ),
     );
   }
