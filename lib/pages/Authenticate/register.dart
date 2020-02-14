@@ -52,43 +52,41 @@ class _RegisterState extends State<Register> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              child: SingleChildScrollView(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.fromLTRB(15.0, 125.0, 0.0, 0.0),
-                      child: Text("Vodafone",
-                          style: TextStyle(
-                              fontSize: 35.0, fontWeight: FontWeight.bold)),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(16.0, 175.0, 0.0, 0.0),
-                      child: Text('Idea',
-                          style: TextStyle(
-                              fontSize: 35.0, fontWeight: FontWeight.bold)),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(16.0, 225.0, 0.0, 0.0),
-                      child: Text('Limited',
-                          style: TextStyle(
-                              fontSize: 35.0, fontWeight: FontWeight.bold)),
-                    ),
-                    Positioned(
-                      right: 10.0,
-                      bottom: -20.0,
-                      child: Container(
-                        // decoration: new BoxDecoration(
-                        //   color: Colors.white70,
-                        // ),
-                        child: Image(
-                          image: assetsImage,
-                          width: 175.0,
-                          height: 175.0,
-                        ),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15.0, 125.0, 0.0, 0.0),
+                    child: Text("Vodafone",
+                        style: TextStyle(
+                            fontSize: 35.0, fontWeight: FontWeight.bold)),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(16.0, 175.0, 0.0, 0.0),
+                    child: Text('Idea',
+                        style: TextStyle(
+                            fontSize: 35.0, fontWeight: FontWeight.bold)),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(16.0, 225.0, 0.0, 0.0),
+                    child: Text('Limited',
+                        style: TextStyle(
+                            fontSize: 35.0, fontWeight: FontWeight.bold)),
+                  ),
+                  Positioned(
+                    right: 10.0,
+                    bottom: -20.0,
+                    child: Container(
+                      // decoration: new BoxDecoration(
+                      //   color: Colors.white70,
+                      // ),
+                      child: Image(
+                        image: assetsImage,
+                        width: 175.0,
+                        height: 175.0,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Container(
@@ -100,7 +98,7 @@ class _RegisterState extends State<Register> {
                       // validator: (val) =>
                       //     val.isEmpty ? 'Enter The Email' : null,
                       textCapitalization: TextCapitalization.words,
-                      validator: validateEmail, //Email validation
+
                       onChanged: (val) {
                         setState(() {
                           fName = val;
@@ -122,7 +120,7 @@ class _RegisterState extends State<Register> {
                       // validator: (val) =>
                       //     val.isEmpty ? 'Enter The Email' : null,
                       keyboardType: TextInputType.emailAddress,
-                      validator: validateEmail, //Email validation
+
                       onChanged: (val) {
                         setState(() {
                           lName = val;
