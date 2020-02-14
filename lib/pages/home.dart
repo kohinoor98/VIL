@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
                 }),
             TabData(
                 iconData: Icons.account_balance_wallet,
-                title: "Recharge",
+                title: "Wallet",
                 onclick: () {
                   final FancyBottomNavigationState fState =
                       bottomNavigationKey.currentState;
@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
       case 1:
         return Games(widget.userid);
       case 2:
-        return RechargePage(widget.userid);
+        return OverviewPage(widget.userid);
 
       default:
         return Dashboard(widget.userid);

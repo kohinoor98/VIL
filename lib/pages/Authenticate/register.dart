@@ -46,9 +46,15 @@ class _RegisterState extends State<Register> {
       resizeToAvoidBottomPadding: false,
       body: // MessagingWidget(),
           SingleChildScrollView(
+<<<<<<< HEAD
             child: Form(
         key: _formkey,
         child: Column(
+=======
+        child: Form(
+          key: _formkey,
+          child: Column(
+>>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
@@ -117,10 +123,19 @@ class _RegisterState extends State<Register> {
                       ),
                       SizedBox(height: 10.0),
                       TextFormField(
+<<<<<<< HEAD
                         // keyboardType: TextInputType.emailAddress,
                         // validator: (val) =>
                         //     val.isEmpty ? 'Enter The Email' : null,
                         keyboardType: TextInputType.emailAddress,
+=======
+                        textCapitalization: TextCapitalization.words,
+
+                        // keyboardType: TextInputType.emailAddress,
+                        // validator: (val) =>
+                        //     val.isEmpty ? 'Enter The Email' : null,
+                        // keyboardType: TextInputType.emailAddress,
+>>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
 
                         onChanged: (val) {
                           setState(() {
@@ -138,7 +153,10 @@ class _RegisterState extends State<Register> {
                                     BorderSide(color: Color(0Xff357DED)))),
                       ),
                       TextFormField(
+<<<<<<< HEAD
 
+=======
+>>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
                         // keyboardType: TextInputType.emailAddress,
                         // validator: (val) =>
                         //     val.isEmpty ? 'Enter The Email' : null,
@@ -170,6 +188,7 @@ class _RegisterState extends State<Register> {
                           setState(() {
                             email = val;
                           });
+<<<<<<< HEAD
                         },
                         decoration: InputDecoration(
                             labelText: 'EMAIL',
@@ -195,6 +214,33 @@ class _RegisterState extends State<Register> {
                           });
                         },
                         decoration: InputDecoration(
+=======
+                        },
+                        decoration: InputDecoration(
+                            labelText: 'EMAIL',
+                            labelStyle: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Color(0Xff357DED)))),
+                      ),
+                      SizedBox(height: 10.0),
+                      TextFormField(
+                        controller: _passcontroller,
+                        obscureText: true,
+                        // validator: (val) =>
+                        //     val.length < 6 ? 'Enter The long Password' : null,
+                        validator: (value) => //Password validation
+                            value.isEmpty ? 'Password cannot be empty' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            passoword1 = val;
+                          });
+                        },
+                        decoration: InputDecoration(
+>>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
                             labelText: 'PASSWORD',
                             labelStyle: TextStyle(
                                 fontFamily: 'Montserrat',
@@ -251,7 +297,10 @@ class _RegisterState extends State<Register> {
                                 showDialog(context: context, child: alert);
                               }
                             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
                           },
                           child: Material(
                             borderRadius: BorderRadius.circular(30.0),
@@ -298,6 +347,10 @@ class _RegisterState extends State<Register> {
                 ],
               )
             ],
+<<<<<<< HEAD
+=======
+          ),
+>>>>>>> 68e6cef8e7ce870c8bd056b3b591284eb909a0c2
         ),
       ),
           ),

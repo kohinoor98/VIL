@@ -8,7 +8,11 @@ import '../widgets/payment_card.dart';
 import '../widgets/user_card.dart';
 
 class WalletHomePage extends StatefulWidget {
-  const WalletHomePage({Key key}) : super(key: key);
+  String userid;
+  WalletHomePage(String u) {
+    this.userid = u;
+  }
+  // const WalletHomePage({Key key}) : super(key: key);
   @override
   _WalletHomePage createState() => _WalletHomePage();
 }
@@ -37,7 +41,8 @@ class _WalletHomePage extends State<WalletHomePage> {
                           child: Container(
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage("assets/WalletImages/bg1.jpg"),
+                                image:
+                                    AssetImage("assets/WalletImages/bg1.jpg"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -85,7 +90,8 @@ class _WalletHomePage extends State<WalletHomePage> {
                             onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => OverviewPage())),
+                                    builder: (context) =>
+                                        OverviewPage(widget.userid))),
                             child: CreditCard(
                               card: getCreditCards()[index],
                             ),
