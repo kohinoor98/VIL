@@ -101,6 +101,13 @@ flutter:
     - assets/WalletImages/users/judith.jpeg
     - assets/visa.png
     - assets/leaderboard.png
+    - assets/foodIcon.png
+    - assets/shoppingCart.png
+    - assets/healthCare.png
+    - assets/travel.png
+    - assets/working.png
+    - assets/gaming.png
+    - assets/banking.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

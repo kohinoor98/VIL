@@ -19,10 +19,10 @@ class Games extends StatefulWidget {
 class _GamesState extends State<Games> {
   @override
   Widget build(BuildContext context) {
-
     _auth.start(widget.userid);
     _auth.getData();
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text('Games'),
         flexibleSpace: Container(
@@ -31,8 +31,8 @@ class _GamesState extends State<Games> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                const Color(0xFFFFE459),
-                const Color(0xFFFFE459),
+                const Color(0xFFE00201),
+                const Color(0xFFE00201),
 
                 // const Color(0xFF00c3ff),
                 // const Color(0xFFffff1c),
@@ -41,6 +41,78 @@ class _GamesState extends State<Games> {
       ),
       body: ListView(
         children: <Widget>[
+          getCard(
+            title: 'Quiz',
+            color: Colors.redAccent,
+            icon: Icons.question_answer,
+            onClick: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Ghomepage(widget.userid),
+                ),
+              );
+            },
+          ),
+          getCard(
+            title: 'Quiz',
+            color: Colors.redAccent,
+            icon: Icons.question_answer,
+            onClick: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Ghomepage(widget.userid),
+                ),
+              );
+            },
+          ),
+          getCard(
+            title: 'Quiz',
+            color: Colors.redAccent,
+            icon: Icons.question_answer,
+            onClick: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Ghomepage(widget.userid),
+                ),
+              );
+            },
+          ),
+          getCard(
+            title: 'Quiz',
+            color: Colors.redAccent,
+            icon: Icons.question_answer,
+            onClick: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Ghomepage(widget.userid),
+                ),
+              );
+            },
+          ),
+          getCard(
+            title: 'Quiz',
+            color: Colors.redAccent,
+            icon: Icons.question_answer,
+            onClick: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Ghomepage(widget.userid),
+                ),
+              );
+            },
+          ),
+          getCard(
+            title: 'Quiz',
+            color: Colors.redAccent,
+            icon: Icons.question_answer,
+            onClick: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Ghomepage(widget.userid),
+                ),
+              );
+            },
+          ),
           getCard(
             title: 'Quiz',
             color: Colors.redAccent,
@@ -65,7 +137,6 @@ class _GamesState extends State<Games> {
               );
             },
           ),
-
         ],
       ),
     );

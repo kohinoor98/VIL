@@ -10,9 +10,8 @@ import 'package:VIL/Services/model/user.dart';
 //AuthServices _auth;
 final AuthServices _auth = new AuthServices();
 UserData userr;
+
 class RewardRedemptionPage extends StatefulWidget {
-
-
   RewardRedemptionPage(UserData u) {
     userr = u;
   }
@@ -22,7 +21,6 @@ class RewardRedemptionPage extends StatefulWidget {
 }
 
 class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
-
   int LPRvoucher;
   int foodvoucher;
   int healthvoucher;
@@ -34,7 +32,6 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
   int reward;
   final databaseReference = Firestore.instance;
 
-
   final AuthServices _auth = AuthServices();
   @override
   Widget build(BuildContext context) {
@@ -43,21 +40,22 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
     print("\n\n\n\nhhhh\n\n\n");
     _auth.start(userr.userId);
 
-
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: AppBar(
-              title: Text('Vodafone Idea Limited',
-                  style: TextStyle(color: Colors.black)),
+              elevation: 0.0,
+              title: Text(
+                'Reedem Reward',
+                style: TextStyle(fontSize: 22.0),
+              ),
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: <Color>[
-                      const Color(0xFFFFE459),
-                      const Color(0xFFFFE459),
+                      Color(0xFFE00201), Color(0xFFE00201)
 
                       // const Color(0xFF00c3ff),
                       // const Color(0xFFffff1c),
@@ -65,6 +63,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
               ),
             ),
             body: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
                   height: 15.0,
@@ -82,125 +81,152 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      // color: Colors.grey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              children: <Widget>[
-                                IconButton(
-                                    icon: new Icon(FontAwesomeIcons.linkedinIn),
-                                    iconSize: 85.0,
-                                    onPressed:()
-                                {
-                                  setState(()
-                                  {
-                                    if(userr.reward>10)
-                                      {
-                                        userr.LPRvoucher = userr.LPRvoucher + 10;
-                                        _auth.updatecategoryVoucher("LPG Voucher",userr.userId, 10);
-                                        _auth.updateSpyder(userr.userId,"LPG Spyder" , 0.5);
-                                        userr.reward = userr.reward - 10;
-                                      }
-
-
-                                  });
-
-                                }),
-                                Text(
-                                  "LPG",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      elevation: 5.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Icon(
+                                            FontAwesomeIcons.linkedinIn,
+                                            color: Colors.blue),
+                                        iconSize: 85.0,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (userr.reward > 10) {
+                                              userr.LPRvoucher =
+                                                  userr.LPRvoucher + 10;
+                                              _auth.updatecategoryVoucher(
+                                                  "LPG Voucher",
+                                                  userr.userId,
+                                                  10);
+                                              _auth.updateSpyder(userr.userId,
+                                                  "LPG Spyder", 0.5);
+                                              userr.reward = userr.reward - 10;
+                                            }
+                                          });
+                                        }),
+                                    Text(
+                                      "Lifestyle",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Text('${userr.LPRvoucher}'),
+                            ],
                           ),
-                          Text('${userr.LPRvoucher}'),
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: 25.0,
+                      width: 10.0,
                     ),
-                    Container(
-                      // color: Colors.grey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              children: <Widget>[
-                                IconButton(
-                                    icon: new Icon(FontAwesomeIcons.pizzaSlice),
-                                    iconSize: 85.0,
-                                    onPressed:()
-                                {
-                                  setState(()
-                                  {
-                                    if(userr.reward>10)
-                                    {
-                                      userr.foodvoucher = userr.foodvoucher + 10;
-                                      _auth.updatecategoryVoucher("Food Voucher",userr.userId, 10);
-                                      _auth.updateSpyder(userr.userId,"Food Spyder" , 0.5);
-                                      userr.reward = userr.reward - 10;
-                                    }
-
-                                  });
-
-                                }),
-                                Text(
-                                  "Foods",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      elevation: 5.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Image.asset(
+                                            'assets/foodIcon.png'),
+                                        iconSize: 85.0,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (userr.reward > 10) {
+                                              userr.foodvoucher =
+                                                  userr.foodvoucher + 10;
+                                              _auth.updatecategoryVoucher(
+                                                  "Food Voucher",
+                                                  userr.userId,
+                                                  10);
+                                              _auth.updateSpyder(userr.userId,
+                                                  "Food Spyder", 0.5);
+                                              userr.reward = userr.reward - 10;
+                                            }
+                                          });
+                                        }),
+                                    Text(
+                                      "Foods",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Text('${userr.foodvoucher}'),
+                            ],
                           ),
-                          Text('${userr.foodvoucher}'),
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: 25.0,
+                      width: 10.0,
                     ),
-                    Container(
-                      // color: Colors.grey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              children: <Widget>[
-                                IconButton(
-                                    icon: new Icon(FontAwesomeIcons.plusCircle),
-                                    iconSize: 85.0,
-                                    onPressed: ()
-                                    {
-                                      setState(()
-                                      {
-                                        if(userr.reward>10)
-                                        {
-                                          userr.healthvoucher = userr.healthvoucher + 10;
-                                          _auth.updatecategoryVoucher("HealthCare Voucher",userr.userId, 10);
-                                          _auth.updateSpyder(userr.userId,"HealthCare Spyder" , 0.5);
-                                          userr.reward = userr.reward - 10;
-                                        }
-
-                                      });
-                                    }
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      elevation: 5.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Image.asset(
+                                            'assets/healthCare.png'),
+                                        iconSize: 85.0,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (userr.reward > 10) {
+                                              userr.healthvoucher =
+                                                  userr.healthvoucher + 10;
+                                              _auth.updatecategoryVoucher(
+                                                  "HealthCare Voucher",
+                                                  userr.userId,
+                                                  10);
+                                              _auth.updateSpyder(userr.userId,
+                                                  "HealthCare Spyder", 0.5);
+                                              userr.reward = userr.reward - 10;
+                                            }
+                                          });
+                                        }),
+                                    Text(
+                                      "Healthcare",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  "Healthcare",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
-                                ),
-                              ],
-                            ),
+                              ),
+                              Text('${userr.healthvoucher}'),
+                            ],
                           ),
-                          Text('${userr.healthvoucher}'),
-                        ],
+                        ),
                       ),
                     ),
                   ],
@@ -209,123 +235,153 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      // color: Colors.grey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              children: <Widget>[
-                                IconButton(
-                                    icon:
-                                        new Icon(FontAwesomeIcons.shoppingCart),
-                                    iconSize: 85.0,
-                                    onPressed: ()
-                                {
-                                  setState(()
-                                  {
-                                    if(userr.reward>10)
-                                    {
-                                      userr.showvoucher = userr.showvoucher + 10;
-                                      _auth.updatecategoryVoucher("Shopping Voucher",userr.userId, 10);
-                                      _auth.updateSpyder(userr.userId,"Shopping Spyder" , 0.5);
-                                      userr.reward = userr.reward - 10;
-                                    }
-
-                                  });
-                                }),
-                                Text(
-                                  "Shopping",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                    Card(
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Image.asset(
+                                            'assets/shoppingCart.png'),
+                                        iconSize: 85.0,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (userr.reward > 10) {
+                                              userr.showvoucher =
+                                                  userr.showvoucher + 10;
+                                              _auth.updatecategoryVoucher(
+                                                  "Shopping Voucher",
+                                                  userr.userId,
+                                                  10);
+                                              _auth.updateSpyder(userr.userId,
+                                                  "Shopping Spyder", 0.5);
+                                              userr.reward = userr.reward - 10;
+                                            }
+                                          });
+                                        }),
+                                    Text(
+                                      "Shopping",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Text('${userr.showvoucher}'),
+                            ],
                           ),
-                          Text('${userr.showvoucher}'),
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: 25.0,
+                      width: 10.0,
                     ),
-                    Container(
-                      // color: Colors.grey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              children: <Widget>[
-                                IconButton(
-                                    icon: new Icon(
-                                        FontAwesomeIcons.planeDeparture),
-                                    iconSize: 85.0,
-                                    onPressed: ()
-                                {
-                                  setState(()
-                                  {
-                                    if(userr.reward>10)
-                                    {
-                                      userr.travelvoucher = userr.travelvoucher + 10;
-                                      _auth.updatecategoryVoucher("Travel Voucher",userr.userId, 10);
-                                      _auth.updateSpyder(userr.userId,"Travel Spyder" , 0.5);
-                                      userr.reward = userr.reward - 10;
-                                    }
-
-                                  });
-                                }),
-                                Text(
-                                  "Travel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      elevation: 5.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Image.asset(
+                                            'assets/travel.png'),
+                                        iconSize: 85.0,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (userr.reward > 10) {
+                                              userr.travelvoucher =
+                                                  userr.travelvoucher + 10;
+                                              _auth.updatecategoryVoucher(
+                                                  "Travel Voucher",
+                                                  userr.userId,
+                                                  10);
+                                              _auth.updateSpyder(userr.userId,
+                                                  "Travel Spyder", 0.5);
+                                              userr.reward = userr.reward - 10;
+                                            }
+                                          });
+                                        }),
+                                    Text(
+                                      "Travel",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Text('${userr.travelvoucher}'),
+                            ],
                           ),
-                          Text('${userr.travelvoucher}'),
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: 25.0,
+                      width: 10.0,
                     ),
-                    Container(
-                      // color: Colors.grey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              children: <Widget>[
-                                IconButton(
-                                    icon: new Icon(FontAwesomeIcons.laptop),
-                                    iconSize: 85.0,
-                                    onPressed: ()
-                                {
-                                  setState(()
-                                  {
-                                    if(userr.reward>10)
-                                    {
-                                      userr.workingvoucher = userr.workingvoucher + 10;
-                                      _auth.updatecategoryVoucher("Working and Productive Voucher",userr.userId, 10);
-                                      _auth.updateSpyder(userr.userId,"Working and Productive Spyder" , 0.5);
-                                      userr.reward = userr.reward - 10;
-                                    }
-
-                                  });
-                                }),
-                                Text(
-                                  "Working",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                    Card(
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Image.asset(
+                                            'assets/working.png'),
+                                        iconSize: 85.0,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (userr.reward > 10) {
+                                              userr.workingvoucher =
+                                                  userr.workingvoucher + 10;
+                                              _auth.updatecategoryVoucher(
+                                                  "Working and Productive Voucher",
+                                                  userr.userId,
+                                                  10);
+                                              _auth.updateSpyder(
+                                                  userr.userId,
+                                                  "Working and Productive Spyder",
+                                                  0.5);
+                                              userr.reward = userr.reward - 10;
+                                            }
+                                          });
+                                        }),
+                                    Text(
+                                      "Working",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Text('${userr.workingvoucher}'),
+                            ],
                           ),
-                          Text('${userr.workingvoucher}'),
-                        ],
+                        ),
                       ),
                     ),
                   ],
@@ -334,81 +390,101 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      // color: Colors.grey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              children: <Widget>[
-                                IconButton(
-                                    icon: new Icon(FontAwesomeIcons.gamepad),
-                                    iconSize: 85.0,
-                                    onPressed: ()
-                                {
-                                  setState(()
-                                  {
-                                    if(userr.reward>10)
-                                    {
-                                      userr.nwevoucher = userr.nwevoucher + 10;
-                                      _auth.updatecategoryVoucher("NWE Voucher",userr.userId, 10);
-                                      _auth.updateSpyder(userr.userId,"NWE Spyder" , 0.5);
-                                      userr.reward = userr.reward - 10;
-                                    }
-
-                                  });
-                                }),
-                                Text(
-                                  "NWE",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                    Card(
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Image.asset(
+                                            'assets/gaming.png'),
+                                        iconSize: 85.0,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (userr.reward > 10) {
+                                              userr.nwevoucher =
+                                                  userr.nwevoucher + 10;
+                                              _auth.updatecategoryVoucher(
+                                                  "NWE Voucher",
+                                                  userr.userId,
+                                                  10);
+                                              _auth.updateSpyder(userr.userId,
+                                                  "NWE Spyder", 0.5);
+                                              userr.reward = userr.reward - 10;
+                                            }
+                                          });
+                                        }),
+                                    Text(
+                                      "NWE",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Text('${userr.nwevoucher}'),
+                            ],
                           ),
-                          Text('${userr.nwevoucher}'),
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: 25.0,
+                      width: 10.0,
                     ),
-                    Container(
-                      // color: Colors.grey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              children: <Widget>[
-                                IconButton(
-                                    icon: new Icon(FontAwesomeIcons.piggyBank),
-                                    iconSize: 85.0,
-                                    onPressed: ()
-                                {
-                                  setState(()
-                                  {
-                                    if(userr.reward>=10)
-                                    {
-                                      userr.bankvoucher = userr.bankvoucher + 10;
-                                      _auth.updatecategoryVoucher("Banking Voucher",userr.userId, 10);
-                                      _auth.updateSpyder(userr.userId,"Banking Spyder" , 0.5);
-                                      userr.reward = userr.reward - 10;
-                                    }
-
-                                  });
-                                }),
-                                Text(
-                                  "Bank&Finance",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                    Card(
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Image.asset(
+                                            'assets/banking.png'),
+                                        iconSize: 85.0,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (userr.reward >= 10) {
+                                              userr.bankvoucher =
+                                                  userr.bankvoucher + 10;
+                                              _auth.updatecategoryVoucher(
+                                                  "Banking Voucher",
+                                                  userr.userId,
+                                                  10);
+                                              _auth.updateSpyder(userr.userId,
+                                                  "Banking Spyder", 0.5);
+                                              userr.reward = userr.reward - 10;
+                                            }
+                                          });
+                                        }),
+                                    Text(
+                                      "Bank&Finance",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Text('${userr.bankvoucher}'),
+                            ],
                           ),
-                          Text('${userr.bankvoucher}'),
-                        ],
+                        ),
                       ),
                     ),
                   ],
