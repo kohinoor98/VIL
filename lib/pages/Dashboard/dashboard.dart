@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import '../../Services/model/user.dart';
 import 'package:provider/provider.dart';
 
+
+UserData userr = new UserData();
 class Dashboard extends StatefulWidget {
   String userid;
   Dashboard(String u) {
@@ -27,33 +29,32 @@ class _DashboardState extends State<Dashboard> {
   final AuthServices _authen = new AuthServices();
   String myText = "";
 
-  String userId = "";
-  String firstName = " ";
-  String lastName = " ";
-  String email = " ";
-  int Reward = 0;
-  int data = 0;
-  int cash = 0;
-  int talk = 0;
-  //int k = 0;
+
 
   void start() {
-    //k = _auth.getcategorymin('Banking');
-    //print(k);
-
     DocumentReference documentReference =
         Firestore.instance.document("myData/" + widget.userid);
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
         setState(() {
-          this.userId = datasnapshot.data['UserID'];
-          this.firstName = datasnapshot.data['FirstName'];
-          this.lastName = datasnapshot.data['LastName'];
-          this.email = datasnapshot.data['Email'];
-          this.Reward = datasnapshot.data['Reward'];
-          this.data = datasnapshot.data['DataBalance'];
-          this.cash = datasnapshot.data['Cash'];
-          this.talk = datasnapshot.data['Talktime'];
+
+          userr.userId = datasnapshot.data['UserID'];
+          userr.firstName = datasnapshot.data['FirstName'];
+          userr.lastName = datasnapshot.data['LastName'];
+          userr.email = datasnapshot.data['Email'];
+          userr.reward = datasnapshot.data['Reward'];
+          userr.data = datasnapshot.data['DataBalance'];
+          userr.cash = datasnapshot.data['Cash'];
+          userr.talk = datasnapshot.data['Talktime'];
+          userr.LPRvoucher = datasnapshot.data['LPG Voucher'];
+          userr.foodvoucher = datasnapshot.data['Food Voucher'];
+          userr.healthvoucher = datasnapshot.data['HealthCare Voucher'];
+          userr.showvoucher = datasnapshot.data['Shopping Voucher'];
+          userr.travelvoucher = datasnapshot.data['Travel Voucher'];
+          userr.workingvoucher = datasnapshot.data['Working and Productive Voucher'];
+          userr.nwevoucher = datasnapshot.data['NWE Voucher'];
+          userr.bankvoucher = datasnapshot.data['Banking Voucher'];
+
         });
       }
     });
@@ -193,7 +194,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           Text(
-                            'INR $cash',
+                            'INR ${userr.cash}',
                             style: TextStyle(
                               fontFamily: 'Quicksand',
                               fontSize: 25.0,
@@ -246,7 +247,7 @@ class _DashboardState extends State<Dashboard> {
                               width: 30.0,
                             ),
                             Text(
-                              '$Reward',
+                              '${userr.reward}',
                               style: TextStyle(
                                   fontFamily: 'Quicksand',
                                   fontWeight: FontWeight.bold,
@@ -296,7 +297,7 @@ class _DashboardState extends State<Dashboard> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    '${data}',
+                                    '${userr.data}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontFamily: 'Quicksand',
@@ -328,7 +329,7 @@ class _DashboardState extends State<Dashboard> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    '${talk}',
+                                    '${userr.talk}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontFamily: 'Quicksand',
@@ -410,7 +411,7 @@ class _DashboardState extends State<Dashboard> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    RewardRedemptionPage(this.userId, Reward,_auth),
+                                    RewardRedemptionPage(userr),
                                 // RechargePage(this.userId)
                                 ),
                           );

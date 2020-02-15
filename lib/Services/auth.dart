@@ -57,6 +57,14 @@ class AuthServices {
         this.cash = datasnapshot.data['Cash'];
         this.talk = datasnapshot.data['Talktime'];
         this.PhoneNumber = datasnapshot.data['PhoneNumber'];
+        this.LPRvoucher = datasnapshot.data['LPG Voucher'];
+        this.foodvoucher = datasnapshot.data['Food Voucher'];
+        this.healthvoucher = datasnapshot.data['HealthCare Voucher'];
+        this.showvoucher = datasnapshot.data['Shopping Voucher'];
+        this.travelvoucher = datasnapshot.data['Travel Voucher'];
+        this.workingvoucher = datasnapshot.data['Working and Productive Voucher'];
+        this.nwevoucher = datasnapshot.data['NWE Voucher'];
+        this.bankvoucher = datasnapshot.data['Banking Voucher'];
         //print(userid);
       }
     });
@@ -321,6 +329,18 @@ class AuthServices {
     print("\n\nRewards Send ${this.temp}\n\n");
     return this.temp;
 
+  }
+
+  int getvoucherstatus(String userid,String category)
+  {
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        temp = datasnapshot.data[category];
+      }
+    });
+    return temp;
   }
 
 }

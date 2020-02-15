@@ -11,35 +11,20 @@ class UserData {
   String userId;
   String firstName;
   String lastName;
+  String PhoneNumber;
   String email;
-  int Reward;
+  int reward;
   int data;
   int cash;
   int talk;
+  int LPRvoucher;
+  int foodvoucher;
+  int healthvoucher;
+  int showvoucher;
+  int travelvoucher;
+  int workingvoucher;
+  int nwevoucher;
+  int bankvoucher;
 
-  UserData(String user) {
-
-    DocumentReference documentReference = Firestore.instance.document("Current_data/"+user);
-    documentReference.get().then((datasnapshot) {
-
-      if (datasnapshot.exists) {
-        this.userId = datasnapshot.data['UserID'];
-        this.firstName = datasnapshot.data['FirstName'];
-        this.lastName = datasnapshot.data['LastName'];
-        this.email = datasnapshot.data['Email'];
-        this.Reward = datasnapshot.data['Reward'];
-        this.data = datasnapshot.data['DataBalance'];
-        this.cash = datasnapshot.data['Cash'];
-        this.talk = datasnapshot.data['Talktime'];
-
-      }
-    });
-  }
-
-  void updatadata()
-  {
-
-
-  }
 
 }
