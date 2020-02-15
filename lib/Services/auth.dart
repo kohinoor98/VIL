@@ -12,14 +12,13 @@ class AuthServices {
 
   void getData() async
   {
-    userCards = [];
+
     databaseReference
         .collection("LeaderBoard")
         .getDocuments()
         .then((QuerySnapshot snapshot) {
       snapshot.documents.forEach((f) async {userCards.add(UserModel(f.data['Name'],"assets/WalletImages/users/anna.jpeg",f.data['Score']));
       print(f.data);} );
-      return userCards;
     });
 
   }
@@ -275,7 +274,6 @@ class AuthServices {
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
         this.firstName = datasnapshot.data['FirstName'];
-        //print(userid);
       }
     });
     return this.firstName;
