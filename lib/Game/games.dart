@@ -22,7 +22,7 @@ class _GamesState extends State<Games> {
   @override
   Widget build(BuildContext context) {
     _auth.start(widget.userid);
-    _auth.getData();
+    // _auth.getData();
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(

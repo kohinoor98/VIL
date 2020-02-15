@@ -12,18 +12,18 @@ class AuthServices {
   List<UserModel> userCards  ;
   final databaseReference = Firestore.instance;
 
-  void getData() async
-  {
+  // void getData() async
+  // {
 
-    databaseReference
-        .collection("LeaderBoard")
-        .getDocuments()
-        .then((QuerySnapshot snapshot) {
-      snapshot.documents.forEach((f) async {userCards.add(UserModel(f.data['Name'],"assets/WalletImages/users/anna.jpeg",f.data['Score']));
-      print(f.data);} );
-    });
+  //   databaseReference
+  //       .collection("LeaderBoard")
+  //       .getDocuments()
+  //       .then((QuerySnapshot snapshot) {
+  //     snapshot.documents.forEach((f) async {userCards.add(UserModel(f.data['Name'],"assets/WalletImages/users/anna.jpeg",f.data['Score']));
+  //     print(f.data);} );
+  //   });
 
-  }
+  // }
 
   String userId;
   String firstName;
