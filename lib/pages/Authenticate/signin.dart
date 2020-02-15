@@ -139,7 +139,7 @@ class _SignInState extends State<SignIn> {
                         child: Text(
                           'Forgot Password',
                           style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 20.0,
                               color: Color(0XFF1DC5A3),
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Montserrat',
@@ -198,7 +198,7 @@ class _SignInState extends State<SignIn> {
                     'Register',
                     style: TextStyle(
                         color: Color(0XFF1DC5A3),
-                        fontSize: 20.0,
+                        fontSize: 25.0,
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline),
