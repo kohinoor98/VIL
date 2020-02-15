@@ -32,16 +32,16 @@ class _HomeState extends State<Home> {
             child: _getPage(currentPage),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.live_help),
-          elevation: 20.0,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => IdeaChatBot()),
-            );
-          },
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   child: Icon(Icons.live_help),
+        //   elevation: 20.0,
+        //   onPressed: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => IdeaChatBot()),
+        //     );
+        //   },
+        // ),
         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: FancyBottomNavigation(
           // barBackgroundColor: Color(0xFFFF4B2B),
