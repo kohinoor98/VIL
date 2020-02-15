@@ -7,6 +7,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import '../widgets/percent_indicator.dart';
 import '../widgets/wave_progress.dart';
 
+
 var data = [
   new DataPerItem('Home', 35, Colors.greenAccent),
   new DataPerItem('Food & Drink', 25, Colors.yellow),

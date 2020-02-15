@@ -14,7 +14,7 @@ class _GsplashscreenState extends State<GameSplashscreen> {
     super.initState();
     Timer(Duration(seconds: 3), (){
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => Ghomepage(),
+        builder: (context) => Ghomepage(""),
       ));
     });
   }

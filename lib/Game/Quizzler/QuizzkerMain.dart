@@ -43,6 +43,7 @@ class _QuizPageState extends State<QuizPage> {
   final AuthServices _authen = new AuthServices();
   @override
   Widget build(BuildContext context) {
+    _authen.start(widget.userid);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return MaterialApp(
@@ -114,12 +115,17 @@ class _QuizPageState extends State<QuizPage> {
                             }
                             quizBrain.nextQuestion();
                           } else {
+
+                           // String temp = _authen.getusername(widget.userid);
+                            _authen.updatescore(points,"Anirudh", widget.userid);
                             _authen.updateReward(widget.userid, points);
+                            print(_authen.getReward(widget.userid));
+                            print("\n\n\nhhhhhh\n\n");
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                  LeaderBoard(widget.userid)
+                                  LeaderBoard("")
                                       // QuizRewardPage(widget.userid)
                                       ),
                             );
@@ -165,7 +171,7 @@ class _QuizPageState extends State<QuizPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      LeaderBoard(widget.userid)
+                                      LeaderBoard("")
                                   // QuizRewardPage(widget.userid)
                                   ),
                             );

@@ -26,14 +26,14 @@ class _DashboardState extends State<Dashboard> {
   final AuthServices _authen = new AuthServices();
   String myText = "";
 
-  String userId;
-  String firstName;
-  String lastName;
-  String email;
-  int Reward;
-  int data;
-  int cash;
-  int talk;
+  String userId = "";
+  String firstName = " ";
+  String lastName = " ";
+  String email = " ";
+  int Reward = 0;
+  int data = 0 ;
+  int cash = 0;
+  int talk = 0;
 
   void start() {
     DocumentReference documentReference =

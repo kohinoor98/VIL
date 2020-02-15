@@ -2,13 +2,20 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:VIL/Game/resultpage.dart';
+import 'package:VIL/WalletPage/src/pages/home_page.dart';
 
+String userid;
 class getjson extends StatelessWidget {
   // accept the langname as a parameter
 
   String langname;
-  getjson(this.langname);
+
+  getjson(String l,String u)
+  {
+        userid = u;
+        this.langname = l;
+  }
+
   String assettoload;
 
   // a function
@@ -150,7 +157,7 @@ class _quizpageState extends State<quizpage> {
         j++;
       } else {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => resultpage(marks: marks),
+          builder: (context) => LeaderBoard(userid),
         ));
       }
       btncolor["a"] = Colors.indigoAccent;

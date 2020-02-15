@@ -1,25 +1,39 @@
+
+import 'package:VIL/Services/auth.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
 import '../pages/overview_page.dart';
 import '../utils/screen_size.dart';
-import '../widgets/add_button.dart';
 import '../widgets/credit_card.dart';
 import '../widgets/payment_card.dart';
 import '../widgets/user_card.dart';
 
+int rewards = 0;
 class LeaderBoard extends StatefulWidget {
   String userid;
-  LeaderBoard(String u) {
-    this.userid = u;
+  LeaderBoard(String s)
+  {
+    this.userid = s;
   }
+
   // const LeaderBoard({Key key}) : super(key: key);
   @override
   _LeaderBoard createState() => _LeaderBoard();
 }
 
 class _LeaderBoard extends State<LeaderBoard> {
+
+  final AuthServices _auth = new AuthServices();
+  void start()
+  {
+    print(widget.userid);
+    print("\n\n\nhh\n\n\n");
+  }
   @override
   Widget build(BuildContext context) {
+    //_auth.start(widget.userid);
+    start();
+
     final _media = MediaQuery.of(context).size;
     return MaterialApp(
       //no appbar
@@ -95,7 +109,7 @@ class _LeaderBoard extends State<LeaderBoard> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            OverviewPage(widget.userid))),
+                                            OverviewPage(""))),
                                 child: CreditCard(
                                   card: getCreditCards()[index],
                                 ),
@@ -250,4 +264,5 @@ class _LeaderBoard extends State<LeaderBoard> {
       ),
     );
   }
+
 }
