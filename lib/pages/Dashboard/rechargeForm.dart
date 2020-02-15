@@ -11,12 +11,10 @@ import 'dart:core';
 //To add a new notice
 //send all data to server and pass notice title back
 
-final rechargereference = Firestore.instance.collection("RechargePlan").getDocuments();
-
+final rechargereference =
+    Firestore.instance.collection("RechargePlan").getDocuments();
 
 class FormFill extends StatefulWidget {
-
-
   @override
   State<StatefulWidget> createState() => _FormFillState();
 }
@@ -45,10 +43,9 @@ class _FormFillState extends State<FormFill>
   }
 
   //Game API's
- void Rechargefirebase()
-  {
+  void Rechargefirebase() {
     DocumentReference documentReference =
-    Firestore.instance.document("RechargePlan/" + planID.text);
+        Firestore.instance.document("RechargePlan/" + planID.text);
     var data = {
       "PalanId": planID.text,
       "Talktime": talktime.text,
@@ -58,7 +55,6 @@ class _FormFillState extends State<FormFill>
       "Messages": messages.text,
       "Validity": validity.text,
       "Validity Time": validityTime.text,
-
     };
 
     documentReference.setData(data).whenComplete(() {
@@ -96,7 +92,7 @@ class _FormFillState extends State<FormFill>
                   height: 100.0,
                   child: TextFormField(
                     keyboardType:
-                    TextInputType.text, // Use email input type for emails.
+                        TextInputType.text, // Use email input type for emails.
                     decoration: InputDecoration(
                       // hintText: 'Subject',
                       labelText: 'TalkTime ',
@@ -275,12 +271,10 @@ class _FormFillState extends State<FormFill>
               //     'image_name': this.file_name,
               //     'downURL': null,
               //   });
-              //   Navigator.pop(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) =>
-              //             HomePage()), //To go back to home page on adding of notice
-              //   );
+              Navigator.pop(
+                context,
+                //To go back to home page on adding of notice
+              );
               // }
             },
           ),

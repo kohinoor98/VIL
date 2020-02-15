@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          heroTag: "fab_home",
           child: Icon(Icons.live_help),
           elevation: 20.0,
           onPressed: () {
