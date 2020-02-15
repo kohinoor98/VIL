@@ -96,7 +96,7 @@ class _resultpageState extends State<resultpage> {
                 OutlineButton(
                   onPressed: (){
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => Ghomepage(),
+                      builder: (context) => Ghomepage(""),
                     ));
                   },
                   child: Text(

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import '../models/credit_card_model.dart';
 import '../models/payment_model.dart';
 import '../models/user_model.dart';
+import 'package:VIL/WalletPage/src/pages/home_page.dart';
 
 List<CreditCardModel> getCreditCards() {
   List<CreditCardModel> creditCards = [];
   creditCards.add(CreditCardModel(
-    "1950",
+    "${rewards}",
     "06/23",
     "https://img.favpng.com/16/3/0/indian-independence-movement-flag-of-india-png-favpng-PV6ifN75jaJiT9v9MGpwvL6js.jpg",
   ));

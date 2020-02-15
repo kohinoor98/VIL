@@ -1,7 +1,6 @@
 import 'package:VIL/Services/model/user.dart';
 import 'package:VIL/pages/Authenticate/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:VIL/Services/model/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthServices {
@@ -131,7 +130,7 @@ class AuthServices {
 
 
 
-  void updateReward(String userid, int reward) {
+  void updateReward(String userid, int reward) async {
     print(userid);
     DocumentReference documentReference =
         Firestore.instance.document("myData/" + userid);
@@ -211,4 +210,52 @@ class AuthServices {
       return null;
     }
   }
+
+
+  //Game API's
+  void updatescore(int score,String n,String userid)
+  {
+    DocumentReference documentReference =
+    Firestore.instance.document("LeaderBoard/" + userid);
+    var data = {
+      "Name": n,
+      "Score": score,
+
+    };
+    documentReference.setData(data).whenComplete(() {
+      print("Score Document Added");
+    }).catchError((e) => print(e));
+  }
+
+  final databaseReference = Firestore.instance;
+  void getData() {
+
+    databaseReference
+        .collection("LeaderBoard")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) => print('${f.data}}'));
+    });
+  }
+
+  String getusername(String userid)
+  {
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        this.firstName = datasnapshot.data['FirstName'];
+        //print(userid);
+      }
+    });
+    return this.firstName;
+  }
+
+  int getReward(String userid)
+  {
+
+    return this.reward;
+  }
+
+
 }
