@@ -7,6 +7,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthServices {
+
+  List syderlist = ['Banking Spyder','HealthCare Spyder','Food Spyder','LPG Spyder','NWE Spyder','Shopping Spyder','Travel Spyder','Working and Productive Spyder'];
   List<UserModel> userCards  ;
   final databaseReference = Firestore.instance;
 
@@ -341,6 +343,46 @@ class AuthServices {
       }
     });
     return temp;
+  }
+
+  void updateSpyder(String userid,String category,var weight)
+  {
+
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        double t = 10.0 - datasnapshot.data[category];
+        if(t>0)
+          {
+
+            Map<String,double> data;
+            for(var name in syderlist)
+            {
+              if(name == category)
+              {
+
+                double temp2 = datasnapshot.data[name]+weight;
+                data[name]=temp2;
+              }
+              else
+              {
+                double temp2 = datasnapshot.data[name];
+                temp2 = temp2 - ((temp2/t)*weight);
+                data[name] = temp2;
+              }
+            }
+
+            documentReference.updateData(data).whenComplete(() {
+              print("Score Document Added");
+            }).catchError((e) => print(e));
+
+          }
+
+        }
+
+    });
+
   }
 
 }
