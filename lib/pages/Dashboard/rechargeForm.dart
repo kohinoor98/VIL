@@ -1,4 +1,6 @@
+import 'package:VIL/pages/RechargePage/RechargeMain.dart';
 import 'package:VIL/pages/home.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:io';
@@ -8,7 +10,13 @@ import 'dart:core';
 
 //To add a new notice
 //send all data to server and pass notice title back
+
+final rechargereference = Firestore.instance.collection("RechargePlan").getDocuments();
+
+
 class FormFill extends StatefulWidget {
+
+
   @override
   State<StatefulWidget> createState() => _FormFillState();
 }
@@ -17,6 +25,7 @@ class _FormFillState extends State<FormFill>
     with AutomaticKeepAliveClientMixin {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController talktime = TextEditingController();
+  TextEditingController planID = TextEditingController();
   TextEditingController dataPlan = TextEditingController();
   TextEditingController rechargeType = TextEditingController();
   TextEditingController dataPlanTime = TextEditingController();
@@ -33,6 +42,28 @@ class _FormFillState extends State<FormFill>
   @override
   void initState() {
     super.initState();
+  }
+
+  //Game API's
+ void Rechargefirebase()
+  {
+    DocumentReference documentReference =
+    Firestore.instance.document("RechargePlan/" + planID.text);
+    var data = {
+      "PalanId": planID.text,
+      "Talktime": talktime.text,
+      "DataPlan": dataPlan.text,
+      "Recharge Plan": rechargeType.text,
+      "DataPlan Time": dataPlanTime.text,
+      "Messages": messages.text,
+      "Validity": validity.text,
+      "Validity Time": validityTime.text,
+
+    };
+
+    documentReference.setData(data).whenComplete(() {
+      print("Recharge Document Added");
+    }).catchError((e) => print(e));
   }
 
   @override
@@ -53,6 +84,19 @@ class _FormFillState extends State<FormFill>
                   child: TextFormField(
                     keyboardType:
                         TextInputType.text, // Use email input type for emails.
+                    decoration: InputDecoration(
+                      // hintText: 'Subject',
+                      labelText: 'PlanID',
+                    ),
+                    controller: planID,
+                    onSaved: (v) => planID.text = v,
+                  ),
+                ),
+                Container(
+                  height: 100.0,
+                  child: TextFormField(
+                    keyboardType:
+                    TextInputType.text, // Use email input type for emails.
                     decoration: InputDecoration(
                       // hintText: 'Subject',
                       labelText: 'TalkTime ',
@@ -185,6 +229,7 @@ class _FormFillState extends State<FormFill>
               size: 35.0,
             ),
             onPressed: () async {
+              Rechargefirebase();
               // if (imageUpload == true) {
               //   imageUpload = false;
               //   Fluttertoast.showToast(
