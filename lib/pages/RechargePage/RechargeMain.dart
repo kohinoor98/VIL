@@ -12,8 +12,7 @@ const gradient = LinearGradient(
 
 class RechargePage extends StatelessWidget {
   String userid;
-  RechargePage(String us)
-  {
+  RechargePage(String us) {
     this.userid = us;
   }
   // This widget is the root of your application.
@@ -103,7 +102,7 @@ class _TabView extends StatelessWidget {
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  BottomCards("Special Recharge", "INF", "50", "GB per day",
+                  BottomCards( "Special Recharge", "INF", "50", "GB per day",
                       "100", "28", "days"),
                   BottomCards("Special Recharge", "INF", "50", "GB per day",
                       "100", "28", "days"),
@@ -141,11 +140,8 @@ class _TabView extends StatelessWidget {
   Widget _tab(text) {
     return Tab(
       child: Text(text,
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 14,
-              // fontWeight: FontWeight.w100,
-              letterSpacing: 2)),
+          style:
+              TextStyle(color: Colors.black, fontSize: 14, letterSpacing: 2)),
     );
   }
 }

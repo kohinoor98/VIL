@@ -3,6 +3,7 @@ import 'package:VIL/Services/model/UserData.dart';
 import 'package:VIL/pages/Dashboard/CardPage/Views/MyCardsPage.dart';
 import 'package:VIL/pages/Dashboard/RechargeButtonAnimation.dart';
 import 'package:VIL/pages/Dashboard/rechargeForm.dart';
+import 'package:VIL/pages/RechargePage/RechargeCard.dart';
 import 'package:VIL/pages/RechargePage/RechargeMain.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -126,13 +127,14 @@ class _DashboardState extends State<Dashboard> {
               label: Text("LogOut"))
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => FormFill()));
-        },
-        child: Icon(Icons.add),
-      ),
+      //form page
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //         context, MaterialPageRoute(builder: (context) => FormFill()));
+      //   },
+      //   child: Icon(Icons.add),
+      // ),
       // debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Quicksand'),
       body: SingleChildScrollView(
@@ -388,6 +390,9 @@ class _DashboardState extends State<Dashboard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                // viewPlansflag
+                //     ? {
+
                 Container(
                     // width: 200.0,
                     height: 50.0,
@@ -406,8 +411,13 @@ class _DashboardState extends State<Dashboard> {
                           // style: TextStyle(
                           //     backgroundColor: Colors.greenAccent),
                         ))),
-                SizedBox(width: 15.0),
-                ButtonAnimation(Color(0xFFF50201), Colors.red, widget.userid),
+                // SizedBox(width: 15.0),
+                // ButtonAnimation(
+                //     Color(0xFFF50201), Colors.red, widget.userid),
+                //   }
+                // : {
+                //     Text("data"),
+                //   }
               ],
             ),
 
