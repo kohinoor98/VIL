@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:VIL/Bot/bot_file.dart';
 import 'package:VIL/WalletPage/src/pages/overview_page.dart';
 
-
 class Home extends StatefulWidget {
   String userid;
   Home(String u) {
@@ -43,8 +42,8 @@ class _HomeState extends State<Home> {
         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: FancyBottomNavigation(
           // barBackgroundColor: Color(0xFFFF4B2B),
-          // activeIconColor: Color(0xFFFFE459),
-          circleColor: Color(0xFFFFE459),
+          activeIconColor: Colors.white,
+          circleColor: Colors.grey,
           inactiveIconColor: Color(0xFFFFE459),
           tabs: [
             TabData(

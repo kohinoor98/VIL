@@ -24,11 +24,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'VIL',
         theme: ThemeData(
-          primarySwatch: Colors.yellow,
+          primarySwatch: Colors.red,
         ),
         home: Wrapper(),
       ),
-      
     );
   }
 }

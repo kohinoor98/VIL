@@ -312,15 +312,16 @@ class _RegisterState extends State<Register> {
     } else if (value.length < 6) {
       _controller.clear();
       return 'Password\'s length should be greater than 6';
-    } else if (value == _passcontroller.text) {
-      return null;
-    } else {
-      _controller.clear();
-      print(_passcontroller.text);
-      print(value);
+    } 
+    // else if (value == _passcontroller.text) {
+    //   return null;
+    // } else {
+    //   _controller.clear();
+    //   print(_passcontroller.text);
+    //   print(value);
 
-      return 'Passwords do not not match';
-    }
+    //   return 'Passwords do not not match';
+    // }
   }
 
   String validateEmail(String value) {

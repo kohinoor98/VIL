@@ -149,340 +149,348 @@ class _DashboardState extends State<Dashboard> {
     final user = Provider.of<User>(context);
     print(user.uid);
     start();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Vodafone Idea Limited'),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                const Color(0xFFFFE459),
-                const Color(0xFFFFE459),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.grey[200],
+        appBar: AppBar(
+          elevation: 0.0,
+          title: Text(
+            'Vodafone Idea Limited',
+            style: TextStyle(fontSize: 22.0),
+          ),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[
+                  Color(0xFFE00201), Color(0xFFE00201)
 
-                // const Color(0xFF00c3ff),
-                // const Color(0xFFffff1c),
-              ])),
+                  // const Color(0xFF00c3ff),
+                  // const Color(0xFFffff1c),
+                ])),
+          ),
+          actions: <Widget>[
+            FlatButton.icon(
+                onPressed: () async {
+                  await _auth.signout();
+                },
+                icon: Icon(Icons.person),
+                label: Text("LogOut"))
+          ],
         ),
-        actions: <Widget>[
-          FlatButton.icon(
-              onPressed: () async {
-                await _auth.signout();
-              },
-              icon: Icon(Icons.person),
-              label: Text("LogOut"))
-        ],
-      ),
-      //form page
-      // floatingActionButton: Row(
-      //   mainAxisAlignment: MainAxisAlignment.start,
-      //   children: <Widget>[
-      //     SizedBox(width: 30.0),
-      //     FloatingActionButton(
-      //       onPressed: () {
-      //         Navigator.push(
-      //             context, MaterialPageRoute(builder: (context) => FormFill()));
-      //       },
-      //       child: Icon(Icons.add),
-      //     ),
-      //   ],
-      // ),
-      // debugShowCheckedModeBanner: false,
-      // theme: ThemeData(fontFamily: 'Quicksand'),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 400,
-              child: Stack(children: <Widget>[
-                CustomMadeClipper(),
-                Positioned(
-                  top: 25.0,
-                  left: 0.0,
-                  right: 0.0,
-                  child: Container(
-                      child: Column(children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        // Expanded(
-                        //   child: Text(
-                        //     "Idea Limited",
-                        //     style: TextStyle(
-                        //       fontFamily: 'Quicksand',
-                        //       fontSize: 20.0,
-                        //       color: Colors.white,
-                        //       fontWeight: FontWeight.normal,
-                        //     ),
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFFFE459),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
-                            child: Text(
-                              'Balance',
+        //form page
+        // floatingActionButton: Row(
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        //   children: <Widget>[
+        //     SizedBox(width: 30.0),
+        //     FloatingActionButton(
+        //       onPressed: () {
+        //         Navigator.push(
+        //             context, MaterialPageRoute(builder: (context) => FormFill()));
+        //       },
+        //       child: Icon(Icons.add),
+        //     ),
+        //   ],
+        // ),
+        // debugShowCheckedModeBanner: false,
+        // theme: ThemeData(fontFamily: 'Quicksand'),
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Container(
+                height: 400,
+                child: Stack(children: <Widget>[
+                  CustomMadeClipper(),
+                  Positioned(
+                    top: 25.0,
+                    left: 0.0,
+                    right: 0.0,
+                    child: Container(
+                        child: Column(children: <Widget>[
+                      // Row(
+                      //   children: <Widget>[
+                      //     // Expanded(
+                      //     //   child: Text(
+                      //     //     "Idea Limited",
+                      //     //     style: TextStyle(
+                      //     //       fontFamily: 'Quicksand',
+                      //     //       fontSize: 20.0,
+                      //     //       color: Colors.white,
+                      //     //       fontWeight: FontWeight.normal,
+                      //     //     ),
+                      //     //   ),
+                      //     // ),
+                      //   ],
+                      // ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16.0),
+                              child: Text(
+                                'Balance',
+                                style: TextStyle(
+                                  fontFamily: 'Quicksand',
+                                  fontSize: 25.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'INR ${userr.cash}',
                               style: TextStyle(
                                 fontFamily: 'Quicksand',
                                 fontSize: 25.0,
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal,
+                                color: Color(0xFFE00201),
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                          Text(
-                            'INR ${userr.cash}',
-                            style: TextStyle(
-                              fontFamily: 'Quicksand',
-                              fontSize: 25.0,
+                            IconButton(
+                              onPressed: () {
+                                // _auth.updatecategory("Banking", widget.userid,10);
+                                print(AuthServices().user);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyCardsPage()),
+                                );
+                              },
                               color: Colors.black,
-                              fontWeight: FontWeight.bold,
+                              icon: Icon(Icons.add),
                             ),
+                          ],
+                        ),
+                      ),
+                      // SizedBox(height: 15.0),
+                      // Text(
+                      //   'Wallet ID: 321-123-000',
+                      //   style: TextStyle(
+                      //       fontFamily: 'Quicksand',
+                      //       fontWeight: FontWeight.normal,
+                      //       fontSize: 20.0,
+                      //       color: Colors.white),
+                      // ),
+                      SizedBox(height: 35.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          // SizedBox(width: 20.0),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                'Reward Points',
+                                style: TextStyle(
+                                    fontFamily: 'Quicksand',
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                width: 30.0,
+                              ),
+                              Text(
+                                '${userr.reward}',
+                                style: TextStyle(
+                                    fontFamily: 'Quicksand',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
+                                    color: Colors.white),
+                              ),
+                            ],
                           ),
-                          IconButton(
-                            onPressed: () {
-                              // _auth.updatecategory("Banking", widget.userid,10);
-                              print(AuthServices().user);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MyCardsPage()),
-                              );
-                            },
-                            color: Colors.black,
-                            icon: Icon(Icons.add),
+                          SizedBox(
+                            width: 50.0,
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Text(
+                                'Next Recharge',
+                                style: TextStyle(
+                                    fontFamily: 'Quicksand',
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 20.0,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                width: 30.0,
+                              ),
+                              Text(
+                                '12 days',
+                                style: TextStyle(
+                                    fontFamily: 'Quicksand',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
+                                    color: Colors.white),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ),
-                    SizedBox(height: 15.0),
-                    Text(
-                      'Wallet ID: 321-123-000',
-                      style: TextStyle(
-                          fontFamily: 'Quicksand',
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20.0,
-                          color: Colors.white),
-                    ),
-                    SizedBox(height: 35.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        // SizedBox(width: 20.0),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              'Reward Points',
-                              style: TextStyle(
-                                  fontFamily: 'Quicksand',
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white),
-                            ),
-                            SizedBox(
-                              width: 30.0,
-                            ),
-                            Text(
-                              '${userr.reward}',
-                              style: TextStyle(
-                                  fontFamily: 'Quicksand',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 50.0,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Text(
-                              'Next Recharge',
-                              style: TextStyle(
-                                  fontFamily: 'Quicksand',
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 20.0,
-                                  color: Colors.white),
-                            ),
-                            SizedBox(
-                              width: 30.0,
-                            ),
-                            Text(
-                              '12 days',
-                              style: TextStyle(
-                                  fontFamily: 'Quicksand',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 50.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          width: 110.0,
-                          height: 150.0,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    '${userr.data}',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: 'Quicksand',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20.0,
-                                        color: Colors.black),
-                                  ),
-                                  SizedBox(height: 15.0),
-                                  Text(
-                                    'Data Left',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: 'Quicksand',
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 20.0,
-                                        color: Colors.black),
-                                  ),
-                                ],
+                      SizedBox(height: 50.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            width: 110.0,
+                            height: 150.0,
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      '${userr.data}',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: 'Quicksand',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0,
+                                          color: Colors.black),
+                                    ),
+                                    SizedBox(height: 15.0),
+                                    Text(
+                                      'Data Left',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: 'Quicksand',
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 20.0,
+                                          color: Colors.black),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: 110.0,
-                          height: 150.0,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    '${userr.talk}',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: 'Quicksand',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20.0,
-                                        color: Colors.black),
-                                  ),
-                                  SizedBox(height: 15.0),
-                                  Text(
-                                    'Call',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: 'Quicksand',
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 20.0,
-                                        color: Colors.black),
-                                  ),
-                                ],
+                          Container(
+                            width: 110.0,
+                            height: 150.0,
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      '${userr.talk}',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: 'Quicksand',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0,
+                                          color: Colors.black),
+                                    ),
+                                    SizedBox(height: 15.0),
+                                    Text(
+                                      'Call',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: 'Quicksand',
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 20.0,
+                                          color: Colors.black),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: 110.0,
-                          height: 150.0,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    '∞',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: 'Quicksand',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20.0,
-                                        color: Colors.black),
-                                  ),
-                                  SizedBox(height: 15.0),
-                                  Text(
-                                    'Message',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: 'Quicksand',
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 19.0,
-                                        color: Colors.black),
-                                  ),
-                                ],
+                          Container(
+                            width: 110.0,
+                            height: 150.0,
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      '∞',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: 'Quicksand',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0,
+                                          color: Colors.black),
+                                    ),
+                                    SizedBox(height: 15.0),
+                                    Text(
+                                      'Message',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: 'Quicksand',
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 19.0,
+                                          color: Colors.black),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ])),
-                ),
-              ]),
-            ),
-            SizedBox(
-              height: 15.0,
-            ),
+                        ],
+                      ),
+                    ])),
+                  ),
+                ]),
+              ),
+              //recharge button flutter
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    // viewPlansflag
+                    //     ? {
 
-            //recharge button flutter
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // viewPlansflag
-                //     ? {
-
-                Container(
-                    // width: 200.0,
-                    height: 50.0,
-                    child: FlatButton(
-                        color: Colors.pink,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RewardRedemptionPage(userr),
-                              // RechargePage(this.userId)
-                            ),
-                          );
-                        },
-                        child: Text("Redeem Rewards"
-                            // "View Plans",
-                            // style: TextStyle(
-                            //     backgroundColor: Colors.greenAccent),
+                    Container(
+                        // width: 200.0,
+                        height: 50.0,
+                        child: FlatButton(
+                            color: Color(0xFFE00201),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      RewardRedemptionPage(userr),
+                                  // RechargePage(this.userId)
+                                ),
+                              );
+                            },
+                            child: Text(
+                              "Redeem Rewards",
+                              // "View Plans",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
                             ))),
-                // SizedBox(width: 15.0),
-                // ButtonAnimation(
-                //     Color(0xFFF50201), Colors.red, widget.userid),
-                //   }
-                // : {
-                //     Text("data"),
-                //   }
-              ],
-            ),
+                    // SizedBox(width: 15.0),
+                    // ButtonAnimation(
+                    //     Color(0xFFF50201), Colors.red, widget.userid),
+                    //   }
+                    // : {
+                    //     Text("data"),
+                    //   }
+                  ],
+                ),
+              ),
 
-            Padding(
-                padding: EdgeInsets.symmetric(vertical: 15.0),
-                child: Column(children: [
-                  // Text('Auto Playing Carousel'),
-                  autoPlayDemo,
-                ])),
-          ],
+              Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                  child: Column(children: [
+                    // Text('Auto Playing Carousel'),
+                    autoPlayDemo,
+                  ])),
+            ],
+          ),
         ),
       ),
     );
@@ -498,8 +506,9 @@ class CustomMadeClipper extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-          const Color(0xFFF50201),
-          const Color(0xFFF50201),
+          // const Color(0xFFF50201),
+          // const Color(0xFFF50201),
+          Color(0xFFE00201), Color(0xFFE00201)
         ])),
       ),
       clipper: CustomBlueClipper(),
@@ -512,19 +521,19 @@ class CustomBlueClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     var path = Path();
 
-    path.lineTo(0.0, size.height - 40);
+    path.lineTo(0.0, size.height - 70);
 
-    var firstControlPoint = Offset(size.width * 0.02, size.height - 100);
-    var firstEndPoint = Offset(size.width / 2, size.height - 25);
+    var firstControlPoint = Offset(size.width * 0.02, size.height - 140);
+    var firstEndPoint = Offset(size.width / 2, size.height - 70);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-    var secondControlPoint = Offset(size.width * 0.98, size.height);
-    var secondEndPoint = Offset(size.width, size.height - 80.0);
+    var secondControlPoint = Offset(size.width * 0.98, size.height - 80);
+    var secondEndPoint = Offset(size.width, size.height - 120.0);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
 
-    path.lineTo(size.width, size.height - 40);
+    path.lineTo(size.width, size.height - 70);
     path.lineTo(size.width, 0.0);
     path.close();
 
