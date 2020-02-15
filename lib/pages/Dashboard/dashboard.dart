@@ -34,8 +34,12 @@ class _DashboardState extends State<Dashboard> {
   int data = 0 ;
   int cash = 0;
   int talk = 0;
+  //int k = 0;
 
   void start() {
+    //k = _auth.getcategorymin('Banking');
+    //print(k);
+
     DocumentReference documentReference =
         Firestore.instance.document("myData/" + widget.userid);
     documentReference.get().then((datasnapshot) {
@@ -80,9 +84,11 @@ class _DashboardState extends State<Dashboard> {
     items: imgList.map(
       (url) {
         return Container(
+
           margin: EdgeInsets.all(5.0),
           child: ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(5.0)),
+
             child: Image.network(
               url,
               fit: BoxFit.cover,
@@ -197,6 +203,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           IconButton(
                             onPressed: () {
+                            // _auth.updatecategory("Banking", widget.userid,10);
                               print(AuthServices().user);
                               Navigator.push(
                                 context,

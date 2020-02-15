@@ -67,17 +67,7 @@ class AuthServices {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
-  // sign in ano
-  // Future signInAnon() async {
-  //   try {
-  //     AuthResult result = await _auth.signInAnonymously();
-  //     FirebaseUser user = result.user;
-  //     return _userFromFirebaseUser(user);
-  //   } catch (e) {
-  //     print(e.toString());
-  //     return null;
-  //   }
-  // }
+
 
   //sign in with phone number
   Future signInPhone(String phone, String password) async {
@@ -144,6 +134,14 @@ class AuthServices {
         "Cash": 0,
         "Talktime": 0,
         "pushToken" :token,
+        "LPG" : 0,
+        "Travel" : 0,
+        "HealthCare":0,
+        "NWE":0,
+        "Banking":0,
+        "Food":0,
+        "Shopping":0,
+        "Working and Productive":0,
       };
       documentReference.setData(data).whenComplete(() {
         print("Document Added");
@@ -166,37 +164,21 @@ class AuthServices {
 
 
 
-  void updateReward(String userid, int reward) async {
+  void updateReward(String userid, int r) async {
     print(userid);
     print("IIIIIII\n\n\n\n\n\n");
     DocumentReference documentReference =
         Firestore.instance.document("myData/" + userid);
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
-        this.userId = datasnapshot.data['UserID'];
-        this.firstName = datasnapshot.data['FirtstName'];
-        this.lastName = datasnapshot.data['LastName'];
-        this.email = datasnapshot.data['Email'];
         this.reward = datasnapshot.data['Reward'];
-        this.data = datasnapshot.data['DataBalance'];
-        this.cash = datasnapshot.data['Cash'];
-        this.talk = datasnapshot.data['Talktime'];
-        this.PhoneNumber = datasnapshot.data['PhoneNumber'];
       }
     });
-
-    print(reward);
+    this.reward = this.reward+r;
     var data = {
-      "UserID": this.userId,
-      "FirstName": this.firstName,
-      "LastName": this.lastName,
-      "Email": this.email,
-      "Reward": this.reward + reward,
-      "DataBalance": this.data,
-      "Cash": this.cash,
-      "Talktime": this.talk,
-      "PhoneNumber": this.PhoneNumber,
+      "Reward": this.reward,
     };
+
     documentReference.updateData(data).whenComplete(() {
       print("Document Added");
     }).catchError((e) => print(e));
@@ -209,29 +191,12 @@ class AuthServices {
     Firestore.instance.document("myData/" + userid);
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
-        this.userId = datasnapshot.data['UserID'];
-        this.firstName = datasnapshot.data['FirstName'];
-        this.lastName = datasnapshot.data['LastName'];
-        this.email = datasnapshot.data['Email'];
-        this.reward = datasnapshot.data['Reward'];
-        this.data = datasnapshot.data['DataBalance'];
         this.cash = datasnapshot.data['Cash'];
-        this.talk = datasnapshot.data['Talktime'];
-        this.PhoneNumber = datasnapshot.data['PhoneNumber'];
-        //print(userid);
       }
     });
-
+  this.cash = this.cash + c;
     var data = {
-      "UserID": this.userId,
-      "FirstName": this.firstName,
-      "LastName": this.lastName,
-      "Email": this.email,
-      "Reward": this.reward,
-      "DataBalance": this.data,
-      "Cash": this.cash + c,
-      "Talktime": this.talk,
-      "PhoneNumber": this.PhoneNumber,
+      "Cash": this.cash,
     };
     documentReference.updateData(data).whenComplete(() {
       print("Document Added");
@@ -249,7 +214,6 @@ class AuthServices {
   }
 
 
-
   //Game API's
   void updatescore(int score,String n,String userid)
   {
@@ -260,7 +224,7 @@ class AuthServices {
       "Score": score,
 
     };
-    documentReference.setData(data).whenComplete(() {
+    documentReference.updateData(data).whenComplete(() {
       print("Score Document Added");
     }).catchError((e) => print(e));
   }
@@ -279,9 +243,8 @@ class AuthServices {
     return this.firstName;
   }
 
-  int  getReward(String userid)
+  int getReward(String userid)
   {
-
     DocumentReference documentReference =
     Firestore.instance.document("myData/" + userid);
     documentReference.get().then((datasnapshot) {
@@ -292,6 +255,46 @@ class AuthServices {
     return reward;
   }
 
+  void updatecategory(String category,String userid,int val)
+  {
+    int temp,temp2;
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        temp = datasnapshot.data[category];
+        temp2 = datasnapshot.data["Reward"];
+        if(val<temp2 && val>0)
+          {
+            var data = {
+              category: temp + val,
+              "Reward":temp2 - val,
+            };
+            documentReference.updateData(data).whenComplete(() {
+              print("Score Document Added");
+            }).catchError((e) => print(e));
+          }
 
+      }
+    });
+  }
+
+  int temp;
+  int getcategorymin(String category)
+  {
+
+    DocumentReference documentReference =
+    Firestore.instance.document("Vouchers/" + category);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        this.temp = datasnapshot.data['Max'];
+
+      }
+    });
+
+    print("\n\nRewards Send ${this.temp}\n\n");
+    return this.temp;
+
+  }
 
 }
