@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+String rechargeType;
+String talktime;
+String dataPlan;
+String dataPlanTime;
+String messages;
+String validity;
+String validityTime;
+var viewPlansflag = false;
+
 class BottomCards extends StatefulWidget {
-  final String rechargeType;
-  final String talktime;
-  final String dataPlan;
-  final String dataPlanTime;
-  final String messages;
-  final String validity;
-  final String validityTime;
-  BottomCards(this.rechargeType, this.talktime, this.dataPlan,
-      this.dataPlanTime, this.messages, this.validity, this.validityTime);
+  final String _rechargeType;
+  final String _talktime;
+  final String _dataPlan;
+  final String _dataPlanTime;
+  final String _messages;
+  final String _validity;
+  final String _validityTime;
+  BottomCards(this._rechargeType, this._talktime, this._dataPlan,
+      this._dataPlanTime, this._messages, this._validity, this._validityTime);
   @override
   _BottomCardsState createState() => _BottomCardsState();
 }
@@ -24,7 +33,17 @@ class _BottomCardsState extends State<BottomCards> {
       child: Card(
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
-          onTap: () {},
+          onTap: () {
+            rechargeType = widget._rechargeType;
+            talktime = widget._talktime;
+            dataPlan = widget._dataPlan;
+            dataPlanTime = widget._dataPlanTime;
+            messages = widget._messages;
+            validity = widget._validity;
+            validityTime = widget._validityTime;
+            viewPlansflag = true;
+            Navigator.pop(context);
+          },
           child: Container(
             child: Padding(
               padding: EdgeInsets.all(8.0),
@@ -55,7 +74,7 @@ class _BottomCardsState extends State<BottomCards> {
                                     SizedBox(
                                       height: 5.0,
                                     ),
-                                    Text("${widget.talktime} mintues"),
+                                    Text("${widget._talktime} mintues"),
                                   ],
                                 ),
                               ),
@@ -86,7 +105,7 @@ class _BottomCardsState extends State<BottomCards> {
                                       height: 5.0,
                                     ),
                                     Text(
-                                        "${widget.dataPlan} ${widget.dataPlanTime}"),
+                                        "${widget._dataPlan} ${widget._dataPlanTime}"),
                                   ],
                                 ),
                               ),
@@ -116,7 +135,7 @@ class _BottomCardsState extends State<BottomCards> {
                                     SizedBox(
                                       height: 5.0,
                                     ),
-                                    Text("${widget.messages} messages"),
+                                    Text("${widget._messages} messages"),
                                   ],
                                 ),
                               ),
@@ -124,7 +143,9 @@ class _BottomCardsState extends State<BottomCards> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10.0,),
+                      SizedBox(
+                        height: 10.0,
+                      ),
                       Row(
                         children: <Widget>[
                           Row(
@@ -138,7 +159,8 @@ class _BottomCardsState extends State<BottomCards> {
                               SizedBox(
                                 width: 5.0,
                               ),
-                              Text("${widget.validity} ${widget.validityTime}"),
+                              Text(
+                                  "${widget._validity} ${widget._validityTime}"),
                             ],
                           ),
                         ],
@@ -154,8 +176,6 @@ class _BottomCardsState extends State<BottomCards> {
                       ),
                     ],
                   )
-
-
                 ],
               ),
             ),
