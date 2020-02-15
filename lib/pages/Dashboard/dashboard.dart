@@ -13,8 +13,8 @@ import 'package:flutter/material.dart';
 import '../../Services/model/user.dart';
 import 'package:provider/provider.dart';
 
-
 UserData userr = new UserData();
+
 class Dashboard extends StatefulWidget {
   String userid;
   Dashboard(String u) {
@@ -29,15 +29,12 @@ class _DashboardState extends State<Dashboard> {
   final AuthServices _authen = new AuthServices();
   String myText = "";
 
-
-
   void start() {
     DocumentReference documentReference =
         Firestore.instance.document("myData/" + widget.userid);
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
         setState(() {
-
           userr.userId = datasnapshot.data['UserID'];
           userr.firstName = datasnapshot.data['FirstName'];
           userr.lastName = datasnapshot.data['LastName'];
@@ -51,10 +48,10 @@ class _DashboardState extends State<Dashboard> {
           userr.healthvoucher = datasnapshot.data['HealthCare Voucher'];
           userr.showvoucher = datasnapshot.data['Shopping Voucher'];
           userr.travelvoucher = datasnapshot.data['Travel Voucher'];
-          userr.workingvoucher = datasnapshot.data['Working and Productive Voucher'];
+          userr.workingvoucher =
+              datasnapshot.data['Working and Productive Voucher'];
           userr.nwevoucher = datasnapshot.data['NWE Voucher'];
           userr.bankvoucher = datasnapshot.data['Banking Voucher'];
-
         });
       }
     });
@@ -69,12 +66,31 @@ class _DashboardState extends State<Dashboard> {
     // 'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
     // 'https://www.mbaskool.com/2017_images/stories/mar-images/mktgmx-idea.jpg',
 
-    'https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/idea-vodafone-Social-770x433.jpeg?47hbsmaxuvIGkPVZMTfwsBqChEpNqfvW',
-    'https://akm-img-a-in.tosshub.com/indiatoday/images/story/201809/Vodafone_Idea.jpeg?qItV6l5p8yWbPhYNFXJFGW.O8Vafw5oU',
-    'https://3.bp.blogspot.com/-Q_PqBvxHAkk/WEF39daU_OI/AAAAAAAAHOs/nCH48KkPLgMyF0ugy-mIIDUzmOfgQ_NCwCLcB/s320/Vodafone%2BGhana%2Bvoice%2Bpromotions.png',
-    // 'https://companies.naukri.com/idea-jobs/wp-content/uploads/sites/241/2014/02/slide1.jpg',
-    'https://image.slidesharecdn.com/ideavodamergerfinal19jan18-180318153951/95/idea-voda-merger-final-1-638.jpg?cb=1521387655',
-    'https://www.menosfios.com/wp-content/uploads/2017/04/0180_OpenGraph_Homepage.png',
+    // 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/idea-vodafone-Social-770x433.jpeg?47hbsmaxuvIGkPVZMTfwsBqChEpNqfvW',
+    // 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/201809/Vodafone_Idea.jpeg?qItV6l5p8yWbPhYNFXJFGW.O8Vafw5oU',
+    // 'https://3.bp.blogspot.com/-Q_PqBvxHAkk/WEF39daU_OI/AAAAAAAAHOs/nCH48KkPLgMyF0ugy-mIIDUzmOfgQ_NCwCLcB/s320/Vodafone%2BGhana%2Bvoice%2Bpromotions.png',
+    // // 'https://companies.naukri.com/idea-jobs/wp-content/uploads/sites/241/2014/02/slide1.jpg',
+    // 'https://image.slidesharecdn.com/ideavodamergerfinal19jan18-180318153951/95/idea-voda-merger-final-1-638.jpg?cb=1521387655',
+    // 'https://www.menosfios.com/wp-content/uploads/2017/04/0180_OpenGraph_Homepage.png',
+
+    //lifestyle:
+    'https://cdn.shopify.com/s/files/1/0196/5170/files/Jaguar-i-pace-advert_grande.png',
+    //shopping:
+    'https://secureservercdn.net/198.71.233.47/tvu.d1e.myftpupload.com/wp-content/uploads/2018/12/lifestyle-preview-sale-gt-upto-50-off-ad-times-of-india-delhi-16-12-2018.png?time=1579717076',
+    //food:
+    'https://i1.wp.com/cdn.inc42.com/wp-content/uploads/2019/12/box-8-feature.jpg?fit=1360%2C1020&ssl=1&resize=1360%2C1020',
+    //healthcare:
+    'https://s.yimg.com/ny/api/res/1.2/wEnQAojds9vLe8dtrdZmMA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9ODAw/http://media.zenfs.com/en-IN/homerun/yahooindianewsroom.com/19291e2b6d7c0a12fbfbff77a8818654',
+    //travel:
+    'https://i.pinimg.com/originals/dc/2d/4b/dc2d4b0c9c5e4d3051c276c7f8ac7852.jpg',
+    //banking:
+    'https://www.adgully.com/img/800/201807/icici_app_2.jpg',
+    //vodafone:
+    'https://www.telecommirror.com/wp-content/uploads/2018/01/pug-Cheeka.jpg',
+    //news:
+    'https://5.imimg.com/data5/CH/SQ/MY-58746495/newspaper-advertisement-service-500x500.png',
+    //entertainment:
+    'https://d.ibtimes.co.uk/en/full/1427140/amazon-prime-free-trial-adverts-banned.jpg?w=600&e=53e45fe1e6a1bb3d938e425b6e86efc8',
   ];
 
 //Auto playing carousel
@@ -88,6 +104,26 @@ class _DashboardState extends State<Dashboard> {
         return GestureDetector(
           onTap: () {
             print("\n\n\n\n\n$url\n\n\n\n");
+            if (url == imgList[0]) {
+              print('lifestyle');
+            } else if (url == imgList[1]) {
+              print('shopping');
+            } else if (url == imgList[2]) {
+              print('food');
+            } else if (url == imgList[3]) {
+              print('healthcare');
+            } else if (url == imgList[4]) {
+              print('travel');
+            } else if (url == imgList[5]) {
+              print('banking');
+            } else if (url == imgList[6]) {
+              print('vodafone');
+            } else if (url == imgList[7]) {
+              print('news');
+            } else if (url == imgList[8]) {
+              print('entertainment');
+            }
+            print('\n\n\n\n');
           },
           child: Container(
             margin: EdgeInsets.all(5.0),
@@ -139,13 +175,19 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
       //form page
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => FormFill()));
-        },
-        child: Icon(Icons.add),
-      ),
+      // floatingActionButton: Row(
+      //   mainAxisAlignment: MainAxisAlignment.start,
+      //   children: <Widget>[
+      //     SizedBox(width: 30.0),
+      //     FloatingActionButton(
+      //       onPressed: () {
+      //         Navigator.push(
+      //             context, MaterialPageRoute(builder: (context) => FormFill()));
+      //       },
+      //       child: Icon(Icons.add),
+      //     ),
+      //   ],
+      // ),
       // debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Quicksand'),
       body: SingleChildScrollView(
@@ -414,12 +456,9 @@ class _DashboardState extends State<Dashboard> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-
-                                builder: (context) =>
-                                    RewardRedemptionPage(userr),
-                                // RechargePage(this.userId)
-                                ),
-
+                              builder: (context) => RewardRedemptionPage(userr),
+                              // RechargePage(this.userId)
+                            ),
                           );
                         },
                         child: Text("Redeem Rewards"
