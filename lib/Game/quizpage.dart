@@ -1,14 +1,22 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:VIL/Game/resultpage.dart';
+import 'package:VIL/Services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:VIL/WalletPage/src/pages/home_page.dart';
 
+
 String userid;
+String k;
+AuthServices _auth  =  AuthServices();
 class getjson extends StatelessWidget {
+
+
   // accept the langname as a parameter
 
   String langname;
+
 
   getjson(String l,String u)
   {
@@ -64,6 +72,7 @@ class getjson extends StatelessWidget {
 }
 
 class quizpage extends StatefulWidget {
+
   var mydata;
 
   quizpage({Key key, @required this.mydata}) : super(key: key);
@@ -72,6 +81,8 @@ class quizpage extends StatefulWidget {
 }
 
 class _quizpageState extends State<quizpage> {
+
+
   var mydata;
   _quizpageState(this.mydata);
 
@@ -157,8 +168,9 @@ class _quizpageState extends State<quizpage> {
         i = random_array[j];
         j++;
       } else {
+        _auth.updateReward(userid, marks);
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => LeaderBoard(userid),
+          builder: (context) => resultpage(marks: marks),
         ));
       }
       btncolor["a"] = Colors.indigoAccent;
@@ -225,6 +237,7 @@ class _quizpageState extends State<quizpage> {
 
   @override
   Widget build(BuildContext context) {
+    _auth.start(userid);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return WillPopScope(

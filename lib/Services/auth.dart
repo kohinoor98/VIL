@@ -1,4 +1,5 @@
 import 'package:VIL/Services/model/user.dart';
+import 'package:VIL/WalletPage/src/models/user_model.dart';
 import 'package:VIL/pages/Authenticate/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,6 +7,22 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthServices {
+  List<UserModel> userCards  ;
+  final databaseReference = Firestore.instance;
+
+  void getData() async
+  {
+    userCards = [];
+    databaseReference
+        .collection("LeaderBoard")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) async {userCards.add(UserModel(f.data['Name'],"assets/WalletImages/users/anna.jpeg",f.data['Score']));
+      print(f.data);} );
+      return userCards;
+    });
+
+  }
 
   String userId;
   String firstName;
@@ -78,6 +95,7 @@ class AuthServices {
   void start(String userid) {
     DocumentReference documentReference =
     Firestore.instance.document("myData/" + userid);
+
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
         {
@@ -131,6 +149,15 @@ class AuthServices {
       documentReference.setData(data).whenComplete(() {
         print("Document Added");
       }).catchError((e) => print(e));
+      var tokendata = {
+        "pushToken" :token,
+      };
+      DocumentReference doc =
+      Firestore.instance.document("Token/" + userid);
+      doc.setData(tokendata).whenComplete(() {
+        print("Document Added");
+      }).catchError((e) => print(e));
+
     }).catchError((err) {
       Fluttertoast.showToast(msg: err.message.toString());
     });
@@ -142,6 +169,7 @@ class AuthServices {
 
   void updateReward(String userid, int reward) async {
     print(userid);
+    print("IIIIIII\n\n\n\n\n\n");
     DocumentReference documentReference =
         Firestore.instance.document("myData/" + userid);
     documentReference.get().then((datasnapshot) {
@@ -233,7 +261,7 @@ class AuthServices {
       "Score": score,
 
     };
-    documentReference.updateData(data).whenComplete(() {
+    documentReference.setData(data).whenComplete(() {
       print("Score Document Added");
     }).catchError((e) => print(e));
   }
@@ -251,6 +279,19 @@ class AuthServices {
       }
     });
     return this.firstName;
+  }
+
+  int  getReward(String userid)
+  {
+
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        reward = datasnapshot.data['Reward'];
+      }
+    });
+    return reward;
   }
 
 

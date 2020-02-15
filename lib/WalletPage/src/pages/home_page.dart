@@ -1,5 +1,8 @@
 
+
 import 'package:VIL/Services/auth.dart';
+import 'package:VIL/WalletPage/src/models/user_model.dart';
+import 'package:VIL/pages/Authenticate/autthentication.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
 import '../pages/overview_page.dart';
@@ -7,15 +10,21 @@ import '../utils/screen_size.dart';
 import '../widgets/credit_card.dart';
 import '../widgets/payment_card.dart';
 import '../widgets/user_card.dart';
+import 'package:VIL/Game/quizpage.dart';
 
 
-String userid;
+List<UserModel> userCards;
+int  reward = 0;
+final AuthServices _aa = new AuthServices();
 class LeaderBoard extends StatefulWidget {
 
-  LeaderBoard(String s)
+  LeaderBoard(String s,AuthServices u)
   {
     userid = s;
-
+    userCards = u.userCards;
+    print(userCards.length);
+    print("\n\n\n\n\n\n\n\n");
+    reward = u.getReward(userid);
   }
 
   // const LeaderBoard({Key key}) : super(key: key);
@@ -25,7 +34,6 @@ class LeaderBoard extends StatefulWidget {
 
 class _LeaderBoard extends State<LeaderBoard> {
 
-  final AuthServices _auth = new AuthServices();
 
   @override
   Widget build(BuildContext context) {

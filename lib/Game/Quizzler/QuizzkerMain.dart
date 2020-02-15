@@ -124,8 +124,7 @@ class _QuizPageState extends State<QuizPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                  LeaderBoard("")
+
                                       // QuizRewardPage(widget.userid)
                                       ),
                             );
@@ -170,8 +169,7 @@ class _QuizPageState extends State<QuizPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      LeaderBoard("")
+
                                   // QuizRewardPage(widget.userid)
                                   ),
                             );

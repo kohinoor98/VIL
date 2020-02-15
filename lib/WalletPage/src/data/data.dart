@@ -7,44 +7,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 final databaseReference = Firestore.instance;
-List<UserModel> userCards = [];
-int  reward = 0;
-void getData() async
-{
-
-  databaseReference
-      .collection("LeaderBoard")
-      .getDocuments()
-      .then((QuerySnapshot snapshot) {
-    snapshot.documents.forEach((f) {userCards.add(UserModel(f.data['Name'],"assets/WalletImages/users/anna.jpeg",f.data['Score']));} );
-  });
-}
-
-
-
-  void getReward()
-  async
-  {
-    DocumentReference documentReference =
-    Firestore.instance.document("myData/" + userid);
-    documentReference.get().then((datasnapshot) {
-      if (datasnapshot.exists) {
-        reward = datasnapshot.data['Reward'];
-        //print(userid);
-        print(reward);
-        print("\n\n\nhhhhheeeee\n\n\n");
-      }
-    });
-  }
-
-
-
-
-
 
 List<CreditCardModel> getCreditCards() {
-  getReward();
-  getData();
+
   List<CreditCardModel> creditCards = [];
   creditCards.add(CreditCardModel(
     "${reward}",
@@ -55,7 +20,8 @@ List<CreditCardModel> getCreditCards() {
 }
 
 List<UserModel> getUsersCard() {
-  getData();
+  //userCards = [UserModel("Anirudh","assets/WalletImages/users/anna.jpeg",55)];
+
   return userCards;
 }
 
