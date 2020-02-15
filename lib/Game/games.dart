@@ -1,5 +1,6 @@
 import 'package:VIL/Game/Ghome.dart';
 import 'package:VIL/Game/Quizzler/QuizzkerMain.dart';
+import 'package:VIL/Game/rewardredemption.dart';
 import 'package:VIL/Services/auth.dart';
 import 'package:VIL/WalletPage/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,7 @@ AuthServices _auth = new AuthServices();
 
 class Games extends StatefulWidget {
   String userid;
-  Games(String us)
-  {
+  Games(String us) {
     this.userid = us;
   }
   @override
@@ -17,7 +17,6 @@ class Games extends StatefulWidget {
 }
 
 class _GamesState extends State<Games> {
-
   @override
   Widget build(BuildContext context) {
     _auth.start(widget.userid);
@@ -46,7 +45,6 @@ class _GamesState extends State<Games> {
             color: Colors.redAccent,
             icon: Icons.question_answer,
             onClick: () {
-
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => Ghomepage(widget.userid),
@@ -75,7 +73,9 @@ class _GamesState extends State<Games> {
               _auth.start(widget.userid);
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => LeaderBoard(widget.userid,_auth), // add game page here
+                  builder: (context) =>
+                      // RewardRedemptionPage(""),
+                      LeaderBoard(widget.userid, _auth), // add game page here
                 ),
               );
             },

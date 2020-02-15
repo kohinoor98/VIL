@@ -4,25 +4,19 @@ import 'package:VIL/Game/resultpage.dart';
 import 'package:VIL/Services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:VIL/WalletPage/src/pages/home_page.dart';
-
 
 String userid;
 String k;
-AuthServices _auth  =  AuthServices();
+AuthServices _auth = AuthServices();
+
 class getjson extends StatelessWidget {
-
-
   // accept the langname as a parameter
 
   String langname;
 
-
-  getjson(String l,String u)
-  {
-        userid = u;
-        this.langname = l;
-
+  getjson(String l, String u) {
+    userid = u;
+    this.langname = l;
   }
 
   String assettoload;
@@ -31,7 +25,9 @@ class getjson extends StatelessWidget {
   // sets the asset to a particular JSON file
   // and opens the JSON
   setasset() {
-    if (langname == "Python") {
+    if (langname == 'quiz') {
+      assettoload = "assets/quiz.json";
+    } else if (langname == "Python") {
       assettoload = "assets/python.json";
     } else if (langname == "Java") {
       assettoload = "assets/java.json";
@@ -72,7 +68,6 @@ class getjson extends StatelessWidget {
 }
 
 class quizpage extends StatefulWidget {
-
   var mydata;
 
   quizpage({Key key, @required this.mydata}) : super(key: key);
@@ -81,8 +76,6 @@ class quizpage extends StatefulWidget {
 }
 
 class _quizpageState extends State<quizpage> {
-
-
   var mydata;
   _quizpageState(this.mydata);
 

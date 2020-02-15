@@ -1,3 +1,4 @@
+import 'package:VIL/Game/rewardredemption.dart';
 import 'package:VIL/Services/auth.dart';
 import 'package:VIL/Services/model/UserData.dart';
 import 'package:VIL/pages/Dashboard/CardPage/Views/MyCardsPage.dart';
@@ -31,7 +32,7 @@ class _DashboardState extends State<Dashboard> {
   String lastName = " ";
   String email = " ";
   int Reward = 0;
-  int data = 0 ;
+  int data = 0;
   int cash = 0;
   int talk = 0;
 
@@ -187,7 +188,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           Text(
-                            'INR ${cash}',
+                            'INR $cash',
                             style: TextStyle(
                               fontFamily: 'Quicksand',
                               fontSize: 25.0,
@@ -239,7 +240,7 @@ class _DashboardState extends State<Dashboard> {
                               width: 30.0,
                             ),
                             Text(
-                              '${Reward}',
+                              '$Reward',
                               style: TextStyle(
                                   fontFamily: 'Quicksand',
                                   fontWeight: FontWeight.bold,
@@ -403,14 +404,16 @@ class _DashboardState extends State<Dashboard> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    RechargePage(this.userId)),
+                                    RewardRedemptionPage(this.userId, Reward)
+                                // RechargePage(this.userId)
+                                ),
                           );
                         },
-                        child: Text(
-                          "View Plans",
-                          // style: TextStyle(
-                          //     backgroundColor: Colors.greenAccent),
-                        ))),
+                        child: Text("Redeem Rewards"
+                            // "View Plans",
+                            // style: TextStyle(
+                            //     backgroundColor: Colors.greenAccent),
+                            ))),
                 // SizedBox(width: 15.0),
                 // ButtonAnimation(
                 //     Color(0xFFF50201), Colors.red, widget.userid),
