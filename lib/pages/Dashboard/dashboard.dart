@@ -2,6 +2,7 @@ import 'package:VIL/Services/auth.dart';
 import 'package:VIL/Services/model/UserData.dart';
 import 'package:VIL/pages/Dashboard/CardPage/Views/MyCardsPage.dart';
 import 'package:VIL/pages/Dashboard/RechargeButtonAnimation.dart';
+import 'package:VIL/pages/Dashboard/rechargeForm.dart';
 import 'package:VIL/pages/RechargePage/RechargeMain.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -124,6 +125,13 @@ class _DashboardState extends State<Dashboard> {
               icon: Icon(Icons.person),
               label: Text("LogOut"))
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => FormFill()));
+        },
+        child: Icon(Icons.add),
       ),
       // debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Quicksand'),
