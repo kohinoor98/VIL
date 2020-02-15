@@ -162,14 +162,14 @@ class AuthServices {
         "Cash": 0,
         "Talktime": 0,
         "pushToken" :token,
-        "LPG Spyder" : 0,
-        "Travel Spyder" : 0,
-        "HealthCare Spyder":0,
-        "NWE Spyder":0,
-        "Banking Spyder":0,
-        "Food Spyder":0,
-        "Shopping Spyder":0,
-        "Working and Productive Spyder":0,
+        "LPG Spyder" : 1.25,
+        "Travel Spyder" : 1.25,
+        "HealthCare Spyder":1.25,
+        "NWE Spyder":1.25,
+        "Banking Spyder":1.25,
+        "Food Spyder":1.25,
+        "Shopping Spyder":1.25,
+        "Working and Productive Spyder":1.25,
         "LPG Voucher" : 0,
         "Travel Voucher" : 0,
         "HealthCare Voucher":0,
@@ -347,7 +347,6 @@ class AuthServices {
 
   void updateSpyder(String userid,String category,var weight)
   {
-
     DocumentReference documentReference =
     Firestore.instance.document("myData/" + userid);
     documentReference.get().then((datasnapshot) {
@@ -356,24 +355,40 @@ class AuthServices {
         if(t>0)
           {
 
-            Map<String,double> data;
-            for(var name in syderlist)
+            Map<String,double> d = {'Banking Spyder':0,'HealthCare Spyder':0,'Food Spyder':0,'LPG Spyder':0,'NWE Spyder':0,'Shopping Spyder':0,'Travel Spyder':0,'Working and Productive Spyder':0};
+            for(String name in syderlist)
             {
+              print(name);
+              print("\n\n\n\ngggg\n\n\n\n");
               if(name == category)
               {
 
                 double temp2 = datasnapshot.data[name]+weight;
-                data[name]=temp2;
+                d[name]=temp2;
+                //d.putIfAbsent(name, () => temp2);
               }
               else
               {
                 double temp2 = datasnapshot.data[name];
+                print(temp2);
+
                 temp2 = temp2 - ((temp2/t)*weight);
-                data[name] = temp2;
+                //d.putIfAbsent(name, () => temp2);
+                d[name] = temp2;
               }
             }
-
-            documentReference.updateData(data).whenComplete(() {
+            var ff = {
+              "LPG Spyder" : d["LPG Spyder"],
+              "Travel Spyder" : d["Travel Spyder"],
+              "HealthCare Spyder":d[ "HealthCare Spyder"],
+              "NWE Spyder":d["NWE Spyder"],
+              "Banking Spyder":d["Banking Spyder"],
+              "Food Spyder":d["Food Spyder"],
+              "Shopping Spyder":d[ "Shopping Spyder"],
+              "Working and Productive Spyder":d[ "Working and Productive Spyder"],
+            };
+            print(d[ "Working and Productive Spyder"]);
+            documentReference.updateData(ff).whenComplete(() {
               print("Score Document Added");
             }).catchError((e) => print(e));
 

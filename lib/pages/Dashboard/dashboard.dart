@@ -251,6 +251,8 @@ class _DashboardState extends State<Dashboard> {
                           IconButton(
                             onPressed: () {
                               // _auth.updatecategory("Banking", widget.userid,10);
+                              //_auth.updateSpyder(widget.userid,"Banking Spyder" , 0.4);
+
                               print(AuthServices().user);
                               Navigator.push(
                                 context,
