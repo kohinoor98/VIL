@@ -130,7 +130,7 @@ class _DashboardState extends State<Dashboard> {
               // _auth.updateSpyder(ss, "LPG Spyder", 0.4);
             } else if (url == imgList[7]) {
               print('news');
-              _auth.updateSpyder(ss, "Working and Productive Spyder", 0.4);
+              _auth.updateSpyder(ss, "NWE Spyder", 0.4);
             } else if (url == imgList[8]) {
               print('entertainment');
               _auth.updateSpyder(ss, "NWE Spyder", 0.4);
