@@ -388,7 +388,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                 {
                                   setState(()
                                   {
-                                    if(userr.reward>10)
+                                    if(userr.reward>=10)
                                     {
                                       userr.bankvoucher = userr.bankvoucher + 10;
                                       _auth.updatecategoryVoucher("Banking Voucher",userr.userId, 10);

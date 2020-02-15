@@ -300,7 +300,7 @@ class AuthServices {
       if (datasnapshot.exists) {
         temp = datasnapshot.data[category];
         temp2 = datasnapshot.data["Reward"];
-        if(val<temp2 && val>0)
+        if(val<=temp2 && val>=0)
           {
             var data = {
               category: temp + val,
@@ -365,6 +365,8 @@ class AuthServices {
 
                 double temp2 = datasnapshot.data[name]+weight;
                 d[name]=temp2;
+                if(temp2>10)
+                  return;
                 //d.putIfAbsent(name, () => temp2);
               }
               else
@@ -374,6 +376,8 @@ class AuthServices {
 
                 temp2 = temp2 - ((temp2/t)*weight);
                 //d.putIfAbsent(name, () => temp2);
+                if(temp2<0)
+                    return;
                 d[name] = temp2;
               }
             }
