@@ -202,13 +202,14 @@ class _GamesState extends State<Games> {
                     border: new Border(
                         right:
                             new BorderSide(width: 1.0, color: Colors.black))),
-                child: Icon(
-                  Icons.local_hospital,
-                  size: 50,
+                child: Image.asset(
+                  'assets/fruitNinja.png',
+                  width: 65.0,
+                  height: 65.0,
                 ),
               ),
               title: Text(
-                "Food",
+                "Fruit Ninja",
                 style: TextStyle(
                     fontSize: 25.0,
                     fontFamily: 'Noto'), //fontWeight: FontWeight.w600,
@@ -261,7 +262,7 @@ class _GamesState extends State<Games> {
                 ),
               ),
               title: Text(
-                "Health Care",
+                "Block Builder",
                 style: TextStyle(
                     fontSize: 25.0,
                     fontFamily: 'Noto'), //fontWeight: FontWeight.w600,
@@ -307,13 +308,14 @@ class _GamesState extends State<Games> {
                     border: new Border(
                         right:
                             new BorderSide(width: 1.0, color: Colors.black))),
-                child: Icon(
-                  Icons.local_hospital,
-                  size: 50,
+                child: Image.asset(
+                  'assets/shoppingGame.png',
+                  width: 65.0,
+                  height: 65.0,
                 ),
               ),
               title: Text(
-                "Shopping",
+                "Stroller",
                 style: TextStyle(
                     fontSize: 25.0,
                     fontFamily: 'Noto'), //fontWeight: FontWeight.w600,
@@ -359,13 +361,14 @@ class _GamesState extends State<Games> {
                     border: new Border(
                         right:
                             new BorderSide(width: 1.0, color: Colors.black))),
-                child: Icon(
-                  Icons.local_hospital,
-                  size: 50,
+                child: Image.asset(
+                  'assets/findthehidden.png',
+                  width: 65.0,
+                  height: 65.0,
                 ),
               ),
               title: Text(
-                "Travelling",
+                "Find the Hidden",
                 style: TextStyle(
                     fontSize: 25.0,
                     fontFamily: 'Noto'), //fontWeight: FontWeight.w600,
@@ -411,13 +414,14 @@ class _GamesState extends State<Games> {
                     border: new Border(
                         right:
                             new BorderSide(width: 1.0, color: Colors.black))),
-                child: Icon(
-                  Icons.local_hospital,
-                  size: 50,
+                child: Image.asset(
+                  'assets/pow.png',
+                  width: 65.0,
+                  height: 65.0,
                 ),
               ),
               title: Text(
-                "News and Entertainment Gaming",
+                "Pow", //News and Entertainment Gaming
                 style: TextStyle(
                     fontSize: 25.0,
                     fontFamily: 'Noto'), //fontWeight: FontWeight.w600,
@@ -463,13 +467,14 @@ class _GamesState extends State<Games> {
                     border: new Border(
                         right:
                             new BorderSide(width: 1.0, color: Colors.black))),
-                child: Icon(
-                  Icons.local_hospital,
-                  size: 50,
+                child:  Image.asset(
+                  'assets/bankingJunior.png',
+                  width: 65.0,
+                  height: 65.0,
                 ),
               ),
               title: Text(
-                "Banking and Finance",
+                "Investment Banker Jr.",
                 style: TextStyle(
                     fontSize: 25.0,
                     fontFamily: 'Noto'), //fontWeight: FontWeight.w600,

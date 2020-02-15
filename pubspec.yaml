@@ -111,7 +111,11 @@ flutter:
     - assets/quiz.jpg
     - assets/cricket.jpeg
     - assets/hospital.jpeg
-
+    - assets/shoppingGame.png
+    - assets/fruitNinja.png
+    - assets/findthehidden.png
+    - assets/pow.png
+    - assets/bankingJunior.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
