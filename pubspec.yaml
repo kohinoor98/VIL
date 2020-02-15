@@ -37,7 +37,6 @@ dependencies:
   shared_preferences: ^0.5.4+3
   flame: ^0.16.1
   font_awesome_flutter:
-  flip_card:
 
 
 

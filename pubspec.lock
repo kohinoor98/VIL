@@ -190,15 +190,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.9"
-<<<<<<< HEAD
-  flip_card:
-    dependency: "direct main"
-    description:
-      name: flip_card
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.4"
-=======
   flame:
     dependency: "direct main"
     description:
@@ -220,7 +211,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.3"
->>>>>>> dffad65606fde3cc6c4d53cc55b83556a086a1a5
   flutter:
     dependency: "direct main"
     description: flutter

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:VIL/Services/model/user.dart';
-import 'package:flip_card/flip_card.dart';
 
 //AuthServices _auth;
 final AuthServices _auth = new AuthServices();
