@@ -90,7 +90,7 @@ class _resultpageState extends State<resultpage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                OutlineButton(
+               /* OutlineButton(
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => Ghomepage(""),
@@ -131,7 +131,7 @@ class _resultpageState extends State<resultpage> {
                   ),
                   borderSide: BorderSide(width: 3.0, color: Colors.indigo),
                   splashColor: Colors.indigoAccent,
-                )
+                )*/
               ],
             ),
           )

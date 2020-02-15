@@ -14,11 +14,14 @@ import '../../Services/model/user.dart';
 import 'package:provider/provider.dart';
 
 UserData userr = new UserData();
+AuthServices _auth = AuthServices();
+String ss;
 
 class Dashboard extends StatefulWidget {
   String userid;
   Dashboard(String u) {
     this.userid = u;
+    ss = u;
   }
   @override
   _DashboardState createState() => _DashboardState();
@@ -105,23 +108,31 @@ class _DashboardState extends State<Dashboard> {
           onTap: () {
             print("\n\n\n\n\n$url\n\n\n\n");
             if (url == imgList[0]) {
-              print('lifestyle');
+              _auth.updateSpyder(ss, "LPG Spyder", 0.4);
             } else if (url == imgList[1]) {
               print('shopping');
+              _auth.updateSpyder(ss, "Shopping Spyder", 0.4);
             } else if (url == imgList[2]) {
               print('food');
+              _auth.updateSpyder(ss, "Food Spyder", 0.4);
             } else if (url == imgList[3]) {
               print('healthcare');
+              _auth.updateSpyder(ss, "HealthCare Spyder", 0.4);
             } else if (url == imgList[4]) {
               print('travel');
+              _auth.updateSpyder(ss, "Travel Spyder", 0.4);
             } else if (url == imgList[5]) {
               print('banking');
+              _auth.updateSpyder(ss, "Banking Spyder", 0.4);
             } else if (url == imgList[6]) {
               print('vodafone');
+              // _auth.updateSpyder(ss, "LPG Spyder", 0.4);
             } else if (url == imgList[7]) {
               print('news');
+              _auth.updateSpyder(ss, "Working and Productive Spyder", 0.4);
             } else if (url == imgList[8]) {
               print('entertainment');
+              _auth.updateSpyder(ss, "NWE Spyder", 0.4);
             }
             print('\n\n\n\n');
           },
@@ -142,7 +153,6 @@ class _DashboardState extends State<Dashboard> {
   );
 
   void init() {}
-  final AuthServices _auth = AuthServices();
 
   @override
   Widget build(BuildContext context) {
@@ -309,16 +319,17 @@ class _DashboardState extends State<Dashboard> {
                             ],
                           ),
                           SizedBox(
-                            width: 50.0,
+                            width: 30.0,
                           ),
                           Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
                                 'Next Recharge',
                                 style: TextStyle(
                                     fontFamily: 'Quicksand',
-                                    fontWeight: FontWeight.normal,
                                     fontSize: 20.0,
+                                    fontWeight: FontWeight.normal,
                                     color: Colors.white),
                               ),
                               SizedBox(
@@ -472,13 +483,33 @@ class _DashboardState extends State<Dashboard> {
                                 color: Colors.white,
                               ),
                             ))),
-                    // SizedBox(width: 15.0),
+                    SizedBox(width: 30.0),
                     // ButtonAnimation(
                     //     Color(0xFFF50201), Colors.red, widget.userid),
                     //   }
                     // : {
                     //     Text("data"),
                     //   }
+                    Container(
+                        // width: 200.0,
+                        height: 50.0,
+                        child: FlatButton(
+                            color: Color(0xFFE00201),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        // RewardRedemptionPage(userr),
+                                        RechargePage(userr.userId)),
+                              );
+                            },
+                            child: Text(
+                              "View Plans",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ))),
                   ],
                 ),
               ),

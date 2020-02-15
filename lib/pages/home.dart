@@ -42,13 +42,15 @@ class _HomeState extends State<Home> {
         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: FancyBottomNavigation(
           // barBackgroundColor: Color(0xFFFF4B2B),
-          activeIconColor: Colors.white,
-          circleColor: Colors.grey,
-          inactiveIconColor: Color(0xFFFFE459),
+          barBackgroundColor: Colors.grey[200],
+          activeIconColor: Color(0xFFE00201),
+          circleColor: Colors.white,
+          inactiveIconColor: Color(0xFFE00201),
           tabs: [
             TabData(
                 iconData: Icons.home,
                 title: "Home",
+                // textColor: Color(0xFFE00201),
                 onclick: () {
                   final FancyBottomNavigationState fState =
                       bottomNavigationKey.currentState;

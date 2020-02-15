@@ -100,6 +100,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                       {
                                         userr.LPRvoucher = userr.LPRvoucher + 10;
                                         _auth.updatecategoryVoucher("LPG Voucher",userr.userId, 10);
+                                        _auth.updateSpyder(userr.userId,"LPG Spyder" , 0.5);
                                         userr.reward = userr.reward - 10;
                                       }
 
@@ -141,6 +142,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                     {
                                       userr.foodvoucher = userr.foodvoucher + 10;
                                       _auth.updatecategoryVoucher("Food Voucher",userr.userId, 10);
+                                      _auth.updateSpyder(userr.userId,"Food Spyder" , 0.5);
                                       userr.reward = userr.reward - 10;
                                     }
 
@@ -181,6 +183,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                         {
                                           userr.healthvoucher = userr.healthvoucher + 10;
                                           _auth.updatecategoryVoucher("HealthCare Voucher",userr.userId, 10);
+                                          _auth.updateSpyder(userr.userId,"HealthCare Spyder" , 0.5);
                                           userr.reward = userr.reward - 10;
                                         }
 
@@ -225,6 +228,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                     {
                                       userr.showvoucher = userr.showvoucher + 10;
                                       _auth.updatecategoryVoucher("Shopping Voucher",userr.userId, 10);
+                                      _auth.updateSpyder(userr.userId,"Shopping Spyder" , 0.5);
                                       userr.reward = userr.reward - 10;
                                     }
 
@@ -265,6 +269,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                     {
                                       userr.travelvoucher = userr.travelvoucher + 10;
                                       _auth.updatecategoryVoucher("Travel Voucher",userr.userId, 10);
+                                      _auth.updateSpyder(userr.userId,"Travel Spyder" , 0.5);
                                       userr.reward = userr.reward - 10;
                                     }
 
@@ -304,6 +309,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                     {
                                       userr.workingvoucher = userr.workingvoucher + 10;
                                       _auth.updatecategoryVoucher("Working and Productive Voucher",userr.userId, 10);
+                                      _auth.updateSpyder(userr.userId,"Working and Productive Spyder" , 0.5);
                                       userr.reward = userr.reward - 10;
                                     }
 
@@ -346,6 +352,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                     {
                                       userr.nwevoucher = userr.nwevoucher + 10;
                                       _auth.updatecategoryVoucher("NWE Voucher",userr.userId, 10);
+                                      _auth.updateSpyder(userr.userId,"NWE Spyder" , 0.5);
                                       userr.reward = userr.reward - 10;
                                     }
 
@@ -385,6 +392,7 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                     {
                                       userr.bankvoucher = userr.bankvoucher + 10;
                                       _auth.updatecategoryVoucher("Banking Voucher",userr.userId, 10);
+                                      _auth.updateSpyder(userr.userId,"Banking Spyder" , 0.5);
                                       userr.reward = userr.reward - 10;
                                     }
 
