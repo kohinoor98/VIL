@@ -73,7 +73,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                   children: <Widget>[
                     Text(
                       "Total Reward Points: ${userr.reward}",
-                      style: TextStyle(fontSize: 25.0),
+                      style: TextStyle(
+                          fontSize: 27.0, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

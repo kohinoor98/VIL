@@ -109,20 +109,15 @@ class _GhomepageState extends State<Ghomepage> {
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Idea Quiz",
-            style: TextStyle(
-              fontFamily: "Quando",
-            ),
-          ),
+          title: Text('Vodafone Idea Quiz'),
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: <Color>[
-                  const Color(0xFFFFFF45),
-                  const Color(0xFFFF5858),
+                  const Color(0xFFE00201),
+                  const Color(0xFFE00201),
 
                   // const Color(0xFF00c3ff),
                   // const Color(0xFFffff1c),

@@ -108,6 +108,9 @@ flutter:
     - assets/working.png
     - assets/gaming.png
     - assets/banking.png
+    - assets/quiz.jpg
+    - assets/cricket.jpeg
+    - assets/hospital.jpeg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

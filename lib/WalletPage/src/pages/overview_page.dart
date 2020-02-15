@@ -9,7 +9,6 @@ import '../widgets/wave_progress.dart';
 import 'package:VIL/Services/model/UserData.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 var data = [
   new DataPerItem('Home', 35, Colors.greenAccent),
   new DataPerItem('Food & Drink', 25, Colors.yellow),
@@ -39,7 +38,6 @@ double WP = 0.0;
 double T = 0.0;
 double S = 0.0;
 
-
 class OverviewPage extends StatefulWidget {
   String userid;
   OverviewPage(String u) {
@@ -51,12 +49,11 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-
   var data_used_percent = 68.0;
 
   void start() {
     DocumentReference documentReference =
-    Firestore.instance.document("myData/" + widget.userid);
+        Firestore.instance.document("myData/" + widget.userid);
     documentReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
         setState(() {
@@ -83,24 +80,27 @@ class _OverviewPageState extends State<OverviewPage> {
 
   @override
   Widget build(BuildContext context) {
-    _auth.start(widget.userid);
+    // _auth.start(widget.userid);
     start();
     final _media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Spyder Customer Analysis'),
+        elevation: 0.0,
+        title: Text(
+          'Spyder Customer Analysis',
+          style: TextStyle(fontSize: 22.0),
+        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                    const Color(0xFFFFE459),
-                    const Color(0xFFFFE459),
+                Color(0xFFE00201), Color(0xFFE00201)
 
-                    // const Color(0xFF00c3ff),
-                    // const Color(0xFFffff1c),
-                  ])),
+                // const Color(0xFF00c3ff),
+                // const Color(0xFFffff1c),
+              ])),
         ),
       ),
       body: ListView(
@@ -110,22 +110,14 @@ class _OverviewPageState extends State<OverviewPage> {
           top: 0,
         ),
         children: <Widget>[
-
-        /*
-          Row(
-            children: <Widget>[
-              colorCard("Cash ${_auth.cash}", 35.170, 1, context, Color(0xFFFF4B28)),
-              colorCard("Rewards Earned", 4320, 1, context, Colors.amber),
-            ],
-          ),
-          SizedBox(
-            height: 30,
-          ),
+          // SizedBox(
+          //   height: 30,
+          // ),
           // RichText(
           //   text: TextSpan(
           //     children: [
           //       TextSpan(
-          //         text: "Spendings",
+          //         text: "Spyder Donut",
           //         style: TextStyle(
           //           color: Colors.black,
           //           fontSize: 24,
@@ -133,15 +125,15 @@ class _OverviewPageState extends State<OverviewPage> {
           //           fontFamily: "Varela",
           //         ),
           //       ),
-          //       TextSpan(
-          //         text: "    July 2018",
-          //         style: TextStyle(
-          //           color: Colors.grey.shade400,
-          //           fontWeight: FontWeight.w700,
-          //           fontSize: 16,
-          //           fontFamily: "Varela",
-          //         ),
-          //       ),
+          //       // TextSpan(
+          //       //   text: "    July 2018",
+          //       //   style: TextStyle(
+          //       //     color: Colors.grey.shade400,
+          //       //     fontWeight: FontWeight.w700,
+          //       //     fontSize: 16,
+          //       //     fontFamily: "Varela",
+          //       //   ),
+          //       // ),
           //     ],
           //   ),
           // ),
@@ -158,7 +150,7 @@ class _OverviewPageState extends State<OverviewPage> {
           //     boxShadow: [
           //       BoxShadow(
           //         color: Colors.grey.shade100,
-          //         blurRadius: 6,
+          //         //blurRadius: 6,
           //         spreadRadius: 10,
           //       )
           //     ],
@@ -181,9 +173,9 @@ class _OverviewPageState extends State<OverviewPage> {
           //           crossAxisAlignment: CrossAxisAlignment.start,
           //           children: <Widget>[
           //             SizedBox(
-          //               height: 15,
+          //               height: 5,
           //             ),
-          //             donutCard(Colors.indigo, "Availiable"),
+          //             donutCard(Colors.indigo, "Availiabl"),
           //             donutCard(Colors.yellow, "Cash Availaible"),
           //             donutCard(Colors.greenAccent, "Rewards Earn"),
           //             donutCard(Colors.pinkAccent, "Recharged"),
@@ -192,7 +184,7 @@ class _OverviewPageState extends State<OverviewPage> {
           //       )
           //     ],
           //   ),
-          // ),*/
+          // ),
           SizedBox(
             height: 30,
           ),
@@ -208,13 +200,12 @@ class _OverviewPageState extends State<OverviewPage> {
                     fontFamily: "Varela",
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 15,
+              top: 5,
               right: 20,
             ),
             padding: EdgeInsets.all(10),
@@ -225,18 +216,18 @@ class _OverviewPageState extends State<OverviewPage> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade100,
-                  blurRadius: 6,
+                  // blurRadius: 6,
                   spreadRadius: 10,
                 )
               ],
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  MediaQuery.of(context).size.width*0.7,
+                  MediaQuery.of(context).size.width * 0.6,
                   // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: LPG/10,
+              percent: LPG / 10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -246,11 +237,14 @@ class _OverviewPageState extends State<OverviewPage> {
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
                 "${LPG * 10} %",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
               ),
             ),
           ),
-          SizedBox(height: 30),
+          // SizedBox(height: 30),
 
           SizedBox(
             height: 30,
@@ -267,13 +261,12 @@ class _OverviewPageState extends State<OverviewPage> {
                     fontFamily: "Varela",
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 15,
+              top: 5,
               right: 20,
             ),
             padding: EdgeInsets.all(10),
@@ -284,18 +277,18 @@ class _OverviewPageState extends State<OverviewPage> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade100,
-                  blurRadius: 6,
+                  // blurRadius: 6,
                   spreadRadius: 10,
                 )
               ],
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  MediaQuery.of(context).size.width*0.7,
+                  MediaQuery.of(context).size.width * 0.6,
                   // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: HC/10,
+              percent: HC / 10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -305,11 +298,14 @@ class _OverviewPageState extends State<OverviewPage> {
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
                 "${HC * 10} %",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
               ),
             ),
           ),
-          SizedBox(height: 30),
+          // SizedBox(height: 30),
           SizedBox(
             height: 30,
           ),
@@ -325,13 +321,12 @@ class _OverviewPageState extends State<OverviewPage> {
                     fontFamily: "Varela",
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 15,
+              top: 5,
               right: 20,
             ),
             padding: EdgeInsets.all(10),
@@ -342,18 +337,18 @@ class _OverviewPageState extends State<OverviewPage> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade100,
-                  blurRadius: 6,
+                  // blurRadius: 6,
                   spreadRadius: 10,
                 )
               ],
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  MediaQuery.of(context).size.width*0.7,
+                  MediaQuery.of(context).size.width * 0.6,
                   // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: WP/10,
+              percent: WP / 10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -363,11 +358,14 @@ class _OverviewPageState extends State<OverviewPage> {
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
                 "${WP * 10} %",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
               ),
             ),
           ),
-          SizedBox(height: 30),
+          // SizedBox(height: 30),
 
           SizedBox(
             height: 30,
@@ -384,13 +382,12 @@ class _OverviewPageState extends State<OverviewPage> {
                     fontFamily: "Varela",
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 15,
+              top: 5,
               right: 20,
             ),
             padding: EdgeInsets.all(10),
@@ -401,18 +398,18 @@ class _OverviewPageState extends State<OverviewPage> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade100,
-                  blurRadius: 6,
+                  // blurRadius: 6,
                   spreadRadius: 10,
                 )
               ],
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  MediaQuery.of(context).size.width*0.7,
+                  MediaQuery.of(context).size.width * 0.6,
                   // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: T/10,
+              percent: T / 10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -422,11 +419,14 @@ class _OverviewPageState extends State<OverviewPage> {
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
                 "${T * 10} %",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
               ),
             ),
           ),
-          SizedBox(height: 30),
+          // SizedBox(height: 30),
 
           SizedBox(
             height: 30,
@@ -443,13 +443,12 @@ class _OverviewPageState extends State<OverviewPage> {
                     fontFamily: "Varela",
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 15,
+              top: 5,
               right: 20,
             ),
             padding: EdgeInsets.all(10),
@@ -460,18 +459,18 @@ class _OverviewPageState extends State<OverviewPage> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade100,
-                  blurRadius: 6,
+                  // blurRadius: 6,
                   spreadRadius: 10,
                 )
               ],
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  MediaQuery.of(context).size.width*0.7,
+                  MediaQuery.of(context).size.width * 0.6,
                   // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: S/10,
+              percent: S / 10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -481,11 +480,14 @@ class _OverviewPageState extends State<OverviewPage> {
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
                 "${S * 10} %",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
               ),
             ),
           ),
-          SizedBox(height: 30),
+          // SizedBox(height: 30),
 
           SizedBox(
             height: 30,
@@ -502,13 +504,12 @@ class _OverviewPageState extends State<OverviewPage> {
                     fontFamily: "Varela",
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 15,
+              top: 5,
               right: 20,
             ),
             padding: EdgeInsets.all(10),
@@ -519,18 +520,18 @@ class _OverviewPageState extends State<OverviewPage> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade100,
-                  blurRadius: 6,
+                  // blurRadius: 6,
                   spreadRadius: 10,
                 )
               ],
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  MediaQuery.of(context).size.width*0.7,
+                  MediaQuery.of(context).size.width * 0.6,
                   // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: NWE/10,
+              percent: NWE / 10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -540,11 +541,14 @@ class _OverviewPageState extends State<OverviewPage> {
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
                 "${NWE * 10} %",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
               ),
             ),
           ),
-          SizedBox(height: 30),
+          // SizedBox(height: 30),
 
           SizedBox(
             height: 30,
@@ -561,13 +565,12 @@ class _OverviewPageState extends State<OverviewPage> {
                     fontFamily: "Varela",
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 15,
+              top: 5,
               right: 20,
             ),
             padding: EdgeInsets.all(10),
@@ -578,18 +581,18 @@ class _OverviewPageState extends State<OverviewPage> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade100,
-                  blurRadius: 6,
+                  // blurRadius: 6,
                   spreadRadius: 10,
                 )
               ],
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  MediaQuery.of(context).size.width*0.7,
+                  MediaQuery.of(context).size.width * 0.6,
                   // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: F/10,
+              percent: F / 10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -599,11 +602,14 @@ class _OverviewPageState extends State<OverviewPage> {
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
                 "${F * 10} %",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
               ),
             ),
           ),
-          SizedBox(height: 30),
+          // SizedBox(height: 30),
 
           SizedBox(
             height: 30,
@@ -620,13 +626,12 @@ class _OverviewPageState extends State<OverviewPage> {
                     fontFamily: "Varela",
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 15,
+              top: 5,
               right: 20,
             ),
             padding: EdgeInsets.all(10),
@@ -637,18 +642,18 @@ class _OverviewPageState extends State<OverviewPage> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade100,
-                  blurRadius: 6,
+                  // blurRadius: 6,
                   spreadRadius: 10,
                 )
               ],
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                  MediaQuery.of(context).size.width*0.65,
+                  MediaQuery.of(context).size.width * 0.6,
                   // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: B/10,
+              percent: B / 10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -658,12 +663,14 @@ class _OverviewPageState extends State<OverviewPage> {
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
                 "${B * 10} %",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0),
               ),
             ),
           ),
           SizedBox(height: 30),
-
 
           SizedBox(
             height: 30,
@@ -698,15 +705,14 @@ class _OverviewPageState extends State<OverviewPage> {
     );
   }
 
-
   Widget vaweCard(BuildContext context, String name, double amount, int type,
       Color fillColor, Color bgColor) {
     return Container(
       margin: EdgeInsets.only(
-        top: 15,
+        top: 5,
         right: 20,
       ),
-      padding: EdgeInsets.only(left: 15),
+      padding: EdgeInsets.only(left: 5),
       height: screenAwareSize(80, context),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -714,7 +720,7 @@ class _OverviewPageState extends State<OverviewPage> {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade100,
-            blurRadius: 6,
+            // blurRadius: 6,
             spreadRadius: 10,
           )
         ],
@@ -735,7 +741,7 @@ class _OverviewPageState extends State<OverviewPage> {
               Text(
                 "80%",
                 style:
-                TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
               ),
             ],
           ),
@@ -749,7 +755,7 @@ class _OverviewPageState extends State<OverviewPage> {
               Text(
                 name,
                 style:
-                TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 8,
@@ -805,17 +811,17 @@ class _OverviewPageState extends State<OverviewPage> {
       String text, double amount, int type, BuildContext context, Color color) {
     final _media = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.only(top: 15, right: 15),
-      padding: EdgeInsets.all(15),
+      margin: EdgeInsets.only(top: 5, right: 5),
+      padding: EdgeInsets.all(5),
       height: screenAwareSize(90, context),
       width: _media.width / 2 - 25,
       decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(5),
           boxShadow: [
             BoxShadow(
                 color: color.withOpacity(0.4),
-                blurRadius: 16,
+                // blurRadius: 16,
                 spreadRadius: 0.2,
                 offset: Offset(0, 8)),
           ]),
@@ -844,4 +850,3 @@ class _OverviewPageState extends State<OverviewPage> {
     );
   }
 }
-
