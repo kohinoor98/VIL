@@ -19,6 +19,7 @@ class Games extends StatefulWidget {
 class _GamesState extends State<Games> {
   @override
   Widget build(BuildContext context) {
+
     _auth.start(widget.userid);
     _auth.getData();
     return Scaffold(
@@ -65,17 +66,21 @@ class _GamesState extends State<Games> {
             },
           ),
           getCard(
-            title: 'Leader Board',
+            title: 'Manage Rewards',
             color: Colors.blueAccent,
-            icon: Icons.gesture,
+            icon: Icons.functions,
             onClick: () {
               _auth.getData();
               _auth.start(widget.userid);
               Navigator.of(context).push(
                 MaterialPageRoute(
+<<<<<<< HEAD
                   builder: (context) =>
                       // RewardRedemptionPage(""),
                       LeaderBoard(widget.userid, _auth), // add game page here
+=======
+                  builder: (context) => null // add game page here
+>>>>>>> ac80e84e66dbde9864736ecfdc1dfe57a136a157
                 ),
               );
             },

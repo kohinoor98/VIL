@@ -3,6 +3,7 @@
 import 'package:VIL/Services/auth.dart';
 import 'package:VIL/WalletPage/src/models/user_model.dart';
 import 'package:VIL/pages/Authenticate/autthentication.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
 import '../pages/overview_page.dart';
@@ -15,16 +16,33 @@ import 'package:VIL/Game/quizpage.dart';
 
 List<UserModel> userCards;
 int  reward = 0;
-final AuthServices _aa = new AuthServices();
+
 class LeaderBoard extends StatefulWidget {
+
+
+  void getData() async
+  {
+    userCards = [];
+    databaseReference
+        .collection("LeaderBoard")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) async {userCards.add(UserModel(f.data['Name'],"assets/WalletImages/users/anna.jpeg",f.data['Score']));
+      print("cc");} );
+      return userCards;
+    });
+
+  }
+
 
   LeaderBoard(String s,AuthServices u)
   {
     userid = s;
+    getData();
     userCards = u.userCards;
     print(userCards.length);
     print("\n\n\n\n\n\n\n\n");
-    reward = u.getReward(userid);
+    reward = u.reward;
   }
 
   // const LeaderBoard({Key key}) : super(key: key);

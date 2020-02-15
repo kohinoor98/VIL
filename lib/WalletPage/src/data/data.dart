@@ -20,9 +20,8 @@ List<CreditCardModel> getCreditCards() {
 }
 
 List<UserModel> getUsersCard() {
-  //userCards = [UserModel("Anirudh","assets/WalletImages/users/anna.jpeg",55)];
 
-  return userCards;
+  return Set.of(userCards).toList();
 }
 
 List<PaymentModel> getLeaderBoardCard() {
