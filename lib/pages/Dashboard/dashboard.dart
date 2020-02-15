@@ -128,13 +128,13 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
       //form page
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.push(
-      //         context, MaterialPageRoute(builder: (context) => FormFill()));
-      //   },
-      //   child: Icon(Icons.add),
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => FormFill()));
+        },
+        child: Icon(Icons.add),
+      ),
       // debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Quicksand'),
       body: SingleChildScrollView(
