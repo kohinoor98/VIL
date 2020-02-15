@@ -137,7 +137,7 @@ class AuthServices {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: phone, password: password);
       FirebaseUser user = result.user;
-      databaseinit(user.uid, phoneNumber, fName, lName);
+      databaseinit(user.uid, phoneNumber, fName, lName,phone);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -146,7 +146,7 @@ class AuthServices {
   }
 
   void databaseinit(
-      String userid, String phoneNumber, String fName, String lName) {
+      String userid, String phoneNumber, String fName, String lName,String e) {
     final FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
     DocumentReference documentReference =
         Firestore.instance.document("myData/" + userid);
@@ -156,8 +156,8 @@ class AuthServices {
         "PhoneNumber": phoneNumber,
         "FirstName": fName,
         "LastName": lName,
-        "Email": userid,
-        "Reward": 300,
+        "Email": e,
+        "Reward": 302,
         "DataBalance": 0,
         "Cash": 40,
         "Talktime": 0,
