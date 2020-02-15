@@ -1,5 +1,6 @@
 import 'package:VIL/Game/Ghome.dart';
 import 'package:VIL/Game/Quizzler/QuizzkerMain.dart';
+import 'package:VIL/Game/game_swarm/game_controller.dart';
 import 'package:VIL/Game/rewardredemption.dart';
 import 'package:VIL/Services/auth.dart';
 import 'package:VIL/WalletPage/src/pages/home_page.dart';
@@ -216,7 +217,14 @@ class _GamesState extends State<Games> {
               ),
               subtitle: Text("Fruit Ninja, etc"),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {},
+              onTap: () {
+
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => GameController().widget ,
+                  ),
+                );
+              },
             ),
           ),
           Card(
