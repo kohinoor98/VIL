@@ -6,6 +6,8 @@ import '../widgets/donut_charts.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import '../widgets/percent_indicator.dart';
 import '../widgets/wave_progress.dart';
+import 'package:VIL/Services/model/UserData.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 var data = [
@@ -25,32 +27,80 @@ var series = [
   ),
 ];
 
-class OverviewPage extends StatelessWidget {
-  final AuthServices _auth = new AuthServices();
+AuthServices _auth = AuthServices();
+UserData userr = new UserData();
+String ss;
+double LPG = 0.0;
+double HC = 0.0;
+double F = 0.0;
+double NWE = 0.0;
+double B = 0.0;
+double WP = 0.0;
+double T = 0.0;
+double S = 0.0;
+
+
+class OverviewPage extends StatefulWidget {
   String userid;
   OverviewPage(String u) {
     this.userid = u;
+    ss = u;
   }
+  @override
+  _OverviewPageState createState() => _OverviewPageState();
+}
+
+class _OverviewPageState extends State<OverviewPage> {
+
   var data_used_percent = 68.0;
+
+  void start() {
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + widget.userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        setState(() {
+          userr.userId = datasnapshot.data['UserID'];
+          userr.firstName = datasnapshot.data['FirstName'];
+          userr.lastName = datasnapshot.data['LastName'];
+          userr.email = datasnapshot.data['Email'];
+          userr.reward = datasnapshot.data['Reward'];
+          userr.data = datasnapshot.data['DataBalance'];
+          userr.cash = datasnapshot.data['Cash'];
+          userr.talk = datasnapshot.data['Talktime'];
+          LPG = datasnapshot.data['LPG Spyder'];
+          F = datasnapshot.data['Food Spyder'];
+          HC = datasnapshot.data['HealthCare Spyder'];
+          S = datasnapshot.data['Shopping Spyder'];
+          T = datasnapshot.data['Travel Spyder'];
+          WP = datasnapshot.data['Working and Productive Spyder'];
+          NWE = datasnapshot.data['NWE Spyder'];
+          B = datasnapshot.data['Banking Spyder'];
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    _auth.start(userid);
+    _auth.start(widget.userid);
+    start();
     final _media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wallet'),
+        title: Text('Spyder Customer Analysis'),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: <Color>[
-                const Color(0xFFFFE459),
-                const Color(0xFFFFE459),
+                    const Color(0xFFFFE459),
+                    const Color(0xFFFFE459),
 
-                // const Color(0xFF00c3ff),
-                // const Color(0xFFffff1c),
-              ])),
+                    // const Color(0xFF00c3ff),
+                    // const Color(0xFFffff1c),
+                  ])),
         ),
       ),
       body: ListView(
@@ -60,34 +110,11 @@ class OverviewPage extends StatelessWidget {
           top: 0,
         ),
         children: <Widget>[
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: <Widget>[
-          //     Text(
-          //       "Wallet",
-          //       style: TextStyle(
-          //         fontSize: 35,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          SizedBox(
-            height: 25,
-          ),
-          Text(
-            "Accounts",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              inherit: true,
-              letterSpacing: 0.4,
-            ),
-          ),
+
+        /*
           Row(
             children: <Widget>[
-              colorCard("Cash", 35.170, 1, context, Color(0xFFFF4B28)),
+              colorCard("Cash ${_auth.cash}", 35.170, 1, context, Color(0xFFFF4B28)),
               colorCard("Rewards Earned", 4320, 1, context, Colors.amber),
             ],
           ),
@@ -165,7 +192,7 @@ class OverviewPage extends StatelessWidget {
           //       )
           //     ],
           //   ),
-          // ),
+          // ),*/
           SizedBox(
             height: 30,
           ),
@@ -173,7 +200,7 @@ class OverviewPage extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "Data Balance Used",
+                  text: "LifeStyle and Personal Growth",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -181,15 +208,7 @@ class OverviewPage extends StatelessWidget {
                     fontFamily: "Varela",
                   ),
                 ),
-                TextSpan(
-                  text: "    February",
-                  style: TextStyle(
-                    color: Colors.grey.shade400,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    fontFamily: "Varela",
-                  ),
-                ),
+
               ],
             ),
           ),
@@ -213,11 +232,11 @@ class OverviewPage extends StatelessWidget {
             ),
             child: LinearPercentIndicator(
               width: screenAwareSize(
-                MediaQuery.of(context).size.width*0.7,
-                 // _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                  MediaQuery.of(context).size.width*0.7,
+                  // _media.width - (_media.longestSide <= 775 ? 100 : 160),
                   context),
               lineHeight: 20.0,
-              percent: data_used_percent / 100,
+              percent: LPG/10,
               backgroundColor: Colors.grey.shade300,
               progressColor: Color(0xFFFF4B2B),
               animation: true,
@@ -226,25 +245,425 @@ class OverviewPage extends StatelessWidget {
               animationDuration: 1000,
               linearStrokeCap: LinearStrokeCap.roundAll,
               center: Text(
-                "$data_used_percent %",
+                "${LPG * 10} %",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+
+          SizedBox(
+            height: 30,
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Health Care",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Varela",
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              right: 20,
+            ),
+            padding: EdgeInsets.all(10),
+            height: screenAwareSize(45, context),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade100,
+                  blurRadius: 6,
+                  spreadRadius: 10,
+                )
+              ],
+            ),
+            child: LinearPercentIndicator(
+              width: screenAwareSize(
+                  MediaQuery.of(context).size.width*0.7,
+                  // _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                  context),
+              lineHeight: 20.0,
+              percent: HC/10,
+              backgroundColor: Colors.grey.shade300,
+              progressColor: Color(0xFFFF4B2B),
+              animation: true,
+              animateFromLastPercent: true,
+              alignment: MainAxisAlignment.spaceEvenly,
+              animationDuration: 1000,
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              center: Text(
+                "${HC * 10} %",
                 style: TextStyle(color: Colors.white),
               ),
             ),
           ),
           SizedBox(height: 30),
           SizedBox(
-            child: FloatingActionButton.extended(
+            height: 30,
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Work And Productive",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Varela",
+                  ),
+                ),
 
-              onPressed: () async {
-                // Add your onPressed code here!
-                   // print(userid);
-                _auth.updateCash(userid, 10);
-              },
-              label: Text('Add Money'),
-              icon: Icon(Icons.add),
-              backgroundColor: Colors.red,
+              ],
             ),
           ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              right: 20,
+            ),
+            padding: EdgeInsets.all(10),
+            height: screenAwareSize(45, context),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade100,
+                  blurRadius: 6,
+                  spreadRadius: 10,
+                )
+              ],
+            ),
+            child: LinearPercentIndicator(
+              width: screenAwareSize(
+                  MediaQuery.of(context).size.width*0.7,
+                  // _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                  context),
+              lineHeight: 20.0,
+              percent: WP/10,
+              backgroundColor: Colors.grey.shade300,
+              progressColor: Color(0xFFFF4B2B),
+              animation: true,
+              animateFromLastPercent: true,
+              alignment: MainAxisAlignment.spaceEvenly,
+              animationDuration: 1000,
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              center: Text(
+                "${WP * 10} %",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+
+          SizedBox(
+            height: 30,
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Travel",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Varela",
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              right: 20,
+            ),
+            padding: EdgeInsets.all(10),
+            height: screenAwareSize(45, context),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade100,
+                  blurRadius: 6,
+                  spreadRadius: 10,
+                )
+              ],
+            ),
+            child: LinearPercentIndicator(
+              width: screenAwareSize(
+                  MediaQuery.of(context).size.width*0.7,
+                  // _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                  context),
+              lineHeight: 20.0,
+              percent: T/10,
+              backgroundColor: Colors.grey.shade300,
+              progressColor: Color(0xFFFF4B2B),
+              animation: true,
+              animateFromLastPercent: true,
+              alignment: MainAxisAlignment.spaceEvenly,
+              animationDuration: 1000,
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              center: Text(
+                "${T * 10} %",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+
+          SizedBox(
+            height: 30,
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Shopping",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Varela",
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              right: 20,
+            ),
+            padding: EdgeInsets.all(10),
+            height: screenAwareSize(45, context),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade100,
+                  blurRadius: 6,
+                  spreadRadius: 10,
+                )
+              ],
+            ),
+            child: LinearPercentIndicator(
+              width: screenAwareSize(
+                  MediaQuery.of(context).size.width*0.7,
+                  // _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                  context),
+              lineHeight: 20.0,
+              percent: S/10,
+              backgroundColor: Colors.grey.shade300,
+              progressColor: Color(0xFFFF4B2B),
+              animation: true,
+              animateFromLastPercent: true,
+              alignment: MainAxisAlignment.spaceEvenly,
+              animationDuration: 1000,
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              center: Text(
+                "${S * 10} %",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+
+          SizedBox(
+            height: 30,
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "News and Woring",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Varela",
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              right: 20,
+            ),
+            padding: EdgeInsets.all(10),
+            height: screenAwareSize(45, context),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade100,
+                  blurRadius: 6,
+                  spreadRadius: 10,
+                )
+              ],
+            ),
+            child: LinearPercentIndicator(
+              width: screenAwareSize(
+                  MediaQuery.of(context).size.width*0.7,
+                  // _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                  context),
+              lineHeight: 20.0,
+              percent: NWE/10,
+              backgroundColor: Colors.grey.shade300,
+              progressColor: Color(0xFFFF4B2B),
+              animation: true,
+              animateFromLastPercent: true,
+              alignment: MainAxisAlignment.spaceEvenly,
+              animationDuration: 1000,
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              center: Text(
+                "${NWE * 10} %",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+
+          SizedBox(
+            height: 30,
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Food",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Varela",
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              right: 20,
+            ),
+            padding: EdgeInsets.all(10),
+            height: screenAwareSize(45, context),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade100,
+                  blurRadius: 6,
+                  spreadRadius: 10,
+                )
+              ],
+            ),
+            child: LinearPercentIndicator(
+              width: screenAwareSize(
+                  MediaQuery.of(context).size.width*0.7,
+                  // _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                  context),
+              lineHeight: 20.0,
+              percent: F/10,
+              backgroundColor: Colors.grey.shade300,
+              progressColor: Color(0xFFFF4B2B),
+              animation: true,
+              animateFromLastPercent: true,
+              alignment: MainAxisAlignment.spaceEvenly,
+              animationDuration: 1000,
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              center: Text(
+                "${F * 10} %",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+
+          SizedBox(
+            height: 30,
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Banking",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Varela",
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              right: 20,
+            ),
+            padding: EdgeInsets.all(10),
+            height: screenAwareSize(45, context),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade100,
+                  blurRadius: 6,
+                  spreadRadius: 10,
+                )
+              ],
+            ),
+            child: LinearPercentIndicator(
+              width: screenAwareSize(
+                  MediaQuery.of(context).size.width*0.65,
+                  // _media.width - (_media.longestSide <= 775 ? 100 : 160),
+                  context),
+              lineHeight: 20.0,
+              percent: B/10,
+              backgroundColor: Colors.grey.shade300,
+              progressColor: Color(0xFFFF4B2B),
+              animation: true,
+              animateFromLastPercent: true,
+              alignment: MainAxisAlignment.spaceEvenly,
+              animationDuration: 1000,
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              center: Text(
+                "${B * 10} %",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+
 
           SizedBox(
             height: 30,
@@ -278,6 +697,7 @@ class OverviewPage extends StatelessWidget {
       ),
     );
   }
+
 
   Widget vaweCard(BuildContext context, String name, double amount, int type,
       Color fillColor, Color bgColor) {
@@ -315,7 +735,7 @@ class OverviewPage extends StatelessWidget {
               Text(
                 "80%",
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
               ),
             ],
           ),
@@ -329,7 +749,7 @@ class OverviewPage extends StatelessWidget {
               Text(
                 name,
                 style:
-                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 8,
@@ -424,3 +844,4 @@ class OverviewPage extends StatelessWidget {
     );
   }
 }
+
