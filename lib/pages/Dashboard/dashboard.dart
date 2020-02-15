@@ -84,15 +84,19 @@ class _DashboardState extends State<Dashboard> {
     enlargeCenterPage: true,
     items: imgList.map(
       (url) {
-        return Container(
-          margin: EdgeInsets.all(5.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-
-            child: Image.network(
-              url,
-              fit: BoxFit.cover,
-              width: 1000.0,
+        return GestureDetector(
+          onTap: () {
+            print("\n\n\n\n\n$url\n\n\n\n");
+          },
+          child: Container(
+            margin: EdgeInsets.all(5.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              child: Image.network(
+                url,
+                fit: BoxFit.cover,
+                width: 1000.0,
+              ),
             ),
           ),
         );
@@ -203,7 +207,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           IconButton(
                             onPressed: () {
-                            // _auth.updatecategory("Banking", widget.userid,10);
+                              // _auth.updatecategory("Banking", widget.userid,10);
                               print(AuthServices().user);
                               Navigator.push(
                                 context,
@@ -409,10 +413,10 @@ class _DashboardState extends State<Dashboard> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    RewardRedemptionPage(this.userId, Reward,_auth),
-                                // RechargePage(this.userId)
-                                ),
+                              builder: (context) => RewardRedemptionPage(
+                                  this.userId, Reward, _auth),
+                              // RechargePage(this.userId)
+                            ),
                           );
                         },
                         child: Text("Redeem Rewards"
