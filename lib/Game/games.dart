@@ -7,6 +7,7 @@ class Games extends StatefulWidget {
   Games(String us)
   {
     this.userid = us;
+
   }
 
   @override

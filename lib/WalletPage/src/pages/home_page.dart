@@ -8,12 +8,14 @@ import '../widgets/credit_card.dart';
 import '../widgets/payment_card.dart';
 import '../widgets/user_card.dart';
 
-int rewards = 0;
+
+String userid;
 class LeaderBoard extends StatefulWidget {
-  String userid;
+
   LeaderBoard(String s)
   {
-    this.userid = s;
+    userid = s;
+
   }
 
   // const LeaderBoard({Key key}) : super(key: key);
@@ -24,15 +26,11 @@ class LeaderBoard extends StatefulWidget {
 class _LeaderBoard extends State<LeaderBoard> {
 
   final AuthServices _auth = new AuthServices();
-  void start()
-  {
-    print(widget.userid);
-    print("\n\n\nhh\n\n\n");
-  }
+
   @override
   Widget build(BuildContext context) {
     //_auth.start(widget.userid);
-    start();
+
 
     final _media = MediaQuery.of(context).size;
     return MaterialApp(

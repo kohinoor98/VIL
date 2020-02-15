@@ -3,11 +3,51 @@ import '../models/credit_card_model.dart';
 import '../models/payment_model.dart';
 import '../models/user_model.dart';
 import 'package:VIL/WalletPage/src/pages/home_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+final databaseReference = Firestore.instance;
+List<UserModel> userCards = [];
+int  reward = 0;
+void getData() async
+{
+
+  databaseReference
+      .collection("LeaderBoard")
+      .getDocuments()
+      .then((QuerySnapshot snapshot) {
+    snapshot.documents.forEach((f) {userCards.add(UserModel(f.data['Name'],"assets/WalletImages/users/anna.jpeg",f.data['Score']));} );
+  });
+}
+
+
+
+  void getReward()
+  async
+  {
+    DocumentReference documentReference =
+    Firestore.instance.document("myData/" + userid);
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        reward = datasnapshot.data['Reward'];
+        //print(userid);
+        print(reward);
+        print("\n\n\nhhhhheeeee\n\n\n");
+      }
+    });
+  }
+
+
+
+
+
 
 List<CreditCardModel> getCreditCards() {
+  getReward();
+  getData();
   List<CreditCardModel> creditCards = [];
   creditCards.add(CreditCardModel(
-    "${rewards}",
+    "${reward}",
     "06/23",
     "https://img.favpng.com/16/3/0/indian-independence-movement-flag-of-india-png-favpng-PV6ifN75jaJiT9v9MGpwvL6js.jpg",
   ));
@@ -15,13 +55,7 @@ List<CreditCardModel> getCreditCards() {
 }
 
 List<UserModel> getUsersCard() {
-  List<UserModel> userCards = [
-    UserModel("Anna", "assets/WalletImages/users/anna.jpeg", 8452),
-    UserModel("Gillian", "assets/WalletImages/users/gillian.jpeg", 2000),
-    UserModel("Judith", "assets/WalletImages/users/judith.jpeg", 100),
-    UserModel("Kohi", "assets/kc_temp.jpg", 10100),
-  ];
-
+  getData();
   return userCards;
 }
 

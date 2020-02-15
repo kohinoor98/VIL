@@ -119,7 +119,7 @@ class _QuizPageState extends State<QuizPage> {
                            // String temp = _authen.getusername(widget.userid);
                             _authen.updatescore(points,"Anirudh", widget.userid);
                             _authen.updateReward(widget.userid, points);
-                            print(_authen.getReward(widget.userid));
+
                             print("\n\n\nhhhhhh\n\n");
                             Navigator.push(
                               context,

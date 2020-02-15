@@ -2,6 +2,8 @@ import 'package:VIL/Services/model/user.dart';
 import 'package:VIL/pages/Authenticate/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthServices {
 
@@ -110,22 +112,30 @@ class AuthServices {
 
   void databaseinit(
       String userid, String phoneNumber, String fName, String lName) {
+    final FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
     DocumentReference documentReference =
         Firestore.instance.document("myData/" + userid);
-    var data = {
-      "UserID": userid,
-      "PhoneNumber": phoneNumber,
-      "FirstName": fName,
-      "LastName": lName,
-      "Email": userid,
-      "Reward": 0,
-      "DataBalance": 0,
-      "Cash": 0,
-      "Talktime": 0,
-    };
-    documentReference.setData(data).whenComplete(() {
-      print("Document Added");
-    }).catchError((e) => print(e));
+    firebaseMessaging.getToken().then((token) {
+      var data = {
+        "UserID": userid,
+        "PhoneNumber": phoneNumber,
+        "FirstName": fName,
+        "LastName": lName,
+        "Email": userid,
+        "Reward": 0,
+        "DataBalance": 0,
+        "Cash": 0,
+        "Talktime": 0,
+        "pushToken" :token,
+      };
+      documentReference.setData(data).whenComplete(() {
+        print("Document Added");
+      }).catchError((e) => print(e));
+    }).catchError((err) {
+      Fluttertoast.showToast(msg: err.message.toString());
+    });
+
+
   }
 
 
@@ -160,7 +170,7 @@ class AuthServices {
       "Talktime": this.talk,
       "PhoneNumber": this.PhoneNumber,
     };
-    documentReference.setData(data).whenComplete(() {
+    documentReference.updateData(data).whenComplete(() {
       print("Document Added");
     }).catchError((e) => print(e));
   }
@@ -196,7 +206,7 @@ class AuthServices {
       "Talktime": this.talk,
       "PhoneNumber": this.PhoneNumber,
     };
-    documentReference.setData(data).whenComplete(() {
+    documentReference.updateData(data).whenComplete(() {
       print("Document Added");
     }).catchError((e) => print(e));
   }
@@ -223,21 +233,12 @@ class AuthServices {
       "Score": score,
 
     };
-    documentReference.setData(data).whenComplete(() {
+    documentReference.updateData(data).whenComplete(() {
       print("Score Document Added");
     }).catchError((e) => print(e));
   }
 
-  final databaseReference = Firestore.instance;
-  void getData() {
 
-    databaseReference
-        .collection("LeaderBoard")
-        .getDocuments()
-        .then((QuerySnapshot snapshot) {
-      snapshot.documents.forEach((f) => print('${f.data}}'));
-    });
-  }
 
   String getusername(String userid)
   {
@@ -252,11 +253,6 @@ class AuthServices {
     return this.firstName;
   }
 
-  int getReward(String userid)
-  {
-
-    return this.reward;
-  }
 
 
 }

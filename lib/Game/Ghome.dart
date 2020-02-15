@@ -7,6 +7,7 @@ class Ghomepage extends StatefulWidget {
   Ghomepage(String us)
   {
     this.userid = us;
+
   }
   @override
   _GhomepageState createState() => _GhomepageState();

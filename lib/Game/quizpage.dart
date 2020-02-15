@@ -14,6 +14,7 @@ class getjson extends StatelessWidget {
   {
         userid = u;
         this.langname = l;
+
   }
 
   String assettoload;
