@@ -14,11 +14,13 @@ import '../../Services/model/user.dart';
 import 'package:provider/provider.dart';
 
 UserData userr = new UserData();
-
+AuthServices _auth = AuthServices();
+String ss;
 class Dashboard extends StatefulWidget {
   String userid;
   Dashboard(String u) {
     this.userid = u;
+    ss = u;
   }
   @override
   _DashboardState createState() => _DashboardState();
@@ -105,23 +107,31 @@ class _DashboardState extends State<Dashboard> {
           onTap: () {
             print("\n\n\n\n\n$url\n\n\n\n");
             if (url == imgList[0]) {
-              print('lifestyle');
+              _auth.updateSpyder(ss, "LPG Spyder", 0.4);
             } else if (url == imgList[1]) {
               print('shopping');
+              _auth.updateSpyder(ss, "Shopping Spyder", 0.4);
             } else if (url == imgList[2]) {
               print('food');
+              _auth.updateSpyder(ss, "Food Spyder", 0.4);
             } else if (url == imgList[3]) {
               print('healthcare');
+              _auth.updateSpyder(ss, "HealthCare Spyder", 0.4);
             } else if (url == imgList[4]) {
               print('travel');
+              _auth.updateSpyder(ss, "Travel Spyder", 0.4);
             } else if (url == imgList[5]) {
               print('banking');
+              _auth.updateSpyder(ss, "Banking Spyder", 0.4);
             } else if (url == imgList[6]) {
               print('vodafone');
+             // _auth.updateSpyder(ss, "LPG Spyder", 0.4);
             } else if (url == imgList[7]) {
               print('news');
+              _auth.updateSpyder(ss, "Working and Productive Spyder", 0.4);
             } else if (url == imgList[8]) {
               print('entertainment');
+              _auth.updateSpyder(ss, "NWE Spyder", 0.4);
             }
             print('\n\n\n\n');
           },
@@ -142,7 +152,7 @@ class _DashboardState extends State<Dashboard> {
   );
 
   void init() {}
-  final AuthServices _auth = AuthServices();
+
 
   @override
   Widget build(BuildContext context) {
