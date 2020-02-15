@@ -94,49 +94,49 @@ class _RegisterState extends State<Register> {
                   padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
                   child: Column(
                     children: <Widget>[
-                      TextFormField(
-                        // keyboardType: TextInputType.emailAddress,
-                        // validator: (val) =>
-                        //     val.isEmpty ? 'Enter The Email' : null,
-                        textCapitalization: TextCapitalization.words,
+                      // TextFormField(
+                      //   // keyboardType: TextInputType.emailAddress,
+                      //   // validator: (val) =>
+                      //   //     val.isEmpty ? 'Enter The Email' : null,
+                      //   textCapitalization: TextCapitalization.words,
 
-                        onChanged: (val) {
-                          setState(() {
-                            fName = val;
-                          });
-                        },
-                        decoration: InputDecoration(
-                            labelText: 'FIRST NAME',
-                            labelStyle: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                BorderSide(color: Color(0Xff357DED)))),
-                      ),
-                      SizedBox(height: 10.0),
-                      TextFormField(
-                        // keyboardType: TextInputType.emailAddress,
-                        // validator: (val) =>
-                        //     val.isEmpty ? 'Enter The Email' : null,
-                        keyboardType: TextInputType.emailAddress,
+                      //   onChanged: (val) {
+                      //     setState(() {
+                      //       fName = val;
+                      //     });
+                      //   },
+                      //   decoration: InputDecoration(
+                      //       labelText: 'FIRST NAME',
+                      //       labelStyle: TextStyle(
+                      //           fontFamily: 'Montserrat',
+                      //           fontWeight: FontWeight.bold,
+                      //           color: Colors.grey),
+                      //       focusedBorder: UnderlineInputBorder(
+                      //           borderSide:
+                      //           BorderSide(color: Color(0Xff357DED)))),
+                      // ),
+                      // SizedBox(height: 10.0),
+                      // TextFormField(
+                      //   // keyboardType: TextInputType.emailAddress,
+                      //   // validator: (val) =>
+                      //   //     val.isEmpty ? 'Enter The Email' : null,
+                      //   keyboardType: TextInputType.emailAddress,
 
-                        onChanged: (val) {
-                          setState(() {
-                            lName = val;
-                          });
-                        },
-                        decoration: InputDecoration(
-                            labelText: 'LAST NAME',
-                            labelStyle: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                BorderSide(color: Color(0Xff357DED)))),
-                      ),
+                      //   onChanged: (val) {
+                      //     setState(() {
+                      //       lName = val;
+                      //     });
+                      //   },
+                      //   decoration: InputDecoration(
+                      //       labelText: 'LAST NAME',
+                      //       labelStyle: TextStyle(
+                      //           fontFamily: 'Montserrat',
+                      //           fontWeight: FontWeight.bold,
+                      //           color: Colors.grey),
+                      //       focusedBorder: UnderlineInputBorder(
+                      //           borderSide:
+                      //           BorderSide(color: Color(0Xff357DED)))),
+                      // ),
                       TextFormField(
 
                         // keyboardType: TextInputType.emailAddress,
@@ -204,22 +204,22 @@ class _RegisterState extends State<Register> {
                                 borderSide:
                                 BorderSide(color: Color(0XFF357DED)))),
                       ),
-                      SizedBox(height: 10.0),
-                      TextFormField(
-                        controller: _controller,
-                        validator:
-                        _validatePassword, //Re enter password validation
-                        decoration: InputDecoration(
-                            labelText: 'RE-ENTER PASSWORD ',
-                            labelStyle: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                BorderSide(color: Color(0xff357DED)))),
-                        obscureText: true,
-                      ),
+                      // SizedBox(height: 10.0),
+                      // TextFormField(
+                      //   controller: _controller,
+                      //   validator:
+                      //   _validatePassword, //Re enter password validation
+                      //   decoration: InputDecoration(
+                      //       labelText: 'RE-ENTER PASSWORD ',
+                      //       labelStyle: TextStyle(
+                      //           fontFamily: 'Montserrat',
+                      //           fontWeight: FontWeight.bold,
+                      //           color: Colors.grey),
+                      //       focusedBorder: UnderlineInputBorder(
+                      //           borderSide:
+                      //           BorderSide(color: Color(0xff357DED)))),
+                      //   obscureText: true,
+                      // ),
                       // Container(
                       //   alignment: Alignment(1.0, 0.0),
                       //   padding: EdgeInsets.only(top: 15.0, left: 20.0),
@@ -263,6 +263,7 @@ class _RegisterState extends State<Register> {
                                 'Register',
                                 style: TextStyle(
                                     color: Colors.white,
+                                    fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat'),
                               ),
