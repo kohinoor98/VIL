@@ -1,17 +1,15 @@
+import 'package:VIL/Game/rewardredemption.dart';
 import 'package:flutter/material.dart';
 import 'package:VIL/Game/Ghome.dart';
 
-
-
 class resultpage extends StatefulWidget {
   int marks;
-  resultpage({Key key , @required this.marks}) : super(key : key);
+  resultpage({Key key, @required this.marks}) : super(key: key);
   @override
   _resultpageState createState() => _resultpageState(marks);
 }
 
 class _resultpageState extends State<resultpage> {
-
   List<String> images = [
     "images/success.png",
     "images/good.png",
@@ -22,14 +20,14 @@ class _resultpageState extends State<resultpage> {
   String image;
 
   @override
-  void initState(){
-    if(marks < 20){
+  void initState() {
+    if (marks < 20) {
       image = images[2];
       message = "You Should Try Hard..\n" + "You Scored $marks";
-    }else if(marks < 35){
+    } else if (marks < 35) {
       image = images[1];
       message = "You Can Do Better..\n" + "You Scored $marks";
-    }else{
+    } else {
       image = images[0];
       message = "You Did Very Well..\n" + "You Scored $marks";
     }
@@ -69,34 +67,56 @@ class _resultpageState extends State<resultpage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 5.0,
-                        horizontal: 15.0,
-                      ),
-                      child: Center(
-                      child: Text(
-                        message,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontFamily: "Quando",
+                        padding: EdgeInsets.symmetric(
+                          vertical: 5.0,
+                          horizontal: 15.0,
                         ),
-                      ),
-                    )
-                    ),
+                        child: Center(
+                          child: Text(
+                            message,
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontFamily: "Quando",
+                            ),
+                          ),
+                        )),
                   ],
                 ),
               ),
-            ),            
+            ),
           ),
           Expanded(
             flex: 4,
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 OutlineButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => Ghomepage(""),
+                    ));
+                  },
+                  child: Text(
+                    "Redeem Rewards",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 25.0,
+                  ),
+                  borderSide: BorderSide(width: 3.0, color: Colors.indigo),
+                  splashColor: Colors.indigoAccent,
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                OutlineButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => null,
+                      // RewardRedemptionPage("", 0),
                     ));
                   },
                   child: Text(

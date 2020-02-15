@@ -1,0 +1,88 @@
+[
+    {
+        "1": "Which state radio-tags first-ever Indian Pangolin?",
+        "2": "When the Khelo India Youth Games first event held?",
+        "3": "When General Insurance Corporation of India was founded?",
+        "4": "Which state government announced DA hike for employees?",
+        "5": "Who will take oath as Delhi Chief Minister?",
+        "6": "Who inaugurated Cha-Chai art work at National Museum?",
+        "7": "How many medical colleges sanctioned for Jammu and Kashmir recently?",
+        "8": "Which IIT institute to celebrate Ek Bharat Shreshtha Bharat?",
+        "9": "How many crores did union Government cleared investments in stuck residential properties?",
+        "10": "The nucleus of an atom consists of?"
+    },
+    {
+        "1": {
+            "a": "TamilNadu",
+            "b": "Madhya Pradesh",
+            "c": "Kerala",
+            "d": "Himachal Pradesh"
+        },
+        "2": {
+            "a": "2016",
+            "b": "2017",
+            "c": "2018",
+            "d": "2019"
+        },
+        "3": {
+            "a": "21 November 1973",
+            "b": "22 November 1972",
+            "c": "21 November 1973",
+            "d": "21 December 1973"
+        },
+        "4": {
+            "a": "Kerala",
+            "b": "Odisha",
+            "c": "Tamil Nadu",
+            "d": "Himachal Pradesh"
+        },
+        "5": {
+            "a": "Vijay Kumar Dev",
+            "b": "Arvind Kejriwal",
+            "c": "Manish Sisodia",
+            "d": "Rakhi Birla"
+        },
+        "6": {
+            "a": "Suresh Sharma",
+            "b": "Prahlad Singh Patel",
+            "c": "Vikram Gupta",
+            "d": "Dinesh Kumar"
+        },
+        "7": {
+            "a": "7",
+            "b": "9",
+            "c": "6",
+            "d": "5"
+        },
+        "8": {
+            "a": "Indian Institute of Technology Madras",
+            "b": "Indian Institute of Technology Roorkee",
+            "c": "Indian Institute of Technology Mumbai",
+            "d": "Indian Institute of Technology Kanpur"
+        },
+        "9": {
+            "a": "550 crores",
+            "b": "540 crores",
+            "c": "545 crores",
+            "d": "560 crores"
+        },
+        "10": {
+            "a": "Protons",
+            "b": "Neutrons",
+            "c": "Protons and neutrons",
+            "d": "Electrons and protons"
+        }
+    },
+    {
+        "1": "Madhya Pradesh",
+        "2": "2018",
+        "3": "22 November 1972",
+        "4": "Odisha",
+        "5": "Arvind Kejriwal",
+        "6": "Prahlad Singh Patel",
+        "7": "9",
+        "8": "Indian Institute of Technology Madras",
+        "9": "540 crores",
+        "10": "Protons and neutrons"
+    }
+]

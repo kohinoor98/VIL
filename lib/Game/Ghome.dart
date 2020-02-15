@@ -4,10 +4,8 @@ import 'package:VIL/Game/quizpage.dart';
 
 class Ghomepage extends StatefulWidget {
   String userid;
-  Ghomepage(String us)
-  {
+  Ghomepage(String us) {
     this.userid = us;
-
   }
   @override
   _GhomepageState createState() => _GhomepageState();
@@ -42,7 +40,7 @@ class _GhomepageState extends State<Ghomepage> {
             // in changelog 1 we will pass the langname name to ther other widget class
             // this name will be used to open a particular JSON file
             // for a particular language
-            builder: (context) => getjson(langname,widget.userid),
+            builder: (context) => getjson(langname, widget.userid),
           ));
         },
         child: Material(
@@ -110,36 +108,47 @@ class _GhomepageState extends State<Ghomepage> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Idea Quiz",
-          style: TextStyle(
-            fontFamily: "Quando",
+        appBar: AppBar(
+          title: Text(
+            "Idea Quiz",
+            style: TextStyle(
+              fontFamily: "Quando",
+            ),
+          ),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[
+                  const Color(0xFFFFFF45),
+                  const Color(0xFFFF5858),
+
+                  // const Color(0xFF00c3ff),
+                  // const Color(0xFFffff1c),
+                ])),
           ),
         ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                const Color(0xFFFFFF45),
-                const Color(0xFFFF5858),
-
-                // const Color(0xFF00c3ff),
-                // const Color(0xFFffff1c),
-              ])),
-        ),
-      ),
-      body: ListView(
-        children: <Widget>[
-          customcard("Python", images[0], des[0]),
-          customcard("Java", images[1], des[1]),
-          customcard("Javascript", images[2], des[2]),
-          customcard("C++", images[3], des[3]),
-          customcard("Linux", images[4], des[4]),
-        ],
-      ),
-    );
+        body: Center(
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    // in changelog 1 we will pass the langname name to ther other widget class
+                    // this name will be used to open a particular JSON file
+                    // for a particular language
+                    builder: (context) => getjson("quiz", widget.userid),
+                  ));
+                },
+                child: Text("Continue to Quiz...")))
+        // ListView(
+        //   children: <Widget>[
+        //     customcard("Python", images[0], des[0]),
+        //     customcard("Java", images[1], des[1]),
+        //     customcard("Javascript", images[2], des[2]),
+        //     customcard("C++", images[3], des[3]),
+        //     customcard("Linux", images[4], des[4]),
+        //   ],
+        // ),
+        );
   }
 }
