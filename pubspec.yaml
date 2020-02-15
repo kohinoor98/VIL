@@ -35,6 +35,7 @@ dependencies:
   fluttertoast: ^3.1.3
   firebase_messaging: ^6.0.9
   font_awesome_flutter:
+  flip_card:
 
 
 

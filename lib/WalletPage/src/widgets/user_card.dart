@@ -10,7 +10,7 @@ class UserCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      width: 100.0,
+      width: 150.0,
       padding: EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -49,16 +49,16 @@ class UserCardWidget extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          Text(
-            user.points.toString(),
-            style: TextStyle(
-                inherit: true,
-                fontWeight: FontWeight.bold,
-                fontSize: 14.0,
-                color: Colors.grey),
-            overflow: TextOverflow.fade,
-            textAlign: TextAlign.center,
-          ),
+          // Text(
+          //   user.points.toString(),
+          //   style: TextStyle(
+          //       inherit: true,
+          //       fontWeight: FontWeight.bold,
+          //       fontSize: 14.0,
+          //       color: Colors.grey),
+          //   overflow: TextOverflow.fade,
+          //   textAlign: TextAlign.center,
+          // ),
         ],
       ),
     );

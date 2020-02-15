@@ -1,6 +1,10 @@
 import 'package:VIL/Game/rewardredemption.dart';
 import 'package:VIL/Services/auth.dart';
 import 'package:VIL/Services/model/UserData.dart';
+import 'package:VIL/WalletPage/src/data/data.dart';
+import 'package:VIL/WalletPage/src/pages/home_page.dart';
+import 'package:VIL/WalletPage/src/utils/screen_size.dart';
+import 'package:VIL/WalletPage/src/widgets/user_card.dart';
 import 'package:VIL/pages/Dashboard/CardPage/Views/MyCardsPage.dart';
 import 'package:VIL/pages/RechargePage/RechargeMain.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -153,9 +157,13 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+    final _media = MediaQuery.of(context).size;
+
     final user = Provider.of<User>(context);
+
     print(user.uid);
     start();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -496,9 +504,10 @@ class _DashboardState extends State<Dashboard> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        // RewardRedemptionPage(userr),
-                                        RechargePage(userr.userId)),
+                                  builder: (context) =>
+                                      LeaderBoard(userr.userId),
+                                  // RechargePage(userr.userId)
+                                ),
                               );
                             },
                             child: Text(
@@ -517,6 +526,131 @@ class _DashboardState extends State<Dashboard> {
                     // Text('Auto Playing Carousel'),
                     autoPlayDemo,
                   ])),
+              SizedBox(height: 15.0),
+              
+              SizedBox(
+                height: 200.0,
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  // physics: BouncingScrollPhysics(),
+                  children: <Widget>[
+                    Container(
+                      color: Colors.grey.shade50,
+                      width: _media.width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 25.0, right: 10, bottom: 20, top: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  "Movies",
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Colors.grey,
+                                  size: 20,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 25),
+                            height: screenAwareSize(
+                                _media.longestSide <= 775 ? 110 : 80, context),
+                            child: NotificationListener<
+                                OverscrollIndicatorNotification>(
+                              onNotification: (overscroll) {
+                                overscroll.disallowGlow();
+                              },
+                              child: ListView.builder(
+                                physics: BouncingScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: getMovieCard().length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: EdgeInsets.only(right: 20),
+                                    child: UserCardWidget(
+                                      user: getMovieCard()[index],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25.0,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 25),
+                            height: screenAwareSize(
+                                _media.longestSide <= 775 ? 110 : 80, context),
+                            child: NotificationListener<
+                                OverscrollIndicatorNotification>(
+                              onNotification: (overscroll) {
+                                overscroll.disallowGlow();
+                              },
+                              child: ListView.builder(
+                                physics: BouncingScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: getMusicCard().length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      print(getMusicCard()[index]);
+                                      print(index);
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(right: 20),
+                                      child: UserCardWidget(
+                                        user: getMusicCard()[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25.0,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 25),
+                            height: screenAwareSize(
+                                _media.longestSide <= 775 ? 110 : 80, context),
+                            child: NotificationListener<
+                                OverscrollIndicatorNotification>(
+                              onNotification: (overscroll) {
+                                overscroll.disallowGlow();
+                              },
+                              child: ListView.builder(
+                                physics: BouncingScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: getNewsCard().length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: EdgeInsets.only(right: 20),
+                                    child: UserCardWidget(
+                                      user: getNewsCard()[index],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
