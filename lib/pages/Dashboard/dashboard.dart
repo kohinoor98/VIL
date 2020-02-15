@@ -410,7 +410,7 @@ class _DashboardState extends State<Dashboard> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    RewardRedemptionPage(this.userId, Reward)
+                                    RewardRedemptionPage(this.userId, Reward,_auth),
                                 // RechargePage(this.userId)
                                 ),
                           );

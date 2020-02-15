@@ -74,13 +74,10 @@ class _GamesState extends State<Games> {
               _auth.start(widget.userid);
               Navigator.of(context).push(
                 MaterialPageRoute(
-<<<<<<< HEAD
+
                   builder: (context) =>
                       // RewardRedemptionPage(""),
                       LeaderBoard(widget.userid, _auth), // add game page here
-=======
-                  builder: (context) => null // add game page here
->>>>>>> ac80e84e66dbde9864736ecfdc1dfe57a136a157
                 ),
               );
             },

@@ -32,6 +32,15 @@ class AuthServices {
   int data;
   int cash;
   int talk;
+  int LPRvoucher;
+  int foodvoucher;
+  int healthvoucher;
+  int showvoucher;
+  int travelvoucher;
+  int workingvoucher;
+  int nwevoucher;
+  int bankvoucher;
+
 
   AuthServices()
   {
@@ -96,6 +105,15 @@ class AuthServices {
           this.data = datasnapshot.data['DataBalance'];
           this.cash = datasnapshot.data['Cash'];
           this.talk = datasnapshot.data['Talktime'];
+
+          this.LPRvoucher = datasnapshot.data['LPG Voucher'];
+          this.foodvoucher = datasnapshot.data['Food Voucher'];
+          this.healthvoucher = datasnapshot.data['HealthCare Voucher'];
+          this.showvoucher = datasnapshot.data['Shopping Voucher'];
+          this.travelvoucher = datasnapshot.data['Travel Voucher'];
+          this.workingvoucher = datasnapshot.data['Working and Productive Voucher'];
+          this.nwevoucher = datasnapshot.data['NWE Voucher'];
+          this.bankvoucher = datasnapshot.data['Banking Voucher'];
         };
       }
     });
@@ -134,14 +152,22 @@ class AuthServices {
         "Cash": 0,
         "Talktime": 0,
         "pushToken" :token,
-        "LPG" : 0,
-        "Travel" : 0,
-        "HealthCare":0,
-        "NWE":0,
-        "Banking":0,
-        "Food":0,
-        "Shopping":0,
-        "Working and Productive":0,
+        "LPG Spyder" : 0,
+        "Travel Spyder" : 0,
+        "HealthCare Spyder":0,
+        "NWE Spyder":0,
+        "Banking Spyder":0,
+        "Food Spyder":0,
+        "Shopping Spyder":0,
+        "Working and Productive Spyder":0,
+        "LPG Voucher" : 0,
+        "Travel Voucher" : 0,
+        "HealthCare Voucher":0,
+        "NWE Voucher":0,
+        "Banking Voucher":0,
+        "Food Voucher":0,
+        "Shopping Voucher":0,
+        "Working and Productive Voucher":0,
       };
       documentReference.setData(data).whenComplete(() {
         print("Document Added");
@@ -255,7 +281,7 @@ class AuthServices {
     return reward;
   }
 
-  void updatecategory(String category,String userid,int val)
+  void updatecategoryVoucher(String category,String userid,int val)
   {
     int temp,temp2;
     DocumentReference documentReference =
