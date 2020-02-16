@@ -134,7 +134,10 @@ class _GhomepageState extends State<Ghomepage> {
                     builder: (context) => getjson("quiz", widget.userid),
                   ));
                 },
-                child: Text("Continue to Quiz...")))
+                child: Container(
+                    width: 150,
+                    height: 150,
+                    child: Text("Continue to Quiz..."))))
         // ListView(
         //   children: <Widget>[
         //     customcard("Python", images[0], des[0]),
