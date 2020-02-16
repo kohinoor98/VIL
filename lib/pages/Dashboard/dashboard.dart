@@ -6,6 +6,7 @@ import 'package:VIL/WalletPage/src/pages/home_page.dart';
 import 'package:VIL/WalletPage/src/utils/screen_size.dart';
 import 'package:VIL/WalletPage/src/widgets/user_card.dart';
 import 'package:VIL/pages/Dashboard/CardPage/Views/MyCardsPage.dart';
+import 'package:VIL/pages/Dashboard/rechargeForm.dart';
 import 'package:VIL/pages/RechargePage/RechargeMain.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -196,19 +197,20 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
         //form page
-        // floatingActionButton: Row(
-        //   mainAxisAlignment: MainAxisAlignment.start,
-        //   children: <Widget>[
-        //     SizedBox(width: 30.0),
-        //     FloatingActionButton(
-        //       onPressed: () {
-        //         Navigator.push(
-        //             context, MaterialPageRoute(builder: (context) => FormFill()));
-        //       },
-        //       child: Icon(Icons.add),
-        //     ),
-        //   ],
-        // ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(width: 30.0),
+            FloatingActionButton(
+              heroTag: "fab_form",
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FormFill()));
+              },
+              child: Icon(Icons.add),
+            ),
+          ],
+        ),
         // debugShowCheckedModeBanner: false,
         // theme: ThemeData(fontFamily: 'Quicksand'),
         body: SingleChildScrollView(
@@ -505,8 +507,8 @@ class _DashboardState extends State<Dashboard> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      LeaderBoard(userr.userId),
-                                  // RechargePage(userr.userId)
+                                      // LeaderBoard(userr.userId),
+                                  RechargePage(userr.userId)
                                 ),
                               );
                             },
@@ -527,7 +529,7 @@ class _DashboardState extends State<Dashboard> {
                     autoPlayDemo,
                   ])),
               SizedBox(height: 15.0),
-              
+
               SizedBox(
                 height: 200.0,
                 child: ListView(
