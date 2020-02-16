@@ -1,6 +1,6 @@
-import 'package:VIL/Game/rewardredemption.dart';
+
 import 'package:flutter/material.dart';
-import 'package:VIL/Game/Ghome.dart';
+
 
 class resultpage extends StatefulWidget {
   int marks;

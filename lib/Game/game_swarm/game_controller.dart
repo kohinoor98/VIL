@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'dart:ui';
-
 import 'package:VIL/Game/game_swarm/state.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
@@ -9,8 +8,6 @@ import 'components/score_text.dart';
 import 'components/start_text.dart';
 import 'enemy_spawner.dart';
 import 'state.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'components/enemy.dart';
 import 'components/health_bar.dart';
 import 'components/highscore_text.dart';

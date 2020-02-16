@@ -1,7 +1,7 @@
 import 'package:VIL/Game/Quizzler/QuizzkerMain.dart';
 import 'package:VIL/Game/games.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class QuizRewardPage extends StatefulWidget {
   QuizRewardPage(String us);

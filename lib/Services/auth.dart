@@ -124,7 +124,7 @@ class AuthServices {
           this.workingvoucher = datasnapshot.data['Working and Productive Voucher'];
           this.nwevoucher = datasnapshot.data['NWE Voucher'];
           this.bankvoucher = datasnapshot.data['Banking Voucher'];
-        };
+        }
       }
     });
   }

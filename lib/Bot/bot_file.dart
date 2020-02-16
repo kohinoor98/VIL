@@ -184,7 +184,7 @@ class _IdeaChatBot extends State<IdeaChatBot> {
     return new Scaffold(
       appBar: new AppBar(
         centerTitle: true,
-        title: new Text("Flutter and Dialogflow"),
+        title: new Text("VIL Bot"),
       ),
       body: new Column(children: <Widget>[
         new Flexible(
