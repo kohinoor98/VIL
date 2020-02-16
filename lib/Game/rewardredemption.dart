@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:VIL/Services/model/user.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 //AuthServices _auth;
 final AuthServices _auth = new AuthServices();
 UserData userr;
+
 
 class RewardRedemptionPage extends StatefulWidget {
   RewardRedemptionPage(UserData u) {
@@ -21,6 +23,7 @@ class RewardRedemptionPage extends StatefulWidget {
 }
 
 class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
+  static AudioCache player = new AudioCache();
   int LPRvoucher;
   int foodvoucher;
   int healthvoucher;
@@ -101,6 +104,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                             color: Colors.blue),
                                         iconSize: 85.0,
                                         onPressed: () {
+                                          const alarmAudioPath = "redeem.mp3";
+                                          player.play(alarmAudioPath);
                                           setState(() {
                                             if (userr.reward > 10) {
                                               userr.LPRvoucher =
@@ -151,6 +156,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                             'assets/foodIcon.png'),
                                         iconSize: 85.0,
                                         onPressed: () {
+                                          const alarmAudioPath = "redeem.mp3";
+                                          player.play(alarmAudioPath);
                                           setState(() {
                                             if (userr.reward > 10) {
                                               userr.foodvoucher =
@@ -201,6 +208,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                             'assets/healthCare.png'),
                                         iconSize: 85.0,
                                         onPressed: () {
+                                          const alarmAudioPath = "redeem.mp3";
+                                          player.play(alarmAudioPath);
                                           setState(() {
                                             if (userr.reward > 10) {
                                               userr.healthvoucher =
@@ -254,6 +263,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                             'assets/shoppingCart.png'),
                                         iconSize: 85.0,
                                         onPressed: () {
+                                          const alarmAudioPath = "redeem.mp3";
+                                          player.play(alarmAudioPath);
                                           setState(() {
                                             if (userr.reward > 10) {
                                               userr.showvoucher =
@@ -304,6 +315,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                             'assets/travel.png'),
                                         iconSize: 85.0,
                                         onPressed: () {
+                                          const alarmAudioPath = "redeem.mp3";
+                                          player.play(alarmAudioPath);
                                           setState(() {
                                             if (userr.reward > 10) {
                                               userr.travelvoucher =
@@ -354,6 +367,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                             'assets/working.png'),
                                         iconSize: 85.0,
                                         onPressed: () {
+                                          const alarmAudioPath = "redeem.mp3";
+                                          player.play(alarmAudioPath);
                                           setState(() {
                                             if (userr.reward > 10) {
                                               userr.workingvoucher =
@@ -409,6 +424,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                             'assets/gaming.png'),
                                         iconSize: 85.0,
                                         onPressed: () {
+                                          const alarmAudioPath = "redeem.mp3";
+                                          player.play(alarmAudioPath);
                                           setState(() {
                                             if (userr.reward > 10) {
                                               userr.nwevoucher =
@@ -459,6 +476,8 @@ class _RewardRedemptionPageState extends State<RewardRedemptionPage> {
                                             'assets/banking.png'),
                                         iconSize: 85.0,
                                         onPressed: () {
+                                          const alarmAudioPath = "redeem.mp3";
+                                          player.play(alarmAudioPath);
                                           setState(() {
                                             if (userr.reward >= 10) {
                                               userr.bankvoucher =

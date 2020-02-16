@@ -118,6 +118,7 @@ flutter:
     - assets/findthehidden.png
     - assets/pow.png
     - assets/bankingJunior.png
+    - assets/redeem.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
