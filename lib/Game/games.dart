@@ -1,9 +1,6 @@
 import 'package:VIL/Game/Ghome.dart';
-import 'package:VIL/Game/Quizzler/QuizzkerMain.dart';
 import 'package:VIL/Game/game_swarm/game_controller.dart';
-import 'package:VIL/Game/rewardredemption.dart';
 import 'package:VIL/Services/auth.dart';
-import 'package:VIL/WalletPage/src/pages/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +16,8 @@ class Games extends StatefulWidget {
 }
 
 class _GamesState extends State<Games> {
+
+
   @override
   Widget build(BuildContext context) {
     _auth.start(widget.userid);
@@ -106,6 +105,7 @@ class _GamesState extends State<Games> {
               subtitle: Text("Weekly play this game to earn 100 Points"),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
+                _auth.updateSpyder(widget.userid, "NWE Spyder", 0.1);
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => Ghomepage(widget.userid),
@@ -164,7 +164,9 @@ class _GamesState extends State<Games> {
               ),
               subtitle: Text("Worth 25 Reward Points!!!"),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {},
+              onTap: () {
+                _auth.updateSpyder(widget.userid, "NWE Spyder", 0.1);
+              },
             ),
           ),
           Card(
@@ -218,7 +220,7 @@ class _GamesState extends State<Games> {
               subtitle: Text("Fruit Ninja, etc"),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-
+                _auth.updateSpyder(widget.userid, "Food Spyder", 0.1);
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => GameController().widget ,
@@ -277,7 +279,9 @@ class _GamesState extends State<Games> {
               ),
               subtitle: Text("Doctor practice, Surgery Expert, etc"),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {},
+              onTap: () {
+                _auth.updateSpyder(widget.userid, "HealthCare Spyder", 0.1);
+              },
             ),
           ),
           Card(
@@ -330,7 +334,9 @@ class _GamesState extends State<Games> {
               ),
               subtitle: Text("Shopping Mania, supermarket shopping, etc"),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {},
+              onTap: () {
+                _auth.updateSpyder(widget.userid, "Shopping Spyder", 0.1);
+              },
             ),
           ),
           Card(
@@ -383,7 +389,10 @@ class _GamesState extends State<Games> {
               ),
               subtitle: Text("Cricket, Football, Basketball and more"),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {},
+              onTap: () {
+                _auth.updateSpyder(widget.userid, "Travel Spyder", 0.1);
+               // print("\n\n\n\ngggg\n\n\n");
+              },
             ),
           ),
           Card(
@@ -436,7 +445,9 @@ class _GamesState extends State<Games> {
               ),
               subtitle: Text("Cricket, Football, Basketball and more"),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {},
+              onTap: () {
+                _auth.updateSpyder(widget.userid, "Working and Productive Spyder", 0.1);
+              },
             ),
           ),
           Card(
@@ -489,7 +500,9 @@ class _GamesState extends State<Games> {
               ),
               subtitle: Text("Cricket, Football, Basketball and more"),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {},
+              onTap: () {
+                _auth.updateSpyder(widget.userid, "Banking Spyder", 0.1);
+              },
             ),
           ),
         ],
